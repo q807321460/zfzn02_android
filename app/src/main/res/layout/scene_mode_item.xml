@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <RelativeLayout
+        android:id="@+id/scene_mode_item_ll"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <ImageView
+            android:id="@+id/scene_mode_item_img"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:padding="@dimen/padding_3"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:src="@drawable/back_home"/>
+        <TextView
+            android:id="@+id/scene_mode_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_toRightOf="@id/scene_mode_item_img"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:text="回家"
+            android:textSize="20sp"
+            android:textColor="@color/text_color"/>
+
+
+        <ImageView
+            android:id="@+id/scene_mode_item_more"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/left_menu_more"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider_color"></View>
+</RelativeLayout>

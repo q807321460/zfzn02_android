@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/egl_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jdplay_title_bar_height"
+        android:layout_gravity="center_vertical"
+        android:background="@color/jdplay_color_bg_titlebar">
+
+        <ImageView
+            android:id="@+id/activity_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:paddingLeft="@dimen/jdplay_margin_horizontal_activity"
+            android:paddingRight="@dimen/jdplay_margin_horizontal_activity"
+            android:src="@drawable/jdplay_back_btn" />
+
+        <TextView
+            android:id="@+id/title"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/jdplay_textsize_larger"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/device_list_name"
+            android:lines="1" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/contain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top">
+        <ListView
+            android:id="@+id/device_listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp" />
+        <include layout="@layout/jdplay_loading_view"/>
+    </FrameLayout>
+</RelativeLayout>
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gap_line">#e2e2e2</color>
+    <color name="item_bg">#e5e5e5</color>
+    <color name="main_bg">#e4e4e4</color>
+    <color name="hint_text">#aaaaaa</color>
+    <color name="text_color">#555555</color>
+    <color name="griditems_bg">#ffe8ecef</color>
+    <color name="commo_text_color">#ff333333</color>
+    <color name="line">#ffd3dde6</color>
+
+    <color name="gray_bg">#e4e4e4</color>
+    <color name="text_color_select">#AE4F91</color>
+    <color name="divider_color">#aaaaaa</color>
+    <color name="top_bg_color">#dddddd</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_777572">#777572</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half">#23000000</color>
+    <color name="orange_ff6633">#ff6633</color>
+    <color name="delete_bg">#ff6600</color>
+
+
+    <color name="activity_bg_color">#fffafafa</color>
+    <color name="top_category_bar_background">#ffeeeeee</color>
+    <color name="divider">#ffdddddd</color>
+
+    <color name="category_tab_text">#ff707070</color>
+    <color name="category_tab_text_dark">#fffafafa</color>
+    <color name="category_tab_highlight_text">#fffafafa</color>
+    <color name="category_tab_highlight_text_dark">#ffd43d3d</color>
+    <color name="category_tab_highlight_bg">#ffaaaaaa</color>
+    <color name="category_tab_highlight_dark_bg">#fffafafa</color>
+
+    <color name="common_text_gray_thin">#989898</color>
+    <color name="common_red">#ED3434</color>
+    <color name="gray">#98000000</color>
+
+
+    <!-- Common -->
+    <color name="lc_bg_color">#efeff4</color>
+    <color name="lc_media_color">#000000</color>
+    <!-- Title -->
+    <color name="title_color_background">#FFFFFF</color>
+    <color name="title_color_divider">#CFCFCF</color>
+    <color name="title_color_center">#505166</color>
+
+    <color name="color_splash_text">#33b5e5</color>
+    <color name="grid_item_pressed">#20000000</color>
+    <color name="grid_line">#20FFFFFF</color>
+    <color name="color_result_view">#b0000000</color>
+    <color name="color_viewfinder_mask">#60000000</color>
+    <color name="color_possible_result_points">#c0ffff00</color>
+    <color name="color_viewfinder_frame">#ff000000</color>
+    <color name="color_viewfinder_laser">#ffff0000</color>
+    <color name="color_az_bg">#0099cc</color>
+
+    <!-- jdplay相关的color，起始 -->
+    <color name="jdplay_color_line">#d9d9d9</color>
+    <color name="jdplay_color_bg_titlebar">#d92c14</color>
+    <color name="jdplay_color_text_normal">#303030</color>
+
+    <!-- 列表 -->
+    <color name="jdplay_color_list_item_default">#ffffff</color>
+    <color name="jdplay_color_list_item_pressed">#d1d1d1</color>
+
+    <!-- 设备 -->
+    <color name="jdplay_color_online_status">#d92c14</color>
+    <color name="jdplay_color_offline_status">#595959</color>
+
+    <!-- popWindow颜色 -->
+    <color name="jdplay_color_popup_window_bg">#f6f4f5</color>
+    <color name="jdplay_color_popup_item_press">#ffffff</color>
+    <color name="jdplay_color_popup_divider">#d1d0d0</color>
+    <color name="jdplay_color_popup_title_color">#0e0e0e</color>
+    <color name="jdplay_color_popup_item_title_color">#6a6a6a</color>
+
+    <!-- jdplay相关的color，结束 -->
+</resources>

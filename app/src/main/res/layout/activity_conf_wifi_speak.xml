@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/conf_wifi_speak_back"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/back"
+                android:onClick="confWifiSpeakBack"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="语音配网"
+                android:textColor="@color/text_color"
+                android:textSize="24sp"
+                android:editable="false"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/wifi_pass_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="当前未连接wifi，请连接wifi" />
+
+    <Button
+        android:id="@+id/btn_start_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送配置" >
+    </Button>
+
+    <Button
+        android:id="@+id/btn_stop_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="停止发送" >
+    </Button>
+
+
+</LinearLayout>
+

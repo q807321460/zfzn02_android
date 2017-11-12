@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/layout_30"
+    android:paddingRight="@dimen/layout_30"
+    android:background="@color/item_bg"
+    tools:context="com.jia.znjj2.LoginActivity">
+
+    <ImageView
+        android:id="@+id/login_account_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/layout_30"
+        android:layout_marginBottom="@dimen/layout_30"
+        android:src="@drawable/logo"
+        />
+
+    <EditText
+        android:id="@+id/login_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_12"
+        android:paddingBottom="@dimen/padding_12"
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/login_account_img"
+        android:singleLine="true"
+        android:inputType="phone"
+        android:background="@drawable/edittext_border"
+        android:textSize="18sp"
+        android:hint="用户名"
+        android:textColorHint="@color/hint_text"
+        ></EditText>
+
+    <ImageButton
+        android:id="@+id/login_account_list_indicator"
+        android:layout_width="30dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:layout_marginRight="5dp"
+        android:layout_alignBottom="@+id/login_account"
+        android:layout_alignRight="@+id/login_account"
+        android:background="@drawable/indicator_down" />
+
+    <ImageButton
+        android:id="@+id/login_account_delete"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_alignBottom="@+id/login_account"
+        android:layout_toLeftOf="@+id/login_account_list_indicator"
+        android:background="@drawable/btn_account_delete"
+        android:visibility="gone"/>
+
+
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:layout_below="@+id/login_account"
+        android:layout_marginTop="@dimen/layout_10"
+        android:paddingTop="@dimen/padding_12"
+        android:paddingBottom="@dimen/padding_12"
+        android:background="@drawable/edittext_border"
+        android:singleLine="true"
+
+        android:textSize="18sp"
+        android:textColorHint="@color/hint_text"
+        android:hint="密码" />
+
+    <LinearLayout
+        android:id="@+id/login_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/login_password">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <CheckBox
+                android:id="@+id/login_remember_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                android:checked="true"
+                android:text="记住密码"/>
+
+            <TextView
+                android:id="@+id/login_forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                android:text="忘记密码"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/login_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_bg_login"
+        android:layout_below="@+id/login_ll"
+        android:textSize="20sp"
+        android:text="登  录"
+        android:textColor="@color/text_color"
+        android:onClick="onBtnLogin"/>
+
+    <Button
+        android:id="@+id/login_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_login"
+        android:background="@drawable/btn_bg_sign"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:text="注  册"
+        android:onClick="onBtnSign"/>
+    <Button
+        android:id="@+id/login_conf_wifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_sign"
+        android:background="@drawable/btn_bg_sign"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:text="主机配网"
+        android:onClick="onBtnConfWifi"/>
+    <Button
+        android:id="@+id/login_conf_wifi_speak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_conf_wifi"
+        android:background="@drawable/btn_bg_sign"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:text="语音配网"
+        android:onClick="onBtnConfWifiSpeak"/>
+
+    <ListView
+        android:id="@+id/login_account_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/login_account"
+        android:layout_alignRight="@id/login_account"
+        android:layout_below="@id/login_account"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone"
+        android:divider="#aaaaaa"
+        android:dividerHeight="0px"/>
+
+
+</RelativeLayout>
+

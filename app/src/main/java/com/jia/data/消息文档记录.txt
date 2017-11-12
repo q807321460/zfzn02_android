@@ -1,0 +1,112 @@
+0x1001  登录时：远程连接失败
+0x1002  登录时：用户名正确，但密码不正确
+0x1003  登录时：用户名密码都正确
+0x1004  登录时：不存在该用户名
+0x1005  注册时：远程连接失败
+0x1006  注册时：注册失败（网络连接成功）
+0x1007  注册时：注册成功
+0x1008  注册时：注册失败（该手机号已被注册）
+
+0x1011  添加主机用户（user）时：请检查网络
+0x1012  添加主机用户（user）时：搜索主节点失败
+0x1013  添加主机用户（user）时：添加主机用户失败
+0x1014  添加主机用户（user）时：远程添加失败，稍候请同步数据
+0x1015  添加主机用户（user）时：已存在该账户名，请核对
+0x1016  添加主机用户（user）时：添加成功
+
+0x1018  添加区域时：添加区域成功
+0x1019  添加区域时：本地添加区域失败
+0x1020  添加区域时：已存在房间
+0x1021  添加区域时：远程添加区域失败
+
+0x1027  更改管理员权限时(放弃)：远程成功，本地失败
+0x1028  更改管理员权限时(放弃)：远程成功，本地成功
+0x1029  更改管理员权限时(放弃)：远程失败，
+0x1030  更改管理员权限时(获得)：远程成功，本地失败
+0x1031  更改管理员权限时(获得)：远程成功，本地成功
+0x1032  更改管理员权限时(获得)：远程失败，
+0x1033  跳转页面到已分享的列表
+
+
+0x1038 SharedUser删除条目后刷新页面数据
+
+0x1043  ShareMasterNode：分享失败
+0x1044  ShareMasterNode：分享成功
+0x1045  ShareMasterNode：已分享，不能重复分享
+0x1046  ShareMasterNode：不存在被分享的账户
+
+0x1051  PersonAccount：保存成功
+0x1052  PersonAccount：保存失败，请检查网络
+0x1053  PersonAccount：保存失败，请稍候再试
+
+0x1060 SwiftOne:更改电器名称：更改成功
+0x1061 SwiftOne:更改电器名称：更改失败
+
+0x1070 SceneAddElectricDetail:情景模式添加电器：添加成功
+0x1071 SceneAddElectricDetail:情景模式添加电器：添加失败
+0x1072 SceneAddElectricDetail:情景模式添加电器：网络问题
+
+0x1080 AreaEdit：删除房间：删除房间失败，检查网络
+0x1081 AreaEdit：删除房间：删除房间失败，稍候重试
+0x1082 AreaEdit：删除房间：删除房间成功
+0x1085 AreaEdit：删除电器：删除电器失败，检查网络
+0x1086 AreaEdit：删除电器：删除电器失败，稍候重试
+0x1087 AreaEdit：删除电器：删除电器成功
+0x1090 AreaEdit：更改房间：更改房间失败，检查网络
+0x1091 AreaEdit：更改房间：更改房间失败，稍候重试
+0x1092 AreaEdit：更改房间：更改房间成功
+
+
+0x1100 SceneInfoEdit:删除电器情景：删除失败，请检查网络
+0x1101 SceneInfoEdit:删除电器情景：删除失败，稍候重试
+0x1102 SceneInfoEdit:删除电器情景：删除成功
+
+0x1105 SceneInfoEdit:保存关联的情景开关：保存失败，请检查网络
+0x1106 SceneInfoEdit:保存关联的情景开关：保存失败，稍候重试
+0x1107 SceneInfoEdit:保存关联的情景开关：保存成功
+
+
+0x1110 HomeFragment:检查更新版本：检查更新失败，检查网络
+0x1111 HomeFragment:检查更新版本：检查更新失败，稍候重试
+0x1112 HomeFragment:检查更新版本：检查更新成功
+
+0x1120 MyMasterNode:删除我的主节点：删除失败，检查网络
+0x1121 MyMasterNode:删除我的主节点：删除失败，稍候重试
+0x1122 MyMasterNode:删除我的主节点：删除成功
+
+0x1130 SharedElectric：电器权限分发：分发失败，检查网络
+0x1131 SharedElectric：电器权限分发：分发失败，稍候重试
+0x1132 SharedElectric：电器权限分发：分发成功
+
+0x1140 SwiftScene:更改电器：更改失败，检查网络
+0x1141 SwiftScene:更改电器：更改失败，稍候重试
+0x1142 SwiftScene:更改电器：更改成功
+
+0x1150 SceneAdd:添加情景：添加失败，检查网络
+0x1151 SceneAdd:添加情景：添加失败，稍候重试
+0x1152 SceneAdd:添加情景：添加成功
+
+0x1160 SceneInfoEdit:删除情景：删除失败，检查网络
+0x1161 SceneInfoEdit:删除情景：删除失败，稍候重试
+0x1162 SceneInfoEdit:删除情景：删除成功
+
+
+0x1170 ChangPassword:更改密码：更改失败
+0x1171 ChangPassword:更改密码：更改成功
+
+0x1180 CurtainDetail:更改窗帘：更改失败
+0x1181 CurtainDetail:更改窗帘：更改成功
+
+0x1190 CurtainDetail:更改晾衣架：更改失败
+0x1191 CurtainDetail:更改晾衣架：更改成功
+
+0x1200 CurtainDetail:更改警号：更改失败
+0x1201 CurtainDetail:更改警号：更改成功
+
+0x1210 CurtainDetail:更改传感器布防：更改失败
+0x1211 CurtainDetail:更改传感器布防：更改成功
+
+
+
+
+

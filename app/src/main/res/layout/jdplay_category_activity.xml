@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/egl_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/play_control_bar">
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:background="#808080"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/play_control_bar">
+
+        <ImageView
+            android:src="@drawable/jdplay_music_default"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="6dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/song_img"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@android:color/white"
+            android:id="@+id/song_name"
+            android:layout_toLeftOf="@+id/play_btn"
+            android:layout_toRightOf="@+id/song_img"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <ImageView
+            android:src="@drawable/jdplay_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="19dp"
+            android:id="@+id/play_btn" />
+    </RelativeLayout>
+</RelativeLayout>
+

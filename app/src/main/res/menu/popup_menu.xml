@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:id="@+id/add_area"
+		android:title="添加区域" />
+	<item
+		android:id="@+id/add_scene"
+		android:title="添加场景" />
+	<item
+		android:id="@+id/add_electric"
+		android:title="添加设备" />
+</menu>

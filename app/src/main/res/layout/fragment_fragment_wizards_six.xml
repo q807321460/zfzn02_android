@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jia.znjj2.AirActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/air1_activity_title_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:src="@drawable/back"
+                android:onClick="air1ActivityBack"/>
+            <TextView
+                android:id="@+id/air1_activity_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text=""/>
+            <TextView
+                android:id="@+id/air1_activity_title_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:textSize="20sp"
+                android:textColor="@color/text_color_select"
+                android:clickable="true"
+                android:text="编辑"
+                android:onClick="air1ActivityEdit"/>
+            <TextView
+                android:id="@+id/air1_activity_title_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text="保存"
+                android:clickable="true"
+                android:onClick="air1ActivitySave"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="长按界面按键进入学习模式"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_check1"/>
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/air1_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="玄关灯"
+        android:textColor="@color/text_color"
+        android:background="@drawable/edittext_border_electric_name"
+        android:focusable="false"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/open"
+            android:id="@+id/air_learn_iv_open"
+            android:clickable="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="123dp"
+            android:layout_marginEnd="123dp" />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/close"
+            android:id="@+id/air_learn_iv_close"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/air_learn_iv_open"
+            android:layout_toStartOf="@+id/air_learn_iv_open"
+            android:layout_marginRight="43dp"
+            android:layout_marginEnd="43dp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="制冷模式:"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="174dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 6"
+            android:id="@+id/button_cold_16"
+            android:background="@drawable/bg_border"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 8"
+            android:id="@+id/button_cold_18"
+            android:background="@drawable/bg_border"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 0"
+            android:background="@drawable/bg_border"
+            android:id="@+id/button_cold_20"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 2"
+            android:id="@+id/button_cold_22"
+            android:background="@drawable/bg_border"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/button_cold_16"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 4"
+            android:background="@drawable/bg_border"
+            android:id="@+id/button_cold_24"
+            android:layout_alignTop="@+id/button_cold_22"
+            android:layout_alignLeft="@+id/button_cold_18"
+            android:layout_alignStart="@+id/button_cold_18" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 5"
+            android:id="@+id/button_cold_25"
+            android:background="@drawable/bg_border"
+            android:layout_alignTop="@+id/button_cold_24"
+            android:layout_alignLeft="@+id/button_cold_20"
+            android:layout_alignStart="@+id/button_cold_20" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 6"
+            android:id="@+id/button_cold_26"
+            android:background="@drawable/bg_border"
+            android:layout_below="@+id/button_cold_22"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 8"
+            android:id="@+id/button_cold_28"
+            android:background="@drawable/bg_border"
+            android:layout_alignTop="@+id/button_cold_26"
+            android:layout_alignLeft="@+id/button_cold_24"
+            android:layout_alignStart="@+id/button_cold_24" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 0"
+            android:id="@+id/button_cold_30"
+            android:background="@drawable/bg_border"
+            android:layout_alignTop="@+id/button_cold_28"
+            android:layout_alignLeft="@+id/button_cold_25"
+            android:layout_alignStart="@+id/button_cold_25" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="制热模式:"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 8"
+            android:id="@+id/button_hot_18"
+            android:background="@drawable/bg_border"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 0"
+            android:id="@+id/button_hot_20"
+            android:background="@drawable/bg_border"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 2"
+            android:background="@drawable/bg_border"
+            android:id="@+id/button_hot_22"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 4"
+            android:id="@+id/button_hot_24"
+            android:background="@drawable/bg_border"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/button_hot_18"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 6"
+            android:background="@drawable/bg_border"
+            android:id="@+id/button_hot_26"
+            android:layout_alignTop="@+id/button_hot_24"
+            android:layout_alignLeft="@+id/button_hot_20"
+            android:layout_alignStart="@+id/button_hot_20" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 8"
+            android:id="@+id/button_hot_28"
+            android:background="@drawable/bg_border"
+            android:layout_alignTop="@+id/button_hot_26"
+            android:layout_alignLeft="@+id/button_hot_22"
+            android:layout_alignStart="@+id/button_hot_22" />
+
+    </RelativeLayout>
+
+</LinearLayout>

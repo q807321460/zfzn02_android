@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/jdplay_pop_list_item_bg"
+    android:minHeight="60dp" >
+
+   <TextView
+            android:id="@+id/song_index"
+            android:textSize="@dimen/jdplay_textsize_small"
+            android:textColor="@color/jdplay_color_popup_item_title_color"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:lines="1"
+            android:paddingLeft="@dimen/jdplay_common_padding"
+            android:paddingRight="@dimen/jdplay_common_padding_small" />
+            
+    <TextView
+        android:id="@+id/song_name"
+        android:textSize="@dimen/jdplay_textsize_small"
+        android:textColor="@color/jdplay_color_popup_item_title_color"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@id/song_index"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:maxWidth="150dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/song_name" >
+
+        <TextView
+            android:id="@+id/song_singer"
+            android:textSize="@dimen/jdplay_textsize_small"
+            android:textColor="@color/jdplay_color_popup_item_title_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"  
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxWidth="200dp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/jdplay_height_line"
+        android:layout_alignParentBottom="true"
+        android:background="@color/jdplay_color_popup_divider" />
+
+</RelativeLayout>

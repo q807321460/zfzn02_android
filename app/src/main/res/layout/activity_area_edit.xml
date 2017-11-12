@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jia.znjj2.AreaEdit">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/area_edit_title_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/layout_15"
+                    android:src="@drawable/back"
+                    android:onClick="areaEditBack"/>
+                <TextView
+                    android:id="@+id/area_edit_title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textSize="22sp"
+                    android:textColor="@color/text_color"
+                    android:text="编辑"/>
+
+                <TextView
+                    android:id="@+id/area_edit_title_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:text="完成"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_color_select"
+                    android:clickable="true"
+                    android:onClick="areaEditSave"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/layout_15"
+            android:layout_marginRight="@dimen/layout_15">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="区域名字："
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+            <EditText
+                android:id="@+id/area_edit_area_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textSize="20sp"
+                android:background="@null"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"></View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginLeft="@dimen/layout_15"
+            android:layout_marginRight="@dimen/layout_15">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="区域图片："
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+            <Spinner
+                android:id="@+id/area_edit_area_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:password="true"
+                android:selectAllOnFocus="true"
+                android:singleLine="true" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/area_edit_electric_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_15"
+            android:paddingTop="@dimen/padding_5"
+            android:paddingBottom="@dimen/padding_5"
+            android:background="@color/gray_bg"
+            android:text="设备"
+            android:textSize="20sp"
+            android:textColor="@color/text_color" />
+
+
+            <com.jia.widget.DragGridView
+                android:id="@+id/area_edit_electric_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:horizontalSpacing="0.0dip"
+                android:listSelector="@null"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="0.0dip" />
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_marginRight="@dimen/margin_15"
+        android:layout_marginBottom="@dimen/margin_15"
+        android:text="删除区域"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:background="@color/delete_bg"
+        android:onClick="areaEditDeleteArea"/>
+</LinearLayout>

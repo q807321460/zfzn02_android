@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.jia.znjj2.SceneAddElectric">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/scene_add_electric_title_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:src="@drawable/back"
+                android:onClick="sceneAddElectricBack"/>
+            <TextView
+                android:id="@+id/scene_add_electric_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text="选择设备"/>
+            <TextView
+                android:id="@+id/scene_info_edit_title_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:clickable="true"
+                android:textSize="16sp"
+                android:textColor="@color/text_color_select"
+                android:text="添加"
+                android:onClick="sceneAddElectricSave"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <ExpandableListView
+        android:id="@+id/scene_add_electric_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+
+
+
+</LinearLayout>

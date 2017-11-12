@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jia.znjj2.MyMasterNode">
+
+    <LinearLayout
+        android:id="@+id/my_master_node_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/my_master_node_title_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:src="@drawable/back"
+                android:onClick="myMasterNodeBack"/>
+            <TextView
+                android:id="@+id/person_account_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text="我的主机"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/my_master_node_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/my_master_node_title"
+        android:background="@color/divider_color"></View>
+
+
+        <ListView
+            android:id="@+id/my_master_node_list"
+            android:layout_below="@+id/my_master_node_view"
+            android:layout_above="@+id/my_master_node_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+
+    <Button
+        android:id="@+id/my_master_node_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="@dimen/layout_15"
+        android:text="添加主机"
+        android:onClick="addMasterNode"/>
+
+</RelativeLayout>

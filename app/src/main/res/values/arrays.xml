@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dev_type_names">
+        <item>插座</item>
+        <item>一键开关</item>
+        <item>两键开关</item>
+        <item>三键开关</item>
+        <item>四键开关</item>
+        <item>门锁</item>
+        <item>窗帘</item>
+        <item>窗户</item>
+        <item>摄像头</item>
+        <item>空调（码库）</item>
+        <item>情景开关</item>
+        <item>机械手</item>
+        <item>电视</item>
+        <item>温度传感器</item>
+        <item>水浸传感器</item>
+        <item>门磁传感器</item>
+        <item>天然气</item>
+        <item>壁挂红外</item>
+        <item>警号</item>
+        <item>烟雾</item>
+        <item>晾衣架</item>
+        <item>空调(智能学习）</item>
+        <item>中央空调</item>
+        <item>新门锁</item>
+        <item>电视(智能学习）</item>
+    </string-array>
+
+    <array name="dev_type_images">
+        <item>@drawable/electric_socket_close</item>
+        <item>@drawable/electric_type_swift1</item>
+        <item>@drawable/electric_type_swift2</item>
+        <item>@drawable/electric_type_swift3</item>
+        <item>@drawable/electric_type_swift4</item>
+        <item>@drawable/electric_type_lock</item>
+        <item>@drawable/electric_type_curtain</item>
+        <item>@drawable/electric_type_window</item>
+        <item>@drawable/camera</item>
+        <item>@drawable/electric_type_aircondition</item>
+        <item>@drawable/electric_type_scene</item>
+        <item>@drawable/electric_type_arm_close1</item>
+        <item>@drawable/electric_type_tv</item>
+        <item>@drawable/electric_type_temp</item>
+        <item>@drawable/electric_type_water</item>
+        <item>@drawable/electric_type_door</item>
+        <item>@drawable/electric_type_gas</item>
+        <item>@drawable/electric_type_wall_ir</item>
+        <item>@drawable/electric_type_horn</item>
+        <item>@drawable/electric_type_smoke</item>
+        <item>@drawable/electric_type_clothes</item>
+        <item>@drawable/electric_type_aircondition</item>
+        <item>@drawable/center_air</item>
+        <item>@drawable/electric_type_newdoor</item>
+        <item>@drawable/electric_type_tv</item>
+    </array>
+    <array name="swift_two_images">
+        <item>@drawable/electric_type_swift2_left</item>
+        <item>@drawable/electric_type_swift2_right</item>
+    </array>
+    <array name="swift_three_images">
+        <item>@drawable/electric_type_swift3_left</item>
+        <item>@drawable/electric_type_swift3_center</item>
+        <item>@drawable/electric_type_swift3_right</item>
+    </array>
+    <array name="swift_four_images">
+        <item>@drawable/electric_type_swift4_left1</item>
+        <item>@drawable/electric_type_swift4_left2</item>
+        <item>@drawable/electric_type_swift4_right2</item>
+        <item>@drawable/electric_type_swift4_right1</item>
+    </array>
+    <array name="scene_type_images">
+        <item>@drawable/back_home</item>
+        <item>@drawable/leave_home</item>
+        <item>@drawable/weak_up</item>
+        <item>@drawable/sleep</item>
+        <item>@drawable/scene_other</item>
+    </array>
+</resources>

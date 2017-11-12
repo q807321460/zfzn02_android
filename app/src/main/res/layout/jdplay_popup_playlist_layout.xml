@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#f6f4f5"
+        android:contentDescription="@null"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="60dp" >
+
+            <TextView
+                android:id="@+id/play_list_title"
+                android:textSize="@dimen/jdplay_textsize_medium"
+                android:textColor="@color/jdplay_color_popup_item_title_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                 />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/jdplay_height_line"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="@color/jdplay_color_popup_divider" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/device_list"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:divider="@null" >
+        </ListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/jdplay_height_line"
+            android:background="@color/jdplay_color_popup_divider" />
+
+        <TextView
+            android:id="@+id/close"
+            android:textSize="@dimen/jdplay_textsize_medium"
+            android:textColor="@color/jdplay_color_popup_item_title_color"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/jdplay_pop_list_item_bg"
+            android:gravity="center"
+            android:text="关闭" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_account_relativelayout"
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/list_blockbg_normal"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/list_item_account_iamge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14.0dip"
+        android:orientation="vertical"
+        android:background="@drawable/btn_account_image_pressed"
+        android:duplicateParentState="true"
+        android:focusable="false" />
+
+    <RelativeLayout
+        android:id="@+id/list_item_account_right"
+        android:layout_width="wrap_content"
+        android:layout_height="80.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_toRightOf="@+id/list_item_account_iamge">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/list_item_account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff333333"
+                android:textSize="18.0dip" />
+
+            <TextView
+                android:id="@+id/list_item_account_ip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/list_item_account_name"
+                android:text=""
+                android:textColor="#ff333333"
+                android:textSize="15.0dip" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/list_item_account_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="14.0dip">
+
+            <LinearLayout
+                android:layout_width="30.0dip"
+                android:layout_height="30.0dip"
+                android:layout_centerInParent="true"
+                android:background="@drawable/btn_account_delete_pressed"
+                android:duplicateParentState="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="1.0dip"
+        android:layout_height="fill_parent"
+        android:background="#ff888888" />
+</RelativeLayout>

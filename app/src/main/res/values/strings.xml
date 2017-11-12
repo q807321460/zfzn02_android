@@ -1,0 +1,208 @@
+<resources>
+    <string name="app_name">兆峰智能</string>
+    <string name="preferences_front_light_auto">Automatic</string>
+    <string name="preferences_front_light_off">Off</string>
+    <string name="preferences_front_light_on">On</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="take_photo">拍照</string>
+    <string name="photo">图库</string>
+    <string name="cancel">取消</string>
+    <string name="photo_hint">请选择添加图片的方式</string>
+
+
+    <string name="home">快捷菜单</string>
+
+    <string name="soft_update_no">已经是最新版本</string>
+    <string name="soft_update_title">软件更新</string>
+    <string name="soft_update_info">检测到新版本，立即更新吗</string>
+    <string name="soft_update_updatebtn">更新</string>
+    <string name="soft_update_later">稍后更新</string>
+    <string name="soft_updating">正在更新</string>
+    <string name="soft_update_cancel">取消</string>
+
+    <string name="space_3">&#160;&#160;&#160;</string>
+    <string name="nothing">nothing</string>
+    <string name="set_client">Set Client</string>
+
+    <string name="appid">appid</string>
+    <string name="appsecret">appsecret</string>
+    <string name="server_url">服务器地址</string>
+    <string name="phone_number">管理员账号</string>
+
+    <string name="admin_mode">管理员模式</string>
+    <string name="user_mode">用户模式</string>
+
+    <string name="login_password_message">点击输入密码</string>
+    <string name="login_username_message">用户名/手机号</string>
+    <string name="login_login">登　　录</string>
+    <string name="login_forget_pwd">忘记密码 </string>
+    <string name="register_username">用户名 </string>
+    <string name="register_password">密	码 </string>
+    <string name="register_phone">手机号 </string>
+    <string name="register_nickname">昵	 称 </string>
+    <string name="register_remark">备	注 </string>
+
+    <!-- 登陆模块 -->
+    <string name="admin_login_name">管理员模拟登陆</string>
+    <string name="user_login_name">用户模拟登陆</string>
+    <string name="login_error_notice">提示：当前demo中未正确配置appId和appSecret,请登录开放平台门户站点，创建应用（应用创建后会得到App ID 和 App Secret）,并且根据开发中心->开发指南中的提示，在demo的源码中的相应代码中填写appId和appSecret,设置后再次编译此demo,进行真机调试.</string>
+    <string name="common_loading">努力加载中</string>
+    <string name="admin_login_err">该账号不是开发者账号的手机号码，开发者创建应用后，可在开放平台网站->开发中心->应用详情页中找到管理员账号</string>
+    <string name="admin_login_phone_invalid">请输入管理员账号</string>
+    <string name="bind_user_notice">验证码短信已发送至手机</string>
+    <string name="bind_user_err">验证码短信发送失败</string>
+    <string name="user_no_input">请输入有效的手机号码</string>
+    <string name="user_bind">用户绑定</string>
+    <string name="user_bind_err">该手机号已绑定此应用,请点击“进入设备列表”进行设备管理</string>
+    <string name="user_nobind_err">当前手机号码未与您的应用绑定，请点击“用户绑定”按钮进行用户绑定操作</string>
+    <!-- 设备列表模块 -->
+    <string name="devices_name">设备列表</string>
+    <string name="devices_operation_name">设备操作</string>
+    <string name="devices_add_name">设备添加</string>
+    <string name="wifi_config_loading">无线配网中</string>
+
+    <!-- 录像列表模块 -->
+    <string name="local_records_name">本地录像</string>
+    <string name="cloud_records_name">云存储录像</string>
+
+    <!-- 报警消息列表 -->
+    <string name="alarm_message_name">报警消息列表</string>
+
+    <!-- 摄像头播放模块 -->
+    <string name="live_play_name">实时预览</string>
+    <string name="record_play_name">录像播放</string>
+    <string name="video_flow_count">流量：</string>
+    <string name="video_flow_speed">码率：</string>
+    <string name="video_flow_unit_M">M</string>
+    <string name="video_flow_unit_K_By_S">K/S</string>
+    <string name="video_default_time">00:00:00</string>
+    <string name="video_monitor_online_fail_restart">网络断开，请检查网络</string>
+    <string name="video_monitor_online_restart"></string>
+    <string name="video_monitor_unsupport_audio_talk">该设备不支持语音对讲功能</string>
+    <string name="video_monitor_media_talk">开始对讲</string>
+    <string name="video_monitor_media_talk_close">对讲关闭</string>
+    <string name="video_monitor_load_talk_sound_error">缓冲或对讲中，无法开启声音</string>
+    <string name="video_monitor_sound_open">声音打开</string>
+    <string name="video_monitor_sound_close">声音关闭</string>
+    <string name="video_monitor_image_capture_success">截图成功</string>
+    <string name="video_monitor_image_capture_failed">截图失败</string>
+    <string name="video_monitor_video_record_success">录制成功</string>
+    <string name="video_monitor_video_record_failed">录制失败</string>
+    <string name="video_monitor_media_record">开始录制</string>
+    <string name="video_monitor_media_talk_ready">对讲已准备好</string>
+    <string name="video_monitor_talk_open_error">对讲打开失败</string>
+    <string name="video_monitor_play_error">画面打开失败,请检查网络或摄像头后重试</string>
+    <string name="video_monitor_seek_error">画面定位失败</string>
+    <string name="video_monitor_data_cache">数据缓冲中</string>
+    <string name="video_monitor_record_play_error">录像播放失败</string>
+    <string name="video_monitor_change_stream_normal">正在切换成"流畅"模式</string>
+    <string name="video_monitor_change_stream_hd">正在切换成"高清"模式</string>
+    <string name="video_monitor_reverse">正在翻转摄像头</string>
+    <string name="beg_hour_data_remind">开始时间-小时：</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="str_wizards_info_2">(1)选择下列品牌直接进入码库匹配</string>
+    <string name="str_wizards_info_2_1">(2)型号匹配</string>
+    <string name="str_wizards_info_2_2">(3) 智能学习</string>
+    <string name="str_wizards_info_2_3">(1)码库匹配</string>
+    <string name="str_wizards_info_2_4">DIY 学习</string>
+    <string name="str_wizards_info_2_5">(4) 一键匹配</string>
+    <string name="str_loading">数据加载,请等待</string>
+    <string name="str_wizards_info_4">轻敲下方按钮,并观看您的电器是否做出正确响应,如果下方按键不是开关键请将电器处于开机状态</string>
+    <string name="str_wizards_info_4_1">您的电器是否做出正确响应?</string>
+    <string name="str_wizards_info_4_2">轻敲下方按钮,并观看您的电器是否全部做出正确响应?</string>
+    <string name="str_up">按多了, 上一组</string>
+    <string name="str_down">否, 下一组</string>
+    <string name="str_again">再次发送该代码</string>
+    <string name="str_yes">是, 下一步</string>
+    <string name="str_other_wind_rate">风量</string>
+    <string name="str_other_wind_rate_low">低</string>
+    <string name="str_other_wind_rate_mid">中</string>
+    <string name="str_other_wind_rate_high">高</string>
+    <string name="str_other_wind_speed">风速</string>
+    <string name="str_other_wind_dir">风向</string>
+    <string name="str_other_wind_dir_hand">手动风向</string>
+    <string name="str_other_wind_dir_up">上</string>
+    <string name="str_other_wind_dir_mid">中</string>
+    <string name="str_other_wind_dir_down">下</string>
+    <string name="str_other_wind_dir_auto">自动风向</string>
+    <string name="str_other_temp">温度</string>
+    <string name="str_other_tempadd">温度+</string>
+    <string name="str_other_tempsub">温度-</string>
+    <string name="str_other_25">25</string>
+    <string name="str_other_dehumidifier">除湿</string>
+    <string name="str_other_blowing">送风</string>
+    <string name="str_other_hot">制热</string>
+    <string name="str_other_mode">模式</string>
+    <string name="str_other_cool">制冷</string>
+    <string name="str_four_no">否, 上一步</string>
+    <string name="str_four_yes">是, 存为遥控器</string>
+    <string name="str_other_123">123</string>
+    <string name="str_other_back">返回</string>
+    <string name="str_other_vol">音量</string>
+    <string name="str_other_ch">频道</string>
+    <string name="str_other_chadd">频道+</string>
+    <string name="str_other_chsub">频道-</string>
+    <string name="str_other_voladd">音量+</string>
+    <string name="str_other_volsub">音量-</string>
+    <string name="str_other_signal">信号</string>
+    <string name="str_other_await">待机</string>
+    <string name="str_other_guide">导视</string>
+    <string name="str_other_mute">静音</string>
+    <string name="str_other_menu">菜单</string>
+    <string name="str_other_power">电源</string>
+    <string name="str_other_set">设置</string>
+    <string name="str_ok">确定</string>
+    <string name="str_wizards">设备向导</string>
+    <string name="str_dialog_set_name_title">设置名称</string>
+    <string name="str_study_info_1">按键一旦学习,之前键值将被更新,并且不可回退,是否继续?</string>
+    <string name="str_study_info_2">是否继续对吗?</string>
+    <string name="str_other_yes">是</string>
+    <string name="str_other_no">否</string>
+    <string name="str_dialog_set_study">学习模式</string>
+    <string name="str_dialog_set_duima">对码操作</string>
+    <string name="str_num">数字键</string>
+    <string name="str_num_0">0</string>
+    <string name="str_num_1">1</string>
+    <string name="str_num_2">2</string>
+    <string name="str_num_3">3</string>
+    <string name="str_num_4">4</string>
+    <string name="str_num_5">5</string>
+    <string name="str_num_6">6</string>
+    <string name="str_num_7">7</string>
+    <string name="str_num_8">8</string>
+    <string name="str_num_9">9</string>
+    <string name="str_other_select"><![CDATA[-/--]]></string>
+    <string name="str_other_av">电视/视频</string>
+    <string name="str_menu_control_edit">编辑</string>
+    <string name="str_menu_control_study">长按界面按键进入学习模式</string>
+    <string name="str_menu_control_look">监控</string>
+    <string name="str_error_no_key">目前该键尚无键值请点击 "编辑" 进入学习模式指定键值</string>
+
+
+    <drawable name="ic_item_up">#666</drawable>
+    <drawable name="ic_item_down">#444</drawable>
+
+    <!-- 与jdplay相关，开始 -->
+    <string name="no_speaker_added">没有找到设备！</string>
+    <string name="unknow">未知</string>
+    <string name="device_tag_sitting_room">客厅</string>
+    <string name="offline">离线</string>
+    <string name="online">在线</string>
+    <string name="play_list_title">播放列队(共%d首)</string>
+    <string name="device_list_name">设备列表</string>
+    <string name="data_empty">数据为空</string>
+    <string name="no_more_data">没有更多数据</string>
+    <string name="load_fail">加载失败:</string>
+    <string name="resource_lib">音频资源库</string>
+    <string name="title_activity_air_learn">AirLearnActivity</string>
+    <string name="title_activity_air_center">AirCenterActivity</string>
+    <string name="title_activity_door">DoorActivity</string>
+
+    <!-- 与jdplay相关，结束 -->
+
+</resources>

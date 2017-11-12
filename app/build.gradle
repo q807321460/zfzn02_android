@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'znjj2'
+            keyPassword 'hefeizfznjj'
+            storeFile file('znjj2-android-key.jks')
+            storePassword 'hefeizfznjj'
+        }
+    }
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 23
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "com.jia.znjj2"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0.047"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile(name: 'jdplay-1.1.1', ext: 'aar')
+    compile(name: 'pullToRefresh', ext: 'aar')
+    //compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    compile files('libs/lechangeSDK.jar')
+    compile files('libs/et_lib_common.jar')
+    compile files('libs/et_lib_io.jar')
+    compile files('libs/et_lib_ir_sdk.jar')
+    compile files('libs/et_lib_net.jar')
+    compile files('libs/et_lib_pyin.jar')
+    compile files('libs/et_lib_tg.jar')
+    compile files('libs/et_lib_usb_new.jar')
+    compile files('libs/commons-beanutils-1.9.3.jar')
+    compile files('libs/commons-collections-3.2.jar')
+    compile files('libs/commons-lang-2.5.jar')
+    compile files('libs/commons-logging-1.2.jar')
+    compile files('libs/ezmorph-1.0.6.jar')
+    compile files('libs/json-lib-2.4-jdk15.jar')
+    compile files('libs/fastjson-1.2.20.jar')
+    compile files('libs/universal-image-loader-1.9.2.jar')
+    compile files('libs/fastjson-1.2.20.jar')
+    compile files('libs/SmartConfigClient.jar')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+}

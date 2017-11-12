@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DropEditText">
+        <attr name="drawableRight" format="reference" />
+        <attr name="fontsize" format="float" />
+        <attr name="dropMode">
+            <enum name="flow_parent" value="0" />
+            <enum name="wrap_content" value="1" />
+        </attr>
+        <attr name="hint" format="string|reference" />
+    </declare-styleable>
+
+    <attr name="rightPadding" format="dimension"></attr>
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightPadding"></attr>
+    </declare-styleable>
+    <declare-styleable name="roundedimageview">
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_inside_color" format="color" />
+        <attr name="border_outside_color" format="color"></attr>
+    </declare-styleable>
+    <string-array name="area_type_press_images">
+        <item>@drawable/area_hall</item>
+        <item>@drawable/area_dinner</item>
+        <item>@drawable/area_mainroom</item>
+        <item>@drawable/area_secondroom</item>
+        <item>@drawable/area_bookroom</item>
+        <item>@drawable/area_kitchen</item>
+        <item>@drawable/area_bathroom</item>
+        <item>@drawable/area_balcony</item>
+        <item>@drawable/area_childrenroom</item>
+    </string-array>
+</resources>

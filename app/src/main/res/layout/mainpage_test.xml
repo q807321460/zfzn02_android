@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyman="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jia.widget.SlidingMenu
+        android:id="@+id/mainpage_slide_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        hyman:rightPadding="120dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <include layout="@layout/left_menu"></include>
+
+            <LinearLayout
+                android:id="@+id/mainpage_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#eee"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <com.jia.widget.RoundImageView
+                                android:id="@+id/mainpage_title_user"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/layout_15"
+                                android:onClick="toggleMenu"
+                                android:src="@drawable/people"/>
+
+                            <ImageView
+                                android:id="@+id/mainpage_title_logo"
+                                android:layout_width="108dp"
+                                android:layout_height="30dp"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/title_logo"/>
+                            <TextView
+                                android:id="@+id/mainpage_title_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@+id/mainpage_title_logo"
+                                android:layout_centerVertical="true"
+                                android:textSize="16sp"
+                                android:textColor="@color/text_color"
+                                android:text="兆峰智能"/>
+                            <ImageView
+                                android:id="@+id/mainpage_title_alarm"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginRight="@dimen/layout_5"
+                                android:layout_toLeftOf="@+id/mainpage_title_add"
+                                android:src="@drawable/alarm"
+                                android:onClick="titleWarnorder"/>
+                            <ImageView
+                                android:id="@+id/mainpage_title_add"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:src="@drawable/add"
+                                android:onClick="onPopupButtonClick"/>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color"></View>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/picture_ex"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="@color/text_color"
+                            android:text="情景"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color"></View>
+                        <GridView
+                            android:id="@+id/mainpage_scene_gv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:numColumns="4"
+                            android:scrollbars="none"
+                            android:stretchMode="columnWidth"
+                            android:verticalSpacing="0.0dip">
+
+
+                        </GridView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:textColor="@color/text_color"
+                            android:text="区域"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/divider_color"></View>
+                        <GridView
+                            android:id="@+id/mainpage_room_gv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:numColumns="4"
+                            android:scrollbars="none"
+                            android:stretchMode="columnWidth"
+                            android:verticalSpacing="0.0dip">
+                        </GridView>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentBottom="true">-->
+                    <!--<include layout="@layout/bottom_menu" />-->
+                <!--</LinearLayout>-->
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.jia.widget.SlidingMenu>
+
+</RelativeLayout>
