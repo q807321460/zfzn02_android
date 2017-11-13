@@ -100,11 +100,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
-                finish();
+                SysApplication.getInstance().exit();
+                //finish();
 //                final Intent intent = new Intent(); intent.setAction("com.jia.connection.ServiceSocket");
 //                final Intent eintent = new Intent(createExplicitFromImplicitIntent(this,intent));
 //                stopService(eintent);
-                System.exit(0);
+               // System.exit(0);
 
 
             }
@@ -112,6 +113,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         return super.onKeyDown(keyCode, event);
     }
+
 //    public static Intent createExplicitFromImplicitIntent(Context context, Intent implicitIntent) {
 //        // Retrieve all services that can match the given intent
 //        PackageManager pm = context.getPackageManager();

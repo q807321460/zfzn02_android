@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -118,6 +119,64 @@ public class ElectricAdd extends Activity {
                     }
                     Toast.makeText(ElectricAdd.this, "添加电器成功", Toast.LENGTH_LONG).show();
                     gotoTvLearnWizards((String) msg.obj);
+                    break;
+                case 0x2227:
+                    if(dialog.isShowing()){
+                        dialog.cancel();
+                    }
+                    Toast.makeText(ElectricAdd.this, "删除电器失败", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x2228:
+                    if(dialog.isShowing()){
+                        dialog.cancel();
+                    }
+                    Toast.makeText(ElectricAdd.this, "删除电器失败，请联网", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x2229:
+                    if(dialog.isShowing()){
+                        dialog.cancel();
+                    }
+                    Toast.makeText(ElectricAdd.this, "联网失败，请重试", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x2230:
+                    new AlertDialog.Builder(ElectricAdd.this).setTitle("电器已存在，请确认是否删除该电器重新添加？" )
+                            .setPositiveButton("确定",
+                                    new DialogInterface.OnClickListener()
+                                    {
+                                        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                                        {
+                                            for(int i=0;i<mDC.mAreaList.size();i++){
+                                                for (int j=0;j<mDC.mAreaList.get(i).getmElectricInfoDataList().size();j++){
+                                                    if (mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode().equals(str2)) {
+                                                        String result = mDC.mWS.deleteElectric(mDC.sMasterCode,
+                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode(),
+                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
+                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
+                                                                mDC.mAreaList.get(i).getRoomIndex());
+
+                                                        if(result.startsWith("-2")){
+                                                            return;
+                                                        }else if(result.startsWith("-1")){
+                                                            return;
+                                                        }else {
+                                                            mDC.mElectricData.deleteElectric(mDC.sMasterCode,
+                                                                    mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
+                                                                    mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
+                                                                    mDC.mAreaList.get(i).getRoomIndex());
+
+
+                                                        }
+                                                        //handler.sendMessage(msg3);
+                                                    }
+
+                                                }
+                                                mDC.mAreaData.loadAreaList();
+
+                                            }
+                                            addElectric(str2);
+                                        }
+                                    })
+                            .setNegativeButton("取消", null).show();
                     break;
                 default:
                     super.handleMessage(msg);
@@ -400,7 +459,6 @@ public class ElectricAdd extends Activity {
         new Thread(){
             @Override
             public void run() {
-                Message msg = new Message();
                  str2= new MasterSocket().getInfoFromMasterNode(str1);
                 System.out.println("添加电器返回str2： " +str2);
                 if (str2 != null &&str2.startsWith("#")&&str2.length() ==24){
@@ -414,103 +472,19 @@ public class ElectricAdd extends Activity {
                 System.out.println("str2**********： " +str2);
                 String res=mDC.mWS.IsExistElectric(mDC.sMasterCode,str2);
                 if(res.startsWith("1")){
-                    new AlertDialog.Builder(ElectricAdd.this).setTitle("电器已存在，请确认是否删除该电器重新添加？" )
-                            .setPositiveButton("确定",
-                                    new DialogInterface.OnClickListener()
-                                    {
-                                        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-                                        {
-                                            new Thread(){
-                                                @Override
-                                                public void run() {
-                                   for(int i=0;i<mDC.mAreaList.size();i++){
-                                       for (int j=0;j<mDC.mAreaList.get(i).getmElectricInfoDataList().size();j++){
-                                           if (mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode().equals(str2)) {
-                                               String result = mDC.mWS.deleteElectric(mDC.sMasterCode,
-                                                       mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode(),
-                                                       mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
-                                                       mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
-                                                       mDC.mAreaList.get(i).getRoomIndex());
+                    Message msg4=new Message();
+                    msg4.what=0x2230;
+                    handler.sendMessage(msg4);
 
-                                               if(result.startsWith("-2")){
 
-                                               }else if(result.startsWith("-1")){
-
-                                               }else {
-                                                   mDC.mElectricData.deleteElectric(mDC.sMasterCode,
-                                                           mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
-                                                           mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
-                                                           mDC.mAreaList.get(i).getRoomIndex());
-                                                   mDC.mAreaData.loadAreaList();
-                                                   //mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().remove(position);
-                                                   
-                                               }
-                                           }
-
-                                       }
-
-                                   }
-
-                                                }
-                                            }.start();
-
-                                        }
-                                    })
-                            .setNegativeButton("取消", null).show();
 
                 }else if(res.startsWith("0")){
-                    int signSize = mDC.electricTypeCode[iElectricType].length();
-                    if(str2!= null  && str2.substring(0,signSize).equals(mDC.electricTypeCode[iElectricType])){
-                        String extra = null;
-                        if(iElectricType == 2){
-                            extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString();
-                        }else if(iElectricType == 3){
-                            extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString()+"|"
-                                    + mEtElectricName3.getText().toString();
-                        }else if(iElectricType == 4 || iElectricType == 10){
-                            extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString()+"|"
-                                    + mEtElectricName3.getText().toString()+ "|" + mEtElectricName4.getText().toString();
-                        }else if(iElectricType == 9){
-                            Message msg2= new Message();
-                            msg2.what = 0x2223;
-                            msg2.obj = str2;
-                            handler.sendMessage(msg2);
-                            return;
-                        }else if(iElectricType == 12){
-                            Message msg2= new Message();
-                            msg2.what = 0x2224;
-                            msg2.obj = str2;
-                            handler.sendMessage(msg2);
-                            return;
-                        }
-                        else if(iElectricType==21){
-                            Message msg2= new Message();
-                            msg2.what = 0x2225;
-                            msg2.obj = str2;
-                            handler.sendMessage(msg2);
-                            return;
-                        }else if(iElectricType==24){
-                            Message msg2= new Message();
-                            msg2.what = 0x2226;
-                            msg2.obj = str2;
-                            handler.sendMessage(msg2);
-                            return;
-                        }
-                        mDC.mElectricData.addElectric(iElectricType, str2, mEtElectricName1.getText().toString(),
-                                mDC.mAreaList.get(mSpElectricAdd2.getSelectedItemPosition()).getRoomIndex(),
-                                mSpElectricAdd2.getSelectedItemPosition(),extra);
-                        msg.what = 0x2221;
-                        handler.sendMessage(msg);
-                        finish();
-                    }else {
-                        System.out.println("不存在待添加的电器");
-                        msg.what = 0x2222;
-                        handler.sendMessage(msg);
-                        //Toast.makeText(ElectricAddDetail.this,"不存在待添加的电器",Toast.LENGTH_LONG).show();
-                    }
+                   addElectric(str2);
 
                 }else if(res.startsWith("-2")){
-
+                    Message msg = new Message();
+                    msg.what=0x2229;
+                    handler.sendMessage(msg);
 
                 }
                 //str2="0900FF00";  //本地测试
@@ -520,7 +494,60 @@ public class ElectricAdd extends Activity {
         }.start();
 
     }
+   private void addElectric(String str){
+       Message msg = new Message();
+       int signSize = mDC.electricTypeCode[iElectricType].length();
+       if(str!= null  && str.substring(0,signSize).equals(mDC.electricTypeCode[iElectricType])){
+           String extra = null;
+           if(iElectricType == 2){
+               extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString();
+           }else if(iElectricType == 3){
+               extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString()+"|"
+                       + mEtElectricName3.getText().toString();
+           }else if(iElectricType == 4 || iElectricType == 10){
+               extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString()+"|"
+                       + mEtElectricName3.getText().toString()+ "|" + mEtElectricName4.getText().toString();
+           }else if(iElectricType == 9){
+               Message msg2= new Message();
+               msg2.what = 0x2223;
+               msg2.obj = str;
+               handler.sendMessage(msg2);
+               return;
+           }else if(iElectricType == 12){
+               Message msg2= new Message();
+               msg2.what = 0x2224;
+               msg2.obj = str;
+               handler.sendMessage(msg2);
+               return;
+           }
+           else if(iElectricType==21){
+               Message msg2= new Message();
+               msg2.what = 0x2225;
+               msg2.obj = str;
+               handler.sendMessage(msg2);
+               return;
+           }else if(iElectricType==24){
+               Message msg2= new Message();
+               msg2.what = 0x2226;
+               msg2.obj = str;
+               handler.sendMessage(msg2);
+               return;
+           }
+           mDC.mElectricData.addElectric(iElectricType, str2, mEtElectricName1.getText().toString(),
+                   mDC.mAreaList.get(mSpElectricAdd2.getSelectedItemPosition()).getRoomIndex(),
+                   mSpElectricAdd2.getSelectedItemPosition(),extra);
+           msg.what = 0x2221;
+           handler.sendMessage(msg);
+           finish();
+       }else {
+           System.out.println("不存在待添加的电器");
+           msg.what = 0x2222;
+           handler.sendMessage(msg);
+           //Toast.makeText(ElectricAddDetail.this,"不存在待添加的电器",Toast.LENGTH_LONG).show();
+       }
+     finish();
 
+   }
     private void gotoIrWizards(String electricCode) {
 
         Intent intent = new Intent(ElectricAdd.this, IRWizardsActivity.class);

@@ -14,7 +14,11 @@ public class ChangeAccount extends Activity {
         setContentView(R.layout.activity_change_account);
     }
     public void gotoLogin(View v){
+        finish();
         Intent intent = new Intent(ChangeAccount.this,LoginActivity.class);
         startActivity(intent);
+    }
+    public void changeAccountBack(View view){
+        finish();
     }
 }
