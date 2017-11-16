@@ -544,7 +544,7 @@ public class ElectricAdd extends Activity {
            handler.sendMessage(msg);
            //Toast.makeText(ElectricAddDetail.this,"不存在待添加的电器",Toast.LENGTH_LONG).show();
        }
-     
+
 
    }
     private void gotoIrWizards(String electricCode) {
