@@ -183,6 +183,14 @@ public class Newdoor extends ElectricBase {
             }
         }.start();
     }
+    public void newdoorEdit(View view){
+        tvTitleEdit.setVisibility(View.GONE);
+        tvTitleSave.setVisibility(View.VISIBLE);
+        etElectricName.setVisibility(View.VISIBLE);
+        etElectricName.setFocusable(true);
+        etElectricName.setFocusableInTouchMode(true);
+        etElectricName.requestFocus();
+    }
     private void changeToNormal(){
         etElectricName.setFocusable(false);
         tvTitleSave.setVisibility(View.GONE);
