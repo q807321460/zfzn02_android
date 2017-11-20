@@ -2920,6 +2920,42 @@ public class WebService {
         return -1 + "";
     }
 
+    public String loadAlarmRecord(String  masterCode){
+        HttpTransportSE ht = new HttpTransportSE(SERVICE_URL);
+        ht.debug = true;
+        SoapSerializationEnvelope envelope;
+        SoapObject soapObject;
+        SoapObject result;
+        methodName = "loadAlarmRecord";
+        soapAction = SERVICE_NS + methodName;
+        envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+        // 实例化SoapObject对象
+        soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+        // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+        envelope.bodyOut = soapObject;  // ⑤
+        envelope.dotNet = true;
+        envelope.setOutputSoapObject(soapObject);
+        soapObject.addProperty("masterCode", masterCode);
+        try {
+            System.out.println("$$$$$$$$$$$$$$$$$$$$$");
+            ht.call(soapAction, envelope);
+            System.out.println("##############################");
+            if (envelope.getResponse() != null) {
+                // 获取服务器响应返回的SOAP消息
+                result = (SoapObject) envelope.bodyIn;
+                String str = result.getProperty(0).toString();
+                return str;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } finally {
+            resetParam();
+        }
+        return -1 + "";
+    }
+
     private void resetParam(){
         envelope = null;
         soapObject = null;

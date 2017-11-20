@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -609,7 +608,7 @@ public class ElectricAdd extends Activity {
            handler.sendMessage(msg);
            //Toast.makeText(ElectricAddDetail.this,"不存在待添加的电器",Toast.LENGTH_LONG).show();
        }
-     finish();
+
 
    }
     private void gotoIrWizards(String electricCode) {

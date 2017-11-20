@@ -97,6 +97,9 @@ public class HomeFragment extends Fragment {
                         isTheNewestVersion();
                     }
                     break;
+                case 0x1113:
+                    Toast.makeText(getContext(), "无报警信息", Toast.LENGTH_LONG).show();
+                    break;
             }
         }
     };
@@ -348,8 +351,20 @@ public class HomeFragment extends Fragment {
         });
     }
     public void titleWarnorder(View view){
-        Intent intent =new Intent(getContext(),Warnifo.class);
-        startActivity(intent);
+        new Thread(){
+            public void run(){
+                warnInfo = mDC.mWS.loadAlarmRecord(mDC.sMasterCode);
+                System.out.print(warnInfo);
+                Message msg = new Message();
+                if(warnInfo.equals("[]")){
+                    msg.what=0x1113;
+                }else{
+                    Intent intent= new Intent(getContext(),Warnifo.class);
+                    startActivity(intent);
+                }
+                handler.sendMessage(msg);
+            }
+        }.start();
     }
     public void onPopupButtonClick(View button)
     {

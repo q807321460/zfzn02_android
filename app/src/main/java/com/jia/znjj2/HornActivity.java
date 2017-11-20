@@ -60,7 +60,7 @@ public class HornActivity extends ElectricBase {
     public void hornBack(View view) {
         finish();
     }
-    public void clothesHangerEdit(View view){
+    public void hornEdit(View view){
         tvTitleEdit.setVisibility(View.GONE);
         tvTitleSave.setVisibility(View.VISIBLE);
         etElectricName.setVisibility(View.VISIBLE);
@@ -68,7 +68,7 @@ public class HornActivity extends ElectricBase {
         etElectricName.setFocusableInTouchMode(true);
         etElectricName.requestFocus();
     }
-    public void clothesHangerSave(View view){
+    public void hornSave(View view){
         final String electricName = etElectricName.getText().toString();
         new Thread(){
             @Override
