@@ -75,6 +75,7 @@ public class HomeFragment extends Fragment {
     private PopupMenu popup;
     private String appVersion;
     private ProgressDialog dialog;
+    public static String warnInfo;
     /*摄像头相关参数*/
     String url = "openapi.lechange.cn:443";
     String appid = "lce2ce9e43c32147a9";
