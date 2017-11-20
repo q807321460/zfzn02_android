@@ -29,13 +29,14 @@
                 android:layout_centerInParent="true"
                 android:textSize="22sp"
                 android:textColor="@color/text_color"
-                android:text="登录切换"/>
+                android:text=""/>
 
         </RelativeLayout>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="150dp"/>
+        android:layout_height="100dp"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -46,6 +47,7 @@
         android:text="退出登录"
         android:textColor="@color/text_color"
         android:textSize="26sp" />
+
 
 
 </LinearLayout>

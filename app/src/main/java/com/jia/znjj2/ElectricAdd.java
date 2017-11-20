@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.jia.camera.BindUserActivity;
 import com.jia.camera.business.Business;
+import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.camera.manager.DeviceAddActivity;
 import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
@@ -80,7 +81,7 @@ public class ElectricAdd extends Activity {
     TypedArray mDevTyeImages;
     private TypedArray mAreaTypeImages;
     List<Map<String,Object>> listItems;
-
+    private List<ChannelInfo> mChannelInfoList;
     Handler handler = new Handler()
     {
         @Override
@@ -148,24 +149,11 @@ public class ElectricAdd extends Activity {
                                             for(int i=0;i<mDC.mAreaList.size();i++){
                                                 for (int j=0;j<mDC.mAreaList.get(i).getmElectricInfoDataList().size();j++){
                                                     if (mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode().equals(str2)) {
-                                                        String result = mDC.mWS.deleteElectric(mDC.sMasterCode,
-                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricCode(),
-                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
-                                                                mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
-                                                                mDC.mAreaList.get(i).getRoomIndex());
-
-                                                        if(result.startsWith("-2")){
-                                                            return;
-                                                        }else if(result.startsWith("-1")){
-                                                            return;
-                                                        }else {
-                                                            mDC.mElectricData.deleteElectric(mDC.sMasterCode,
-                                                                    mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricIndex(),
-                                                                    mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricSequ(),
-                                                                    mDC.mAreaList.get(i).getRoomIndex());
-
-
-                                                        }
+                                                       if(mDC.mAreaList.get(i).getmElectricInfoDataList().get(j).getElectricType()==8){
+                                                           loadChannelList(i,j);
+                                                       }else {
+                                                           deleteElectric(i,j);
+                                                       }
                                                         //handler.sendMessage(msg3);
                                                     }
 
@@ -176,7 +164,14 @@ public class ElectricAdd extends Activity {
                                             addElectric(str2);
                                         }
                                     })
-                            .setNegativeButton("取消", null).show();
+                            .setNegativeButton("取消",new DialogInterface.OnClickListener()
+                            {
+                                public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                                {
+                                    if(dialog.isShowing()){
+                                        dialog.cancel();
+                                    }
+                                }}).show();
                     break;
                 default:
                     super.handleMessage(msg);
@@ -412,7 +407,76 @@ public class ElectricAdd extends Activity {
         });
 
     }
+    private void deleteElectric(int iposition,int jposition){
+        String result = mDC.mWS.deleteElectric(mDC.sMasterCode,
+                mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricCode(),
+                mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricIndex(),
+                mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricSequ(),
+                mDC.mAreaList.get(iposition).getRoomIndex());
 
+        if (result.startsWith("-2")) {
+            return;
+        } else if (result.startsWith("-1")) {
+            return;
+        } else {
+            mDC.mElectricData.deleteElectric(mDC.sMasterCode,
+                    mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricIndex(),
+                    mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricSequ(),
+                    mDC.mAreaList.get(iposition).getRoomIndex());
+
+
+        }
+
+    }
+    private void loadChannelList(final int iposition, final int jposition) {
+        // 初始化数据
+        Business.getInstance().getChannelList(new Handler()	{
+            @SuppressWarnings("unchecked")
+            @Override
+            public void handleMessage(Message msg) {
+                Business.RetObject retObject = (Business.RetObject) msg.obj;
+                if (msg.what == 0) {
+                    mChannelInfoList = (List<ChannelInfo>) retObject.resp;
+                    if(mChannelInfoList != null && mChannelInfoList.size() > 0){
+                        unBindDevice(iposition,jposition);
+                    } else{
+                        Toast.makeText(ElectricAdd.this, "没有设备", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(ElectricAdd.this, retObject.mMsg, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private void unBindDevice(final int iposition, final int jposition){
+        final ChannelInfo info = getChannelInfo(iposition,jposition);
+        Business.getInstance().unBindDevice(info.getDeviceCode(), new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                Business.RetObject retObject = (Business.RetObject) msg.obj;
+                if(msg.what == 0){
+                    Toast.makeText(getApplicationContext(), "乐橙后台删除成功", Toast.LENGTH_SHORT).show();
+                    //乐橙后台删除后，从兆峰后台删
+                    deleteElectric(iposition,jposition);
+                    mChannelInfoList.remove(info);
+                }else{
+                    Toast.makeText(getApplicationContext(), retObject.mMsg, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+    private ChannelInfo getChannelInfo(int iposition,int jposition){
+        String electricCode = mDC.mAreaList.get(iposition).getmElectricInfoDataList().get(jposition).getElectricCode();
+        for (ChannelInfo info: mChannelInfoList ) {
+            if (info.getDeviceCode() != null && info.getDeviceCode().equals(electricCode)) {
+                return info;
+            }
+        }
+        return null;
+    }
     /**
      * 用于判断是否已经注册乐橙账号
      * @return

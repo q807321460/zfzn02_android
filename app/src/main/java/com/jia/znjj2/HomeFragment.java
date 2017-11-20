@@ -1,12 +1,15 @@
 package com.jia.znjj2;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -26,7 +29,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jia.camera.business.Business;
+import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
+import com.jia.data.ElectricInfoData;
 import com.jia.jdplay.JdDeviceListActivity;
 import com.jia.update.UpdateService;
 import com.jia.util.CreateImage;
@@ -34,6 +40,8 @@ import com.jia.util.Util;
 import com.jia.widget.SlidingMenu;
 
 import java.io.File;
+
+import static com.jia.znjj2.LoginActivity.userlogin;
 
 /**
  * Created by Administrator on 2016/11/11.
@@ -66,7 +74,11 @@ public class HomeFragment extends Fragment {
     private Intent intent;
     private PopupMenu popup;
     private String appVersion;
-
+    private ProgressDialog dialog;
+    /*摄像头相关参数*/
+    String url = "openapi.lechange.cn:443";
+    String appid = "lce2ce9e43c32147a9";
+    String appsecret = "b05c139f501149b09ecaaefcc12792";
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -320,7 +332,12 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
+        rlRefreshData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                refreshData(v);
+            }
+        });
         gvRoom.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -429,8 +446,130 @@ public class HomeFragment extends Fragment {
 
     public void refreshData(View view){
         Log.d(TAG, "refreshData() called with: " + "view = [" + view + "]");
-    }
+        //弹出框相关设置
+        dialog = new ProgressDialog(getContext());
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setTitle("提示");
+        dialog.setMessage("正在更新数据");
+        dialog.show();
 
+        new Thread(){
+            @Override
+            public void run() {
+                Looper.prepare();
+                Cursor cursor = mDC.mDB.queryAccountByAccountCode(mDC.sAccountCode);    //读取账户的本地信息
+                if(cursor.getCount() == 0){     //如果cursor为空，则本地没有该账号的数据，需从服务器读取
+                    int result = mDC.mAccountData.addAccount(mDC.sAccountCode);
+                    if(result == -1){
+                        Log.d(TAG, "run() 插入账户返回值: " + result);
+                    }
+                    mDC.mWS.loadAccountFromWs(mDC.sAccountCode,null);
+                    mDC.mWS.loadUserFromWs(mDC.sAccountCode,null);
+                }else {     //如果cursor不为空，第一个为上一次连接的用户，则本地有该账号的数据，根据时间判断是否读取数据
+                    cursor.moveToPosition(0);
+                    mDC.mAccount.setAccountCode(cursor.getString(cursor.getColumnIndex("account_code")));
+                    mDC.mAccount.setAccountName(cursor.getString(cursor.getColumnIndex("account_name")));
+                    mDC.mAccount.setAccountPhone(cursor.getString(cursor.getColumnIndex("account_phone")));
+                    mDC.mAccount.setAccountAddress(cursor.getString(cursor.getColumnIndex("account_address")));
+                    mDC.mAccount.setAccountEmail(cursor.getString(cursor.getColumnIndex("account_email")));
+                    mDC.mAccount.setLePhone(cursor.getString(cursor.getColumnIndex("le_phone")));
+                    mDC.mAccount.setLeSign(cursor.getInt(cursor.getColumnIndex("le_sign")));
+                    String accountTime = cursor.getString(cursor.getColumnIndex("account_time"));
+                    String userTime = cursor.getString(cursor.getColumnIndex("user_time"));
+                    mDC.mWS.loadAccountFromWs(mDC.sAccountCode,accountTime);
+                    mDC.mWS.loadUserFromWs(mDC.sAccountCode,userTime);
+                }
+                //账户数据导入完毕
+
+
+
+                //将本地数据库中该账户下的全部user导入到内存设备中
+                mDC.mUserData.loadUserList();
+
+                if(mDC.mUserList.size() != 0){  //该账号下有用户user
+                    mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
+                    mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
+
+                    String str = "";
+                    str = (new MasterSocket()).getMasterNodeCode();
+                    //str = "#AA00BB00";   //模拟搜索到主节点
+                    if(str != null && !str.equals("")){
+                        str = str.substring(1,9);
+                        //mDC.sMasterCode = str;//待定
+                    }else{
+                        System.out.println("搜索主节点失败");
+                    }
+                    if(str.equals(mDC.sMasterCode)){
+                        mDC.bIsRemote = false;
+                    }else {
+                        mDC.bIsRemote = true;
+                    }
+
+                    mDC.mWS.loadUserRoomFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getAreaTime());
+                    mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),getContext());
+
+                    mDC.mWS.loadSceneFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getSceneTime());
+                    mDC.mWS.loadSceneElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getSceneElectricTime());
+
+                    mDC.mAreaData.loadAreaList();
+                    mDC.mSceneData.loadSceneList();
+
+                    initLeChengPhoneNumber();
+                    if(mDC.sLePhoneNumber == null){
+                        mDC.sLePhoneNumber = mDC.mAccount.getLePhone();
+                    }
+                    initCarema();
+                    goToMainPage();
+                }else {     //该账号下没有用户user
+                    goToAddUser();
+                }
+                Looper.loop();
+            }
+        }.start();
+    }
+    private void goToAddUser(){
+        if(dialog.isShowing()) {
+            dialog.cancel();
+        }
+        Intent intent = new Intent(getContext(), UserAddActivity.class);
+        startActivity(intent);
+    }
+    private void initLeChengPhoneNumber(){
+        for (ElectricInfoData electric : mDC.mElectricList) {
+            if(electric.getElectricType() == 8){
+                mDC.sLePhoneNumber = electric.getExtras();
+            }
+        }
+    }
+    private void initCarema(){
+        Business.getInstance().init(appid,appsecret,url);
+
+        Business.getInstance().userlogin(mDC.sLePhoneNumber,new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(0 == msg.what){
+                    //该手机号与账户已经绑定
+                    userlogin(mDC.sLePhoneNumber);
+                }else {
+                    //该手机号与账户没有绑定
+                }
+            }
+        });
+//        if(mDC.mAccount.getLeSign() == 1){
+//            userlogin(mDC.sLePhoneNumber);
+//        }
+    }
+    private void goToMainPage(){
+        //导入用户数据的区域及电器数据
+        //mDC.mAreaData.loadAreaList();
+        if(dialog.isShowing()) {
+            dialog.cancel();
+        }
+        Intent ourIntent = new Intent(getContext(), MainActivity.class);
+        startActivity(ourIntent);
+    }
 
 
     private void updateAppVersion(){
