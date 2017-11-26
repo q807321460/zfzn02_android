@@ -58,18 +58,6 @@
         android:paddingTop="1dip" >
 
 
-        <Button
-            android:id="@+id/button_study"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:gravity="center"
-                        android:textSize="12sp"
-            android:text="@string/str_wizards_info_2_2"
-             />
-
-
 
     </LinearLayout>
     

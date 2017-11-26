@@ -73,8 +73,6 @@ public class FragmentWizardsTwo extends Fragment implements OnClickListener,IBac
 			mBrandTask = new BrandTask();
 			mBrandTask.execute();
 		}
-		Button buttonStudy = (Button) view.findViewById(R.id.button_study);
-		buttonStudy.setOnClickListener(this);
 		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -236,18 +234,6 @@ public class FragmentWizardsTwo extends Fragment implements OnClickListener,IBac
 				.getSupportFragmentManager().beginTransaction();
 		Bundle args = new Bundle();
 		// TODO Auto-generated method stub
-		switch (v.getId()) {
-
-		case R.id.button_study:		//学习模式
-//			args.putInt("type", mType);
-//			args.putInt("group", mGroupIndex);
-//			FragmentWizardsSix fragmentWizardsSix = new FragmentWizardsSix();
-//			fragmentWizardsSix.setArguments(args);
-//			transaction.replace(R.id.fragment_container, fragmentWizardsSix);
-//			transaction.addToBackStack(null);
-//			transaction.commit();
-			break;
-		}
 	}
 	
 	@Override

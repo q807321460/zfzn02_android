@@ -533,7 +533,13 @@ public class ElectricAdd extends Activity {
                 }
 
                 System.out.println("str2**********： " +str2);
-                String res=mDC.mWS.IsExistElectric(mDC.sMasterCode,str2);
+                String res;
+                if(str2.startsWith("09")){
+                   res="0";
+                }else {
+                   res=mDC.mWS.IsExistElectric(mDC.sMasterCode,str2) ;
+                }
+
                 if(res.startsWith("1")){
                     Message msg4=new Message();
                     msg4.what=0x2230;
@@ -550,9 +556,6 @@ public class ElectricAdd extends Activity {
                     handler.sendMessage(msg);
 
                 }
-                //str2="0900FF00";  //本地测试
-
-                //finish();
             }
         }.start();
 

@@ -434,7 +434,7 @@ public class LoginActivity extends Activity{
                 if(mDC.mUserList.size() != 0){  //该账号下有用户user
                     mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
                     mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
-
+                    mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
                     String str = "";
                     str = (new MasterSocket()).getMasterNodeCode();
                     //str = "#AA00BB00";   //模拟搜索到主节点

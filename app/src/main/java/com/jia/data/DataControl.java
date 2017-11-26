@@ -3,6 +3,7 @@ package com.jia.data;
 import android.content.Context;
 import android.content.res.TypedArray;
 
+import com.jia.connection.WebSocket;
 import com.jia.znjj2.R;
 
 import java.util.ArrayList;
@@ -167,7 +168,7 @@ public class DataControl
 
     public DBHelper mDB;      //操作数据库的对象
     public WebService mWS;
-
+    public WebSocket mWST;
     public TypedArray mSceneTypeImages;
     public TypedArray mAreaTypeImages;
     public TypedArray mElectricTypeImages;
@@ -213,6 +214,7 @@ public class DataControl
         mSceneData = new SceneData();
         mSceneElectricData = new SceneElectricData();
         mWS = new WebService();
+        mWST=new WebSocket();
         mDC.mSceneTypeImages = paramContext.getResources().obtainTypedArray(R.array.scene_type_images);
         mDC.mAreaTypeImages = paramContext.getResources().obtainTypedArray(R.array.area_type_press_images);
         mDC.mElectricTypeImages = paramContext.getResources().obtainTypedArray(R.array.dev_type_images);

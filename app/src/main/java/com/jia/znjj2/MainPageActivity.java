@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jia.connection.ServiceSocket;
+import com.jia.connection.WebSocket;
 import com.jia.data.DataControl;
 import com.jia.util.NetworkUtil;
 import com.jia.widget.SlidingMenu;

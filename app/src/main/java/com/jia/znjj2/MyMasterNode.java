@@ -274,6 +274,7 @@ public class MyMasterNode extends Activity {
             dialog.setTitle("提示");
             dialog.setMessage("正在切换账户数据");
             dialog.show();
+            mDC.mWST.CloseWebsocket();
 
         }
 
@@ -287,6 +288,9 @@ public class MyMasterNode extends Activity {
 
             mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
             mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
+
+
+            mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
 
             String str = "";
             str = (new MasterSocket()).getMasterNodeCode();

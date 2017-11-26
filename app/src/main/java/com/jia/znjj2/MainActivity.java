@@ -1,12 +1,9 @@
 package com.jia.znjj2;
 
 
-import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -25,6 +22,7 @@ import com.jia.connection.MasterSocket;
 import com.jia.connection.ServiceSocket;
 import com.jia.connection.UdpChat;
 import com.jia.data.DataControl;
+import com.jia.connection.WebSocket;
 import com.jia.util.NetworkUtil;
 
 import java.io.BufferedReader;
@@ -34,9 +32,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 
-import com.jia.*;
 import com.jia.util.Util;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -100,6 +96,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
+                mDC.mWST.CloseWebsocket();
                 SysApplication.getInstance().exit();
                 //finish();
 //                final Intent intent = new Intent(); intent.setAction("com.jia.connection.ServiceSocket");

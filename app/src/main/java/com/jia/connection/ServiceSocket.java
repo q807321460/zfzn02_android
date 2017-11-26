@@ -40,12 +40,12 @@ public class ServiceSocket extends Service {
         Log.v("ServiceSocket", "ServiceSocket is start.........");
         System.out.println("ServiceSocket is start.........");
         mDC = DataControl.getInstance();
-        //if(false){
+
         if(!mDC.bIsRemote && NetworkUtil.socket!=null && NetworkUtil.socket.isConnected()){
             serviceSocket();
-            //readFromWebService();
         }else {
-            readFromWebService();
+            //readFromWebService();//显示具体界面里的电器状态
+            webSocket();
         }
 
         handler = new Handler();
@@ -90,17 +90,13 @@ public class ServiceSocket extends Service {
                 //设置intent,让其能够通知上层调用
                 Intent intent = new Intent();
                 intent.setAction("android.intent.action.MY_RECEIVER");
-                //定义接收数据的buffer,并清零
-                /*char[] buffer = new char[64];
-                for(int i=0;i<buffer.length;i++) {
-                    buffer[i] = '\0';
-                }*/
                 try {
                     //等待连接上。由于此处一直在等待，所致直到连接上才会跳出while，
                     // 故下方的判断网络的都是多余的
                     while(NetworkUtil.socket == null || !checkNetConnection()) {
                         mDC.bIsRemote = true;
-                        readFromWebService();
+                        //readFromWebService();
+
                     }
                     //取得输入输出流
                     mBufferedReaderClient = new BufferedReader(new InputStreamReader(NetworkUtil.socket.getInputStream()));
@@ -141,15 +137,14 @@ public class ServiceSocket extends Service {
                 catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("本地切换远程");
-                    readFromWebService();
+                    //readFromWebService();
                     mDC.socketCrash = true;
                     mDC.bIsRemote = true;
                 }
             }
         }).start();
     }
-
-    public void readFromWebService(){
+    void webSocket(){
         new Thread(){
             @Override
             public void run() {
@@ -157,15 +152,12 @@ public class ServiceSocket extends Service {
                 final Intent intent = new Intent();
                 intent.setAction("android.intent.action.MY_RECEIVER");
 
-                TimerTask timerTask = new TimerTask() {
+                              TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
                         new Thread(){
                             @Override
                             public void run() {
-                                System.out.println("开始从服务器读取数据");
-                                mDC.mWS.getElectricStateByUser(mDC.sAccountCode, mDC.sMasterCode);
-                                //System.out.println("结束从服务器读取数据");
                                 sendBroadcast(intent);
                             }
                         }.start();
@@ -177,7 +169,38 @@ public class ServiceSocket extends Service {
 
             }
         }.start();
+
     }
+
+//    public void readFromWebService(){
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                //设置intent,让其能够通知上层调用
+//                final Intent intent = new Intent();
+//                intent.setAction("android.intent.action.MY_RECEIVER");
+//
+//                TimerTask timerTask = new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        new Thread(){
+//                            @Override
+//                            public void run() {
+//                                System.out.println("开始从服务器读取数据");
+//                                mDC.mWS.getElectricStateByUser(mDC.sAccountCode, mDC.sMasterCode);
+//                                //System.out.println("结束从服务器读取数据");
+//                                sendBroadcast(intent);
+//                            }
+//                        }.start();
+//
+//                    }
+//                };
+//                timer.schedule(timerTask,500,500);
+//
+//
+//            }
+//        }.start();
+//    }
 
 
     //定时器响应函数
