@@ -41,6 +41,7 @@ public class AreaElectricFragment extends Fragment {
 	private DataControl mDC;
 	private TypedArray mTaElectricImages;
 	private View view;
+	int mPosition;
 	BaseAdapter adapter;
 
 	private static final String ARG_POSITION = "position";
@@ -82,6 +83,8 @@ public class AreaElectricFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+//		mGvElectricList.smoothScrollToPosition(mPosition);
+//		mGvElectricList.requestFocusFromTouch();
 	}
 
 	private void initView(View view){
@@ -291,9 +294,12 @@ public class AreaElectricFragment extends Fragment {
 				viewHolder.electricName.setTag(position);
 				viewHolder.electricImg.setTag(convertView);
 
+
+
 				return convertView;
 			}
 		};
+
 		mGvElectricList.setAdapter(adapter);
 
 
@@ -317,18 +323,21 @@ public class AreaElectricFragment extends Fragment {
 							intent = new Intent(getContext(), SwiftOne.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 10:
 							intent = new Intent(getContext(), SwiftScene.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 5:
 							intent = new Intent(getContext(), DoorDetail.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 6:
@@ -337,6 +346,7 @@ public class AreaElectricFragment extends Fragment {
 							intent = new Intent(getContext(), CurtainDetail.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 //						case 7:
@@ -344,77 +354,88 @@ public class AreaElectricFragment extends Fragment {
 //							break;
 						case 8:
 							loadChannelList(position);
+							mPosition=position;
 							break;
 						case 9:
 							//空调，需要先判断空调是否已经对码，若对码，则选择进入控制页面，否则进入学习/码库页面
 							intent = new Intent(getContext(), AirActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 12:
 							intent = new Intent(getContext(), TvActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 13:
 						case 14:
-
 						case 16:
 						case 17:
 						case 19:
 							intent = new Intent(getContext(), SensorActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 15:
 							intent = new Intent(getContext(), DoorActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 18:
 							intent = new Intent(getContext(), HornActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 20:
 							intent = new Intent(getContext(), ClothesHanger.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 21:
 							intent = new Intent(getContext(),AirLearnActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 22:
 							intent = new Intent(getContext(),AirCenterActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 23:
 							intent = new Intent(getContext(),Newdoor.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						case 24:
 							intent = new Intent(getContext(),TvLearnActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 						default:
 							intent = new Intent(getContext(), ElectricDetail.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
+							mPosition=position;
 							startActivity(intent);
 							break;
 					}

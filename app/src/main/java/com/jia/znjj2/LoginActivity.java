@@ -28,6 +28,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,7 +60,7 @@ public class LoginActivity extends Activity{
     private EditText mEtPassword;
     private CheckBox mCbRemeberPassword;
     private ProgressDialog dialog;
-
+    private LinearLayout ll_bt;
 
     String sMasterNodeWs="";
     String sAreaInfoTimeWs="";
@@ -221,9 +222,9 @@ public class LoginActivity extends Activity{
         mEtAccount = (EditText) findViewById(R.id.login_account);
         mEtPassword = (EditText) findViewById(R.id.login_password);
         mCbRemeberPassword = (CheckBox) findViewById(R.id.login_remember_password);
+        ll_bt= (LinearLayout) findViewById(R.id.ll_bt);
 
-
-
+        ll_bt.setVisibility(View.VISIBLE);
         sp1 = getSharedPreferences("zfzn_account", MODE_PRIVATE);
         sp2 = getSharedPreferences("zfzn_last_account", MODE_PRIVATE);
         editor1 = sp1.edit();
@@ -299,6 +300,7 @@ public class LoginActivity extends Activity{
 
                 //相应完点击后List就消失，指示箭头反向！
                 mLvAccountList.setVisibility(View.GONE);
+                ll_bt.setVisibility(View.VISIBLE);
                 mIbAccountListIndicator.setBackgroundResource(R.drawable.indicator_down);
 
                 System.out.println("---------Selected!!");
@@ -316,6 +318,7 @@ public class LoginActivity extends Activity{
                     isVisible=false;
                     mIbAccountListIndicator.setBackgroundResource(R.drawable.indicator_down);
                     mLvAccountList.setVisibility(View.GONE);   //让ListView列表消失
+                    ll_bt.setVisibility(View.VISIBLE);
 
                 }
                 else{
@@ -323,6 +326,7 @@ public class LoginActivity extends Activity{
                     isVisible=true;
                     mIbAccountListIndicator.setBackgroundResource(R.drawable.indicator_up);
                     mLvAccountList.setVisibility(View.VISIBLE);
+                    ll_bt.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -654,7 +658,7 @@ public class LoginActivity extends Activity{
 
                 mIbAccountListIndicator.setBackgroundResource(R.drawable.indicator_down);
                 mLvAccountList.setVisibility(View.GONE);   //让ListView列表消失，并且让游标向下指！
-
+                ll_bt.setVisibility(View.VISIBLE);
                 MyLoginListAdapter.this.notifyDataSetChanged();
             }
         }
