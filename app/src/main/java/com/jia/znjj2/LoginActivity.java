@@ -326,7 +326,7 @@ public class LoginActivity extends Activity{
                     isVisible=true;
                     mIbAccountListIndicator.setBackgroundResource(R.drawable.indicator_up);
                     mLvAccountList.setVisibility(View.VISIBLE);
-                    ll_bt.setVisibility(View.INVISIBLE);
+                    ll_bt.setVisibility(View.VISIBLE);
                 }
             }
 

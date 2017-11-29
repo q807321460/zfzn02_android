@@ -83,8 +83,6 @@ public class AreaElectricFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-//		mGvElectricList.smoothScrollToPosition(mPosition);
-//		mGvElectricList.requestFocusFromTouch();
 	}
 
 	private void initView(View view){
