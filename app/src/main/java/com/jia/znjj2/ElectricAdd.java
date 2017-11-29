@@ -531,31 +531,34 @@ public class ElectricAdd extends Activity {
                 }else {
                     str2=null;
                 }
+                if(str2!=null){
+                    System.out.println("str2**********： " +str2);
+                    String res;
+                    if(str2.startsWith("09")){
+                        res="0";
+                    }else {
+                        res=mDC.mWS.IsExistElectric(mDC.sMasterCode,str2) ;
+                    }
 
-                System.out.println("str2**********： " +str2);
-                String res;
-                if(str2.startsWith("09")){
-                   res="0";
-                }else {
-                   res=mDC.mWS.IsExistElectric(mDC.sMasterCode,str2) ;
+                    if(res.startsWith("1")){
+                        Message msg4=new Message();
+                        msg4.what=0x2230;
+                        handler.sendMessage(msg4);
+
+
+
+                    }else if(res.startsWith("0")){
+                        addElectric(str2);
+
+                    }else if(res.startsWith("-2")){
+                        Message msg = new Message();
+                        msg.what=0x2229;
+                        handler.sendMessage(msg);
+
+                    }
                 }
 
-                if(res.startsWith("1")){
-                    Message msg4=new Message();
-                    msg4.what=0x2230;
-                    handler.sendMessage(msg4);
 
-
-
-                }else if(res.startsWith("0")){
-                   addElectric(str2);
-
-                }else if(res.startsWith("-2")){
-                    Message msg = new Message();
-                    msg.what=0x2229;
-                    handler.sendMessage(msg);
-
-                }
             }
         }.start();
 
