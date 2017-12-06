@@ -385,6 +385,10 @@ public class DBHelper extends SQLiteOpenHelper
         return getWritableDatabase().delete(TABLE_SCENE, "master_code = ? AND scene_index = ?"
                 , new String[]{masterCode, String.valueOf(sceneIndex)});
     }
+    public void updateScene(String masterCode,int sceneIndex,ContentValues contentValues){
+        getWritableDatabase().update(TABLE_SCENE, contentValues, "master_code=? AND scene_index = ?",
+                new String[]{masterCode, String.valueOf(sceneIndex)});
+    }
 
     public  void updateSceneSequ(String masterCode, int sceneSequ){
         String sql = "UPDATE scenes SET scene_sequ = scene_sequ-1 WHERE master_code=? and scene_sequ > ?";
@@ -408,6 +412,7 @@ public class DBHelper extends SQLiteOpenHelper
         return getWritableDatabase().delete(TABLE_SCENE_ELECTRIC, "master_code = ? AND scene_index = ?"
                 , new String[]{masterCode, String.valueOf(sceneIndex)});
     }
+
 
 
 

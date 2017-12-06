@@ -55,8 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_marginTop="@dimen/margin_10"
-            android:layout_centerInParent="true"
-            android:src="@drawable/electric_lamp_normal"/>
+            android:src="@drawable/electric_lamp_normal"
+            android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/scene_info_name"
             android:layout_width="match_parent"
