@@ -240,7 +240,11 @@
         <activity
             android:name=".Warnifo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ChangeAccount"></activity>
+        <activity android:name=".ChangeAccount"/>
+        <activity
+            android:name=".RoomList"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

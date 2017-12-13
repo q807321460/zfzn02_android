@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,7 +35,6 @@ import com.jia.widget.DragAdapterInterface;
 import com.jia.widget.DragCallback;
 import com.jia.widget.DragGridView;
 import com.jia.widget.LogUtil;
-import com.jia.widget.MyGridView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,6 +54,10 @@ public class AreaEdit extends Activity {
     private MyAdapter adapter;
     private int fromPosition;
     private int toPosition;
+    public static int mvelectricSequ;
+    public static int mvelectricindex;
+    public static int mvroomposition;
+    public static int areaElectricSize;
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -112,8 +116,15 @@ public class AreaEdit extends Activity {
         updateGridView();
     }
 
+    public void onResume(){
+        super.onResume();
+        dragGridView.setAdapter(adapter);
+        tvElectricNum.setText("设备（"+areaElectricSize+"）");
+    }
+
     private void updateView(){
-        tvElectricNum.setText("设备（"+roomDataInfo.getmElectricInfoDataList().size()+"）");
+
+        tvElectricNum.setText("设备（"+areaElectricSize+"）");
         updateGridView();
     }
 
@@ -122,6 +133,7 @@ public class AreaEdit extends Activity {
         roomPosition = getIntent().getIntExtra("roomPosition", -1);
         if(roomPosition != -1){
             roomDataInfo = mDC.mAreaList.get(roomPosition);
+            mvroomposition = roomPosition;
         }
         etAreaName = (EditText) findViewById(R.id.area_edit_area_name);
         spAreaImg = (Spinner) findViewById(R.id.area_edit_area_image);
@@ -130,7 +142,8 @@ public class AreaEdit extends Activity {
         dragGridView= (DragGridView) findViewById(R.id.area_edit_electric_list);
         etAreaName.setText(roomDataInfo.getRoomName());
         spAreaImg.setSelection(roomDataInfo.getRoomImg());
-        tvElectricNum.setText("设备（"+roomDataInfo.getmElectricInfoDataList().size()+"）");
+        areaElectricSize = roomDataInfo.getmElectricInfoDataList().size();
+        tvElectricNum.setText("设备（"+areaElectricSize+"）");
     }
     class MyAdapter extends BaseAdapter implements DragAdapterInterface
     {
@@ -172,6 +185,7 @@ public class AreaEdit extends Activity {
                 holder=new Holder();
                 convertView= LayoutInflater.from(context).inflate(R.layout.view_item,null);
                 holder.deleteImg= (ImageView) convertView.findViewById(R.id.delete_img);
+                holder.moveImg =(ImageView)convertView.findViewById(R.id.move_img);
                 holder.iconImg= (ImageView) convertView.findViewById(R.id.icon_img);
                 holder.nameTv= (TextView) convertView.findViewById(R.id.name_tv);
                 holder.container=convertView.findViewById(R.id.item_container);
@@ -182,6 +196,15 @@ public class AreaEdit extends Activity {
             {
                 holder= (Holder) convertView.getTag();
             }
+            holder.moveImg.setOnClickListener(new View.OnClickListener()
+            {
+                public void onClick(View v){
+                    mvelectricSequ= mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricSequ();
+                    mvelectricindex = mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricIndex();
+                    Intent intent = new Intent(AreaEdit.this,RoomList.class);
+                    startActivity(intent);
+                }
+            });
             holder.deleteImg.setOnClickListener(new View.OnClickListener()
             {
                 @Override
@@ -213,6 +236,7 @@ public class AreaEdit extends Activity {
             getWindowManager().getDefaultDisplay().getMetrics(loacalDisplayMetrics);
             System.out.println("$$$$$$$$$$$"+loacalDisplayMetrics);
             int i = (int)(loacalDisplayMetrics.heightPixels/loacalDisplayMetrics.density);
+            holder.moveImg.setVisibility(View.GONE);
             holder.deleteImg.setVisibility(View.GONE);
             holder.container.setBackgroundColor(Color.WHITE);
             if (position < mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().size()) {
@@ -284,6 +308,7 @@ public class AreaEdit extends Activity {
         class Holder
         {
             public ImageView deleteImg;
+            public ImageView moveImg;
             public ImageView iconImg;
             public TextView nameTv;
             public View container;

@@ -321,7 +321,7 @@ public class DBHelper extends SQLiteOpenHelper
     }
 
     public  void updateElectricSequ(String masterCode, int electricSequ, int roomIndex){
-        String sql = "UPDATE electrics SET electric_sequ = electric_sequ-1 WHERE master_code=? and electric_sequ > ? AND room_index=?";
+        String sql = "UPDATE electrics SET electric_sequ = electric_sequ-1 WHERE master_code=? and electric_sequ > ? and room_index=?";
         getWritableDatabase().execSQL(sql, new String[]{masterCode, String.valueOf(electricSequ), String.valueOf(roomIndex)});
     }
     public void updateElectricSequ1(String masterCode,int electricIndex, int roomIndex,int oldElectricSequ, int newElectricSequ){
@@ -335,10 +335,9 @@ public class DBHelper extends SQLiteOpenHelper
         }
         String sql="UPDATE electrics SET electric_sequ=?  WHERE master_code=? AND room_index=? AND electric_index=?";
         getWritableDatabase().execSQL(sql,new String[]{ String.valueOf(newElectricSequ), masterCode, String.valueOf(roomIndex),String.valueOf(electricIndex)});
-
-
-
     }
+
+
 
 
     /**
