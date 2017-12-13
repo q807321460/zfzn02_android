@@ -12,7 +12,6 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.jia.data.DataControl;
-import com.jia.data.RoomData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,7 +30,6 @@ public class RoomList extends Activity {
     private int electricSequ;
     private String result;
     private int a;
-    public RoomData.RoomDataInfo roomDataInfo;
     private int[] Imageids = new int[]{
             R.drawable.area_hall,
             R.drawable.area_dinner,
