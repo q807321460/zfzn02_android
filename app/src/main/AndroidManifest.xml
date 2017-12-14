@@ -245,9 +245,7 @@
         <activity
             android:name=".CameraActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name="com.jia.znjj2.RoomList"
-            android:screenOrientation="portrait" />
+      
 
 
     <activity
