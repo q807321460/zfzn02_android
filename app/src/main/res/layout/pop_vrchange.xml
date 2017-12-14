@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#83000000"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:id="@+id/play_high_layout"
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:orientation="vertical">
+        <ImageView 
+            android:id="@+id/vr_ball"
+            android:layout_width="44dp"
+        	android:layout_height="44dp"
+			android:layout_margin="4dp"
+        	android:src="@drawable/png_vrball"/>
+		<ImageView
+			android:id="@+id/vr_blow"
+			android:layout_width="44dp"
+			android:layout_height="44dp"
+			android:layout_margin="4dp"
+			android:src="@drawable/png_vrblow"/>
+		<ImageView
+			android:id="@+id/vr_cylinder"
+			android:layout_width="44dp"
+			android:layout_height="44dp"
+			android:layout_margin="4dp"
+			android:src="@drawable/png_vrcylinder"/>
+		<ImageView
+			android:id="@+id/vr_plane"
+			android:layout_width="44dp"
+			android:layout_height="44dp"
+			android:layout_margin="4dp"
+			android:src="@drawable/png_vrplane"/>
+
+    </LinearLayout>
+    
+    
+
+
+    
+
+</LinearLayout>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/top_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/net_wifi_set"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+
+    </RelativeLayout>
+    
+    
+    <TextView 
+        android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:background="@color/light_gray"
+		android:text="@string/net_wifi_curconnect"
+		android:textSize="16sp"
+		android:textColor="@color/white"
+		android:paddingLeft="20dp"
+		android:gravity="center_vertical"/>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+		android:layout_height="44dp"
+		android:background="@color/white">
+        
+        <TextView 
+            android:id="@+id/net_wifi_curname"
+            android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:textSize="16sp"
+			android:textColor="@color/text_black"
+			android:layout_marginLeft="20dp"
+			android:text="@string/net_wifi_noconnect"/>
+        
+        <ImageView 
+            android:id="@+id/net_wifi_cursignal"
+            android:layout_width="44dp"
+			android:layout_height="match_parent"
+			android:layout_alignParentRight="true"
+			android:src="@drawable/png_wifi4"/>
+        
+        <ImageView 
+            android:id="@+id/net_wifi_curlock"
+            android:layout_width="44dp"
+			android:layout_height="match_parent"
+			android:layout_toLeftOf="@+id/net_wifi_cursignal"
+			android:src="@drawable/png_lock_black"/>
+        
+    </RelativeLayout>
+    
+    
+    <TextView 
+        android:layout_width="match_parent"
+		android:layout_height="30dp"
+		android:layout_marginTop="15dp"
+		android:background="@color/light_gray"
+		android:text="@string/net_wifi_choice"
+		android:textSize="16sp"
+		android:textColor="@color/white"
+		android:paddingLeft="20dp"
+		android:gravity="center_vertical"/>
+    
+    <ListView
+        android:id="@+id/net_wifi_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/top_gray"
+    >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/wifi_password"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle" />
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="@color/white"
+        >
+
+        <ImageView
+            android:id="@+id/image_show_wifi"
+            android:layout_width="64dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/png_down_black"
+            />
+
+        <View
+            android:layout_width="@dimen/view_height"
+            android:layout_height="match_parent"
+            style="@style/ViewStyle"
+            android:layout_toLeftOf="@+id/image_show_wifi"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:id="@+id/text_seclete_wifi_ssid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/png_wifi_black"
+            style="@style/DialogTextViewStyle"
+            android:text="ssid"
+            android:layout_toLeftOf="@+id/image_show_wifi"
+            />
+        </RelativeLayout>
+
+    <RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="46dp"
+	    android:layout_marginTop="10dp"
+	    android:padding="4dp"
+	    android:background="@color/white">
+	
+	    <com.jia.ezcamera.utils.MyEditText
+	        android:id="@+id/edit_wifi_pass"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_marginLeft="5dp"
+	        android:background="@color/white"
+            android:hint="@string/wifi_password"
+	        android:ems="10"
+	        android:maxLength="64" />
+	</RelativeLayout>
+
+	<Button
+		android:id="@+id/btn_sure"
+		android:layout_width="match_parent"
+		android:layout_height="44dp"
+		android:layout_marginTop="10dp"
+		android:text="@string/next"
+		android:textColor="@color/black"/>
+    
+    <Button
+		android:id="@+id/btn_skip"
+		android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/skip"
+        android:textColor="@color/white"
+        android:background="@color/orange"/>
+
+</LinearLayout>

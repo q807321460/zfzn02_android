@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray">
+        <RelativeLayout
+            android:id="@+id/relative_sfv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray">
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"/>
+        <TextView 
+            android:id="@+id/pbtext"
+            android:visibility="visible"
+            android:layout_below="@+id/progressbar"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="0%"/>
+
+        <View
+            android:id="@+id/view_play"
+            android:layout_width="64dp"
+            android:visibility="gone"
+            android:layout_height="64dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/png_btn_play"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/include_top"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:id="@+id/head_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/video_local_play"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_info"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="@color/dark_grey"
+        android:layout_below="@+id/include_top"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top">
+        <TextView
+            android:id="@+id/text_time"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/time_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/text_type"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/type_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/text_long"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/long_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_bottom"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="96dp">
+        <include
+            android:id="@+id/include_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:layout_alignParentBottom="true"
+            layout="@layout/my_menu_playbtn"/>
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/include_bottom"
+            android:background="@color/white"
+            android:maxHeight="4dp"
+            android:minHeight="2dp"
+            />
+        <TextView
+            android:id="@+id/start_time"
+            android:text="00:00"
+            style="@style/DialogTextViewStyle"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/end_time"
+            android:text="00:00"
+            style="@style/DialogTextViewStyle"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</RelativeLayout>

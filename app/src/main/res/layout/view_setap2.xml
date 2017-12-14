@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/top_gray"
+    >
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/add_device_choicewifi"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height"
+        android:gravity="center"
+        android:text="@string/add_device_wifiname"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="@color/white"
+        >
+
+        <ImageView
+            android:id="@+id/image_show_wifi"
+            android:layout_width="64dp"
+            android:layout_height="@dimen/item_height"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/png_down_black"
+            />
+
+        <View
+            android:layout_width="@dimen/view_height"
+            android:layout_height="match_parent"
+            style="@style/ViewStyle"
+            android:layout_toLeftOf="@+id/image_show_wifi"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            />
+
+        <TextView
+            android:id="@+id/text_seclete_wifi_ssid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/png_wifi_black"
+            style="@style/DialogTextViewStyle"
+            android:text="ssid"
+            android:layout_toLeftOf="@+id/image_show_wifi"
+            />
+        </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/share_margin_top"
+        android:gravity="center_vertical"
+        android:text="@string/add_device_wifipass"
+        />
+    <RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="46dp"
+	    android:layout_marginTop="10dp"
+	    android:padding="4dp"
+	    android:background="@color/white">
+	
+	    <com.jia.ezcamera.utils.MyEditText
+	        android:id="@+id/edit_wifi_pass"
+	        android:layout_width="match_parent"
+	        android:layout_height="40dp"
+	        android:layout_marginLeft="5dp"
+	        android:background="@color/white"
+	        android:ems="10"
+	        android:maxLength="64" />
+	</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/share_margin_top"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/wifi_btn_backup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/step"            />
+
+        <Button
+            android:id="@+id/wifi_btn_next"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="1"
+            android:text="@string/next"
+            />
+    </LinearLayout>
+</LinearLayout>

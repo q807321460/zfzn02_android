@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:id="@+id/tab1_layout"  android:orientation="vertical" 
+	android:padding="5dp">
+	<ScrollView
+	    android:layout_width="fill_parent"
+	    android:layout_height="400dp"
+	    android:scrollbars="vertical"
+	    android:orientation="vertical">
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical">
+			<TableLayout android:id="@+id/tab1_layout1" android:layout_height="wrap_content" android:layout_width="fill_parent">
+				<TableRow android:id="@+id/TableRow01" android:layout_height="wrap_content" android:layout_width="fill_parent" android:layout_marginLeft="2dip" android:layout_marginTop="10dip">
+					<TextView android:id="@+id/TextView01" android:layout_width="fill_parent" android:layout_height="fill_parent" 
+							android:text="@string/cam_name"
+							android:singleLine="true"
+							android:layout_weight="1" 
+							android:gravity="center_vertical" />					
+					<EditText android:layout_marginLeft="1dip" android:layout_width="205dip"
+							android:layout_height="40dip"
+							android:layout_weight="1"
+							android:maxLength="20" android:singleLine="true"
+							android:id="@+id/cam_name" ></EditText>
+				</TableRow>
+				
+				<TableRow android:id="@+id/TableRow02" android:layout_width="fill_parent" android:layout_height="wrap_content" 
+						android:layout_marginLeft="2dip" android:layout_marginTop="10dip">
+					<TextView android:id="@+id/TextView02" android:layout_width="fill_parent" android:layout_height="fill_parent" 
+							android:text="@string/dev_id"
+							android:singleLine="true"
+							android:layout_weight="1" 
+							android:gravity="center_vertical" />					
+
+					<EditText android:layout_marginLeft="1dip" android:layout_width="205dip" 
+						android:layout_height="40dip" android:layout_weight="1"
+						android:capitalize="characters"
+						android:maxLength="20" android:singleLine="true" android:id="@+id/dev_id1" />
+
+				</TableRow>
+				
+				<TableRow android:id="@+id/TableRow05" android:layout_width="wrap_content" android:layout_height="wrap_content" 
+					android:layout_marginLeft="2dip" android:layout_marginTop="10dip">
+					<TextView android:id="@+id/TextView06" android:layout_width="fill_parent" android:layout_height="fill_parent"
+					 	android:text="@string/view_pwd" 
+					 	android:singleLine="true"
+					 	android:layout_weight="1" 
+					 	android:gravity="center_vertical" />
+					
+					<EditText 
+					    android:layout_marginLeft="1dip" 
+					    android:layout_width="205dip" 
+						android:layout_height="40dip"  
+						android:layout_weight="1"
+						android:maxLength="15" 
+						android:singleLine="true"
+                        android:password="true"
+						android:id="@+id/view_pwd">
+					</EditText>
+					
+				</TableRow>
+				
+
+				
+
+			</TableLayout>
+
+			<LinearLayout
+			    android:id="@+id/LinearLayout01"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="10dp"
+			    android:orientation="vertical" >
+
+			    <LinearLayout
+			        android:layout_width="320dp"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="center_horizontal"
+			        android:layout_weight="1"
+			        android:orientation="horizontal" >
+
+			        <Button
+			            android:id="@+id/btn_search"
+			            android:layout_width="100dip"
+			            android:layout_height="wrap_content"
+			            android:layout_marginRight="10dip"
+			            android:layout_weight="1"
+			            android:singleLine="true"
+			            android:text="@string/btn_search"
+			            android:textSize="12sp" />
+
+			        <Button
+			            android:id="@+id/btn_cancel"
+			            android:layout_width="100dip"
+			            android:layout_height="wrap_content"
+			            android:layout_weight="1"
+			            android:singleLine="true"
+			            android:text="@string/btn_cancel"
+			            android:textSize="12sp" />
+
+			        <Button
+			            android:id="@+id/btn_save"
+			            android:layout_width="100dip"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="10dip"
+			            android:layout_weight="1"
+			            android:singleLine="true"
+			            android:text="@string/btn_save"
+			            android:textSize="12sp" />
+
+			    </LinearLayout>
+
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="fill_parent" 
+			    	android:layout_height="wrap_content"
+					android:orientation="horizontal" android:layout_marginTop="10dip"
+					android:gravity="center_horizontal">
+					<Button android:text="@string/btn_advance" android:id="@+id/btn_advance" 
+					    android:layout_width="320dip" android:layout_height="wrap_content"/>
+			</LinearLayout>
+			
+			<LinearLayout android:layout_width="fill_parent" 
+			    	android:layout_height="wrap_content"
+					android:orientation="horizontal" android:layout_marginTop="10dip"
+					android:gravity="center_horizontal">
+					<Button 
+					    android:id="@+id/btn_scan_qrcode" 
+					    android:layout_width="320dip" 
+					    android:layout_height="wrap_content"
+					    android:text="@string/btn_scan_did_label" />
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+</LinearLayout>
+

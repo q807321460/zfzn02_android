@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/top_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/afs_sensor_edit"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+
+    </RelativeLayout>
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+        <LinearLayout 
+            android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+            <RelativeLayout
+			    android:id="@+id/afs_set_sensor_name"
+			    android:layout_width="match_parent"
+			    android:layout_height="44dp"
+			    android:background="@color/white"
+			    android:layout_marginTop="1dp"
+			    android:paddingLeft="20dp"
+			    android:paddingRight="20dp" >
+			
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:gravity="center_vertical"
+			        android:text="@string/afs_sensor_name"
+			        android:textColor="#393939"
+			        android:textSize="@dimen/set_device_text_size" />
+			
+			    <ImageView
+			        android:id="@+id/right1"
+			        android:layout_width="@dimen/item_height"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"
+			        android:layout_centerVertical="true"
+			        android:src="@drawable/png_right_gray" />
+			    
+			    <TextView 
+			        android:id="@+id/afs_set_sensor_name_text"
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:text="门口"
+			        android:textColor="@color/gray"
+			        android:gravity="center_vertical|right"
+			        android:layout_toLeftOf="@+id/right1"/>
+			</RelativeLayout>
+            
+            
+            <RelativeLayout
+			    android:id="@+id/afs_set_sensor_id"
+			    android:layout_width="match_parent"
+			    android:layout_height="44dp"
+			    android:background="@color/white"
+			    android:layout_marginTop="1dp"
+			    android:paddingLeft="20dp"
+			    android:paddingRight="20dp" >
+			
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:gravity="center_vertical"
+			        android:text="@string/afs_sensor_id"
+			        android:textColor="#393939"
+			        android:textSize="@dimen/set_device_text_size" />
+			
+			    <ImageView
+			        android:id="@+id/right2"
+			        android:layout_width="@dimen/item_height"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"
+			        android:layout_centerVertical="true"
+			        android:visibility="invisible"
+			        android:src="@drawable/png_right_gray" />
+			    
+			    <TextView 
+			        android:id="@+id/afs_set_sensor_id_text"
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:text="门口"
+			        android:textColor="@color/gray"
+			        android:gravity="center_vertical|right"
+			        android:layout_toLeftOf="@+id/right2"/>
+			</RelativeLayout>
+			
+            
+            <RelativeLayout
+			    android:id="@+id/afs_set_sensor_type"
+			    android:layout_width="match_parent"
+			    android:layout_height="44dp"
+			    android:background="@color/white"
+			    android:layout_marginTop="1dp"
+			    android:paddingLeft="20dp"
+			    android:paddingRight="20dp" >
+			
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:gravity="center_vertical"
+			        android:text="@string/afs_sensor_type"
+			        android:textColor="#393939"
+			        android:textSize="@dimen/set_device_text_size" />
+			
+			    <ImageView
+			        android:id="@+id/right3"
+			        android:layout_width="@dimen/item_height"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"
+			        android:layout_centerVertical="true"
+			        android:visibility="invisible"
+			        android:src="@drawable/png_right_gray" />
+
+			    <TextView
+			        android:id="@+id/afs_set_sensor_type_text"
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentTop="true"
+			        android:layout_toLeftOf="@+id/right3"
+			        android:gravity="center_vertical|right"
+			        android:text="门口"
+			        android:textColor="@color/gray" />
+
+			</RelativeLayout>
+			
+            
+            <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="44dp"
+			    android:background="@color/white"
+			    android:layout_marginTop="20dp"
+			    android:paddingLeft="20dp"
+			    android:paddingRight="20dp" >
+			
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="match_parent"
+			        android:gravity="center_vertical"
+			        android:text="@string/afs_sensor_isalarm"
+			        android:textColor="#393939"
+			        android:textSize="@dimen/set_device_text_size" />
+			    <ImageView
+			        android:id="@+id/afs_sensor_isalarm"
+			        android:layout_width="44dp"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"
+			        android:layout_centerVertical="true"
+					android:src="@drawable/switch_off"/>
+			</RelativeLayout>
+			
+            <TextView 
+                android:id="@+id/afs_sensor_del"
+		        android:layout_width="match_parent"
+		        android:layout_height="44dp"
+		        android:textColor="@color/white"
+		        android:textSize="@dimen/set_device_text_size" 
+		        android:text="@string/afs_sensor_del"
+		        android:background="@color/orange"
+		        android:gravity="center"
+		        android:layout_marginTop="20dp"
+		        />
+        </LinearLayout>
+    </ScrollView>
+    
+
+    
+
+    
+</LinearLayout>

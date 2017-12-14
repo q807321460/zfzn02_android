@@ -282,6 +282,14 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        rlHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CameraActivity.class);
+                startActivity(intent);
+
+            }
+        });
         rlVersion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

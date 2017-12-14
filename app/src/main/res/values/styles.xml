@@ -86,5 +86,58 @@
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    <style name="DialogTextViewStyle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="myProgressBarStyle">
+        <item name="android:indeterminateDrawable">@drawable/progressbar</item>
+        <item name="android:minWidth">44dp</item>
+        <item name="android:maxWidth">64dp</item>
+        <item name="android:minHeight">44dp</item>
+        <item name="android:maxHeight">64dp</item>
+        <item name="android:indeterminateDuration">500</item>
+    </style>
+
+    <style name="DialogBackground">
+        <item name="android:background">#00000000</item>
+        <item name="android:minHeight">64dp</item>
+        <item name="android:minWidth">240dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:weightSum">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="HeadTitleTextStyle">
+        <item name="android:textColor">@color/text_gray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="BottomDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:background">#FFF</item>
+    </style>
+
+    <style name="ViewStyle">
+        <item name="android:background">@color/dark_grey</item>
+    </style>
+    <style name="PlayBackTtextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="myDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
 
 </resources>

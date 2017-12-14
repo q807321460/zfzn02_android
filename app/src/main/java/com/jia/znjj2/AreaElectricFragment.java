@@ -253,10 +253,10 @@ public class AreaElectricFragment extends Fragment {
 						}else if(electricInfoData.getOrderInfo().equals("04")){
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_swift4_right1);
 						}
-					}else if(electricType==11){
-						if(electricState.equals("ZV")){
+					}else if(electricType==11) {
+						if (electricState.equals("ZV")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_armon);
-						}else if(electricState.equals("ZW")||electricState.equals("ZU")){
+						} else if (electricState.equals("ZW") || electricState.equals("ZU")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_arm_close1);
 						}
 

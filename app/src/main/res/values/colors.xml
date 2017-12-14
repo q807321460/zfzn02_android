@@ -80,4 +80,31 @@
     <color name="jdplay_color_popup_item_title_color">#6a6a6a</color>
 
     <!-- jdplay相关的color，结束 -->
+    <color name = "green">#04A000</color>
+    <color name = "orange">#FF9600</color>
+    <color name = "red">#FF0000</color>
+
+    <color name="talk_gray">#aa373737</color>
+    <color name="talk_green">#aa00ff00</color>
+    <color name="transparent_background">#B3000000</color>
+    <color name="light_gray">#b9b9b9</color>
+    <color name="line_gray">#959595</color>
+    <color name="text_gray">#5e5e5e</color>
+    <color name="blue_light">#ff00fcff</color>
+    <color name="dark_grey">#A9A9A9</color>
+
+    <!--cam item-->
+    <color name="blue_green">#FF4AACC5</color>
+    <color name="blue">#0066FF</color>
+    <color name="top_gray">#ebebeb</color>
+    <color name="text_black">#393939</color>
+    <color name="btn_red">#cc0707</color>
+    <color name="black">#000000</color>
+
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+
 </resources>

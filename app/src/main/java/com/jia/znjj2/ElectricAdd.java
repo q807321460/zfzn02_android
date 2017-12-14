@@ -34,6 +34,7 @@ import com.jia.camera.manager.DeviceAddActivity;
 import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
 import com.jia.data.RoomData;
+import com.jia.ezcamera.add.ActivityAdd;
 import com.jia.ir.db.ETDB;
 import com.jia.ir.etclass.ETDevice;
 import com.jia.ir.etclass.ETDeviceAIR;
@@ -297,7 +298,7 @@ public class ElectricAdd extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 iElectricType = position;
-                if (iElectricType != 8) {
+                if (iElectricType != 8 ) {
                     mLLElectricAdd1.setVisibility(View.GONE);
                     mLLElectricAdd2.setVisibility(View.VISIBLE);
                     if (position == 2) {
@@ -341,7 +342,7 @@ public class ElectricAdd extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 iElectricType = position;
-                if (iElectricType != 8) {
+                if (iElectricType != 8  && iElectricType != 25) {
                     mLLElectricAdd1.setVisibility(View.GONE);
                     mLLElectricAdd2.setVisibility(View.VISIBLE);
                     if(position == 2){
@@ -364,7 +365,7 @@ public class ElectricAdd extends Activity {
                         mLLElectricName2.setVisibility(View.GONE);
                         mLLElectricName3.setVisibility(View.GONE);
                         mLLElectricName4.setVisibility(View.GONE);
-                    }else  {
+                    } else  {
                         mLLElectricName1.setVisibility(View.VISIBLE);
                         mLLElectricName2.setVisibility(View.GONE);
                         mLLElectricName3.setVisibility(View.GONE);
@@ -373,7 +374,8 @@ public class ElectricAdd extends Activity {
 
                     mIvElectricTypeImg.setImageResource(mDevTyeImages.getResourceId(iElectricType,0));
                     mTvElectricTypeName.setText(mDevTypeNames[iElectricType]);
-                }else {
+                }
+                else {
                     Business.getInstance().userlogin(mDC.sLePhoneNumber,new Handler(){
                         @Override
                         public void handleMessage(Message msg) {
