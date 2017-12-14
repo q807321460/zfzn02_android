@@ -284,7 +284,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="@dimen/margin_7"
                 android:layout_marginBottom="@dimen/margin_7"
-                android:src="@drawable/left_menu_help"/>
+                android:src="@drawable/camera"/>
     
             <TextView
                 android:id="@+id/left_menu_help_text"
@@ -293,7 +293,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/left_menu_help_img"
-                android:text="帮助与反馈"
+                android:text="ezCamera"
                 android:textColor="@color/text_color"
                 android:textSize="20sp"/>
             <ImageView

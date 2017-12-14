@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="44dp"
+              android:background="@color/white">
+              
+    
+    <TextView 
+		android:id="@+id/net_wifi_name"
+		android:layout_width="wrap_content"
+		android:layout_height="match_parent"
+		android:gravity="center_vertical"
+		android:layout_centerVertical="true"
+		android:textSize="16sp"
+		android:textColor="@color/text_black"
+		android:layout_marginLeft="20dp"
+		android:text="@string/net_wifi_noconnect"/>
+		     
+	<ImageView 
+        android:id="@+id/net_wifi_signal"
+        android:layout_width="44dp"
+		android:layout_height="44dp"
+		android:layout_alignParentRight="true"
+		android:src="@drawable/png_wifi4"/>
+		     
+	<ImageView 
+        android:id="@+id/net_wifi_lock"
+        android:layout_width="44dp"
+		android:layout_height="44dp"
+		android:layout_toLeftOf="@+id/net_wifi_signal"
+		android:src="@drawable/png_lock_black"/>
+
+</RelativeLayout>

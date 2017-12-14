@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/record_timer_set"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+        
+        
+        <TextView
+            android:id="@+id/btn_sure"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/blue_green"
+            android:text="@string/ok" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relative_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/dark_grey"
+            android:layout_alignParentTop="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="@string/record_start_time"/>
+        <TextView
+            android:id="@+id/text_start"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="00:00"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/dark_grey"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <TimePicker
+        android:id="@+id/timePicker_start"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <RelativeLayout
+        android:id="@+id/relative_end_time"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_height="@dimen/item_height">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/dark_grey"
+            android:layout_alignParentTop="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:text="@string/record_end_time"/>
+        <TextView
+            android:id="@+id/text_end"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="00:00"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/dark_grey"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <TimePicker
+        android:id="@+id/timePicker_end"
+        android:layout_marginTop="@dimen/margin_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    </LinearLayout>
+</LinearLayout>

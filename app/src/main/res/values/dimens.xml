@@ -118,4 +118,41 @@
     <dimen name="jdplay_height_line">0.15dp</dimen>
 
     <!-- jdplay相关的，结束 -->
+    <dimen name="main_item_btn_width">40dp</dimen>
+    <dimen name="share_ll_height">40dp</dimen>
+    <dimen name="share_margin_top">20dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="share_redcircle_size">12dp</dimen>
+    <dimen name="bottom_menu_height">60dp</dimen>
+    <dimen name="item_height">44dp</dimen>
+    <dimen name="view_height">1px</dimen>
+    <dimen name="title_height">44dp</dimen>
+    <dimen name="margin_top">8dp</dimen>
+    <dimen name="cam_item_height">108dp</dimen>
+    <dimen name="image_height">72dp</dimen>
+    <dimen name="image_whidth">96dp</dimen>
+    <!-- cam item -->
+    <dimen name="cam_item_text_size">12sp</dimen>
+    <!-- pop -->
+    <dimen name="pop_text_width">120dp</dimen>
+    <dimen name="pop_text_size">14sp</dimen>
+    <!-- text size -->
+    <dimen name="default_text_size">16sp</dimen>
+    <dimen name="view_more_text_size">14sp</dimen>
+    <dimen name="main_item_cam_text_size">14sp</dimen>
+    <dimen name="share_text_size">14sp</dimen>
+    <dimen name="week_text_size">14sp</dimen>
+    <dimen name="set_security_text_size">14sp</dimen>
+    <dimen name="set_security_text_size_small">11sp</dimen>
+    <dimen name="activity_add_text_size">14sp</dimen>
+    <dimen name="activity_add_text_size_small">11sp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
+    <dimen name="set_device_text_size">14sp</dimen>
+    <dimen name="set_device_text_size_small">11sp</dimen>
+    <dimen name="padding_left_text">4dp</dimen>
+    <dimen name="dialog_min_width">240dp</dimen>
+
+    <!-- sensor -->
+    <dimen name="sensor_item_height">44dp</dimen>
+    <dimen name="sensor_text_size">14sp</dimen>
 </resources>

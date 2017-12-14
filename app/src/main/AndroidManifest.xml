@@ -35,7 +35,7 @@
         android:smallScreens="true" />
 
     <application
-        android:name="com.jia.jdplay.App"
+        android:name="com.jia.ezcamera.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -240,10 +240,141 @@
         <activity
             android:name=".Warnifo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ChangeAccount"/>
+        <activity android:name=".ChangeAccount"></activity>
+        <activity android:name=".RoomList"/>
         <activity
-            android:name=".RoomList"
-            android:screenOrientation="portrait"></activity>
+            android:name=".CameraActivity"
+            android:screenOrientation="portrait" />
+
+    <activity
+        android:name="com.jia.ezcamera.add.ActivityAdd"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.add.AddDevicesApActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.add.SetApActivityEx"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.add.SetupQrcordActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.add.SetupQrcordActivity2"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.play.PlayActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.play.VideoPlayBackActivityEx"
+        android:configChanges="orientation|keyboardHidden|screenSize"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraAfsActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSensorActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSensorSetActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSensorEditActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSensorRenameActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraNetOfEthActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraNetOfWifiActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraNetSetActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraRecordActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraRecordSetTimerActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraRecordTimeActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSetActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSystemActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraRePassActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.set.FileListActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.FishEyePicActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.PictureListActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.set.CameraSetInfoActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.play.PlayLocalVideoActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
+    <activity
+        android:name="com.jia.ezcamera.alarm.PicVideoActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.alarm.PlayAlarmActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.alarm.ScanPicActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+    <activity
+        android:name="com.jia.ezcamera.alarm.FishEyePicActivity"
+        android:screenOrientation="portrait"
+        android:theme="@android:style/Theme.NoTitleBar" />
+
 
     </application>
 
