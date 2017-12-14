@@ -111,6 +111,8 @@ public class DataControl
     public static String ELECTRIC_TYPE_CENTER_AIR="0800"; //22
     public static String ELECTRIC_TYPE_NEWDOOR="1000";//23
     public static String ELECTRIC_TYPE_TV1 = "09";   //24
+    public static String ELECTRIC_TYPE_CAMERA1 = "080";   //25
+
     //public String[] electricTypeCode = {"00","01","02","03","04","05","06","07","08","09","0A","0B","09","0D","0D","0D","0D"};
     public static String[] electricTypeCode = {
             ELECTRIC_TYPE_SOCKET,
@@ -137,7 +139,8 @@ public class DataControl
             ELECTRIC_TYPE_AIR1,
             ELECTRIC_TYPE_CENTER_AIR,
             ELECTRIC_TYPE_NEWDOOR,
-            ELECTRIC_TYPE_TV1
+            ELECTRIC_TYPE_TV1,
+            ELECTRIC_TYPE_CAMERA1
     };
     public char orderSign = 'X', addSign = 'Y' , stateSign = 'Z';
     public char orderClose = 'G', orderOpen = 'H', orderStop = 'I';

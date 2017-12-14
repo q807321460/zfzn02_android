@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/top_gray"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/add_device_choicewifi"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/connector_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/item_height"
+        android:gravity="center_vertical"
+        android:text="@string/add_device_apsucc"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height">
+
+        <Button
+            android:id="@+id/btn_setap3_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:text="@string/add"/>
+
+        <LinearLayout
+            android:id="@+id/ll_wait"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_grey"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_info2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_device_apreboot"
+                />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="@dimen/item_height"
+                android:layout_height="@dimen/item_height"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_setap3_complete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/complete"/>
+</LinearLayout>

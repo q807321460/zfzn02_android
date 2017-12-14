@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/top_gray"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/cam_devinfo"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle"/>
+        
+        <TextView
+            android:id="@+id/btn_sure"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/blue_green"
+            android:text="@string/ok" />
+
+    </RelativeLayout>
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+        <LinearLayout 
+            android:layout_width="match_parent"
+	    	android:layout_height="wrap_content"
+	    	android:orientation="vertical">
+
+    <LinearLayout 
+        android:id="@+id/net_set_layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:visibility="visible"
+		android:orientation="vertical">
+
+    <LinearLayout
+	    android:id="@+id/net_wifi_set"
+	    android:layout_width="match_parent"
+	    android:layout_height="44dp"
+	    android:background="@color/white"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp"
+	    android:paddingRight="20dp" >
+	
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical"
+	        android:text="@string/cam_camname"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	
+	    <com.vveye.ezcam.utils.MyEditText
+	        android:id="@+id/et_cam_camname"
+	        android:background="@color/white"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2.5"
+	        android:gravity="center_vertical"
+	        android:text="192.168.1.200"
+	        android:textColor="@color/text_black"
+	        android:layout_gravity="center_vertical"
+	        android:textSize="@dimen/set_device_text_size" />
+	</LinearLayout>
+	
+    
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="44dp"
+	    android:background="@color/white"
+	    android:visibility="gone"
+	    android:layout_marginTop="3dp"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp"
+	    android:paddingRight="20dp" >
+	
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical"
+	        android:text="@string/view_pwd"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	
+	    <com.vveye.ezcam.utils.MyEditText
+	        android:id="@+id/et_cam_pwd"
+	        android:background="@color/white"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2.5"
+	        android:gravity="center_vertical"
+	        android:text="12345678"
+	        android:inputType="textPassword"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="44dp"
+	    android:background="@color/white"
+	    android:layout_marginTop="3dp"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp"
+	    android:paddingRight="20dp" >
+	
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical"
+	        android:text="@string/dev_id"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	
+	    <EditText
+	        android:id="@+id/et_cam_did"
+	        android:background="@color/white"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2.5"
+	        android:gravity="center_vertical"
+	        android:text="12345678"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	</LinearLayout>
+    
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="44dp"
+	    android:background="@color/white"
+	    android:layout_marginTop="3dp"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp"
+	    android:paddingRight="20dp" >
+	
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical"
+	        android:text="@string/cam_devtype"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	
+	    <EditText
+	        android:id="@+id/et_cam_model"
+	        android:background="@color/white"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2.5"
+	        android:gravity="center_vertical"
+	        android:text="123456"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	</LinearLayout>
+	
+    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="44dp"
+	    android:background="@color/white"
+	    android:layout_marginTop="8dp"
+	    android:orientation="horizontal"
+	    android:paddingLeft="20dp"
+	    android:paddingRight="20dp" >
+	
+	    <TextView
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical"
+	        android:text="@string/cam_ver"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	
+	    <EditText
+	        android:id="@+id/et_cam_ver"
+	        android:background="@color/white"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="2.5"
+	        android:gravity="center_vertical"
+	        android:text="8.8.8.8"
+	        android:textColor="@color/text_black"
+	        android:textSize="@dimen/set_device_text_size" />
+	</LinearLayout>
+	
+    <Button 
+        	android:id="@+id/button_save"
+	        android:layout_width="180dp"
+	        android:layout_height="44dp"
+	        android:layout_marginTop="8dp"
+	        android:textColor="@color/black"
+	        android:text="@string/btn_save"
+	        android:layout_gravity="center_horizontal"
+	        />
+	</LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    
+
+
+    
+</LinearLayout>

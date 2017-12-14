@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/alarm_pic"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="@color/dark_grey"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_time"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/time_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/text_type"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/type_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:id="@+id/text_long"
+            style="@style/PlayBackTtextStyle"
+            android:layout_width="wrap_content"
+            android:text="@string/long_of_cam"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <com.p2pcamera.vr.alarm.ViewPagerFixed
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

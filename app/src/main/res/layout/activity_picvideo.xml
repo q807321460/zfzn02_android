@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_gray" >
+
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"
+            android:src="@drawable/png_left" />
+
+        <TextView
+            android:id="@+id/picvideo_title1"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_centerInParent="true"
+            android:text="@string/alarm_pic"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/HeadTitleTextStyle" />
+        
+        <TextView
+            android:id="@+id/picvideo_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:paddingRight="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/alarm_video"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ExpandableListView
+	        android:id="@+id/picvideo_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:drawSelectorOnTop="false" >
+    	</ExpandableListView>
+    	
+        <TextView 
+            android:id="@+id/nodata"
+            android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/no_data"
+	        android:layout_centerInParent="true"
+	        android:visibility="gone"
+	        android:textSize="22sp"/>
+        
+    </RelativeLayout>
+    
+
+</LinearLayout>
