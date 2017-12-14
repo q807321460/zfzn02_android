@@ -144,6 +144,7 @@ public class DragGridView extends GridView
         if (selectView != null)
         {
             selectView.findViewById(R.id.delete_img).setVisibility(INVISIBLE);
+            selectView.findViewById(R.id.move_img).setVisibility(INVISIBLE);
             selectView.findViewById(R.id.item_container).setVisibility(VISIBLE);
             selectView.findViewById(R.id.item_container).setBackgroundColor(Color.WHITE);
         }
@@ -170,6 +171,7 @@ public class DragGridView extends GridView
              */
             selectView.findViewById(R.id.item_container).setBackgroundColor(Color.parseColor("#f0f0f0"));
             selectView.findViewById(R.id.delete_img).setVisibility(VISIBLE);
+            selectView.findViewById(R.id.move_img).setVisibility(VISIBLE);
 
             originPosition = position;
             currentPosition = position;
@@ -206,6 +208,7 @@ public class DragGridView extends GridView
             selectView.findViewById(R.id.item_container).setVisibility(INVISIBLE);
             selectView.findViewById(R.id.item_container).setBackgroundColor(Color.parseColor("#f0f0f0"));
             selectView.findViewById(R.id.delete_img).setVisibility(VISIBLE);
+            selectView.findViewById(R.id.move_img).setVisibility(VISIBLE);
 
             //动画显示交换过程
             animateSwap(endPosition);

@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -39,9 +40,12 @@ public class SceneInfoEdit extends Activity {
 
     private SceneData.SceneDataInfo sceneDataInfo;
     private int scenePosition;
-    private TextView tvSceneName;
+    private TextView edSceneName;
+    private TextView svSceneName;
     private ImageView ivSceneImg;
     private ListView lvElectricEdit;
+    private EditText upSceneName;
+    private TextView upSceneName1;
     private Spinner spSceneSwift;
     private String electricOrder;
 
@@ -78,6 +82,20 @@ public class SceneInfoEdit extends Activity {
                     Toast.makeText(SceneInfoEdit.this, "情景模式删除成功", Toast.LENGTH_LONG).show();
                     finish();
                     break;
+                case 0x1163:
+                    Toast.makeText(SceneInfoEdit.this, "编辑情景名称失败，检查网络", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x1164:
+                    Toast.makeText(SceneInfoEdit.this, "编辑情景名称失败，请重试", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x1165:
+                    Toast.makeText(SceneInfoEdit.this, "编辑情景名称成功", Toast.LENGTH_LONG).show();
+                    edSceneName.setVisibility(View.VISIBLE);
+                    svSceneName.setVisibility(View.GONE);
+                    upSceneName1.setText(sceneDataInfo.getSceneName());
+                    upSceneName1.setVisibility(View.VISIBLE);
+                    upSceneName.setVisibility(View.GONE);
+                    break;
             }
         }
     };
@@ -103,12 +121,18 @@ public class SceneInfoEdit extends Activity {
         mDC = DataControl.getInstance();
         scenePosition = getIntent().getIntExtra("scenePosition", 0);
         sceneDataInfo = mDC.mSceneList.get(scenePosition);
-
         spSceneSwift = (Spinner) findViewById(R.id.scene_info_edit_scene_swift);
-        tvSceneName = (TextView) findViewById(R.id.scene_info_edit_name);
+        svSceneName = (TextView)findViewById(R.id.scene_info_save_name);
+        edSceneName = (TextView) findViewById(R.id.scene_info_edit_name);
+        upSceneName1 =(TextView) findViewById(R.id.scene_info_name1);
+        upSceneName =(EditText) findViewById(R.id.scene_info_name11);
         ivSceneImg = (ImageView) findViewById(R.id.scene_info_edit_img);
         lvElectricEdit = (ListView) findViewById(scene_info_edit_list);
-        tvSceneName.setText("情景名称："+sceneDataInfo.getSceneName());
+        edSceneName.setVisibility(View.VISIBLE);
+        svSceneName.setVisibility(View.GONE);
+        upSceneName1.setVisibility(View.VISIBLE);
+        upSceneName.setVisibility(View.GONE);
+        upSceneName1.setText(sceneDataInfo.getSceneName());
         ivSceneImg.setImageResource(mDC.mSceneTypeImages.getResourceId(sceneDataInfo.getSceneImg(),0));
     }
 
@@ -146,13 +170,46 @@ public class SceneInfoEdit extends Activity {
                             }
                         })
                 .setNegativeButton("取消", null).show();
+
     }
     public void sceneInfoEditAddAction(View view){
         Intent intent = new Intent(SceneInfoEdit.this, SceneAddElectric.class);
         intent.putExtra("scenePosition", scenePosition);
         startActivityForResult(intent,0);
     }
-
+    public void editSceneName(View view){
+        edSceneName.setVisibility(View.GONE);
+        svSceneName.setVisibility(View.VISIBLE);
+        upSceneName1.setVisibility(View.GONE);
+        upSceneName.setVisibility(View.VISIBLE);
+        upSceneName.setText(sceneDataInfo.getSceneName());
+        upSceneName.setSelection(sceneDataInfo.getSceneName().length());
+        upSceneName.setFocusable(true);
+        upSceneName.setFocusableInTouchMode(true);
+        upSceneName.requestFocus();
+    }
+    public void saveSceneName(View view){
+        new Thread(){
+            public void run(){
+                String  sceneName = upSceneName.getText().toString();
+                int SceneIndex = sceneDataInfo.getSceneIndex();
+                int SceneImg =sceneDataInfo.getSceneImg();
+                String result = mDC.mWS.updateSceneName(mDC.sMasterCode,SceneIndex , sceneName, SceneImg );
+                Message msg = new Message();
+                if(result.startsWith("-2")){
+                    msg.what = 0x1163;
+                }else if(result.startsWith("-1")){
+                    msg.what = 0x1164;
+                }else {
+                    //
+                    mDC.mSceneData.updateSceneNewname(mDC.sMasterCode, sceneDataInfo.getSceneIndex(), sceneName);
+                    sceneDataInfo.setSceneName(sceneName);
+                    msg.what = 0x1165;
+                }
+                handler.sendMessage(msg);
+            }
+        }.start();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0 && resultCode == 0) {

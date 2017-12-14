@@ -173,7 +173,7 @@ public class Newdoor extends ElectricBase {
             public void run(){
                 record = mDC.mWS.loadDoorRecord(electric.getMasterCode(),electric.getElectricCode());
                 Message msg = new Message();
-                if(record==null){
+                if(record.equals("[]")){
                     msg.what=0x120;
                 }else{
                     Intent intent= new Intent(Newdoor.this,NewdoorInfo.class);

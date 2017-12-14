@@ -321,7 +321,7 @@ public class DBHelper extends SQLiteOpenHelper
     }
 
     public  void updateElectricSequ(String masterCode, int electricSequ, int roomIndex){
-        String sql = "UPDATE electrics SET electric_sequ = electric_sequ-1 WHERE master_code=? and electric_sequ > ? AND room_index=?";
+        String sql = "UPDATE electrics SET electric_sequ = electric_sequ-1 WHERE master_code=? and electric_sequ > ? and room_index=?";
         getWritableDatabase().execSQL(sql, new String[]{masterCode, String.valueOf(electricSequ), String.valueOf(roomIndex)});
     }
     public void updateElectricSequ1(String masterCode,int electricIndex, int roomIndex,int oldElectricSequ, int newElectricSequ){
@@ -335,10 +335,9 @@ public class DBHelper extends SQLiteOpenHelper
         }
         String sql="UPDATE electrics SET electric_sequ=?  WHERE master_code=? AND room_index=? AND electric_index=?";
         getWritableDatabase().execSQL(sql,new String[]{ String.valueOf(newElectricSequ), masterCode, String.valueOf(roomIndex),String.valueOf(electricIndex)});
-
-
-
     }
+
+
 
 
     /**
@@ -385,6 +384,10 @@ public class DBHelper extends SQLiteOpenHelper
         return getWritableDatabase().delete(TABLE_SCENE, "master_code = ? AND scene_index = ?"
                 , new String[]{masterCode, String.valueOf(sceneIndex)});
     }
+    public void updateScene(String masterCode,int sceneIndex,ContentValues contentValues){
+        getWritableDatabase().update(TABLE_SCENE, contentValues, "master_code=? AND scene_index = ?",
+                new String[]{masterCode, String.valueOf(sceneIndex)});
+    }
 
     public  void updateSceneSequ(String masterCode, int sceneSequ){
         String sql = "UPDATE scenes SET scene_sequ = scene_sequ-1 WHERE master_code=? and scene_sequ > ?";
@@ -408,6 +411,7 @@ public class DBHelper extends SQLiteOpenHelper
         return getWritableDatabase().delete(TABLE_SCENE_ELECTRIC, "master_code = ? AND scene_index = ?"
                 , new String[]{masterCode, String.valueOf(sceneIndex)});
     }
+
 
 
 

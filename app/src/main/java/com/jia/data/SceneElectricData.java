@@ -86,6 +86,12 @@ public class SceneElectricData {
         }
     }
 
+    public void updateMoveElectricRoom(String masterCode,int electricIndex,int newroomid){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("room_index",newroomid);
+        mDC.mDB.updateSceneElectric(masterCode,electricIndex, contentValues);
+    }
+
     public class SceneElectricInfo{
         private String masterCode;
         private int electricIndex;

@@ -260,13 +260,22 @@ public class ElectricData
         updateElectricSequ(masterCode, electricSequ, roomIndex);
     }
 
-    private void updateElectricSequ(String masterCode, int electricSequ, int roomIndex){
+    public void updateElectricSequ(String masterCode, int electricSequ, int roomIndex){
         mDC.mDB.updateElectricSequ(masterCode,electricSequ, roomIndex);
     }
     public void updateElectricSequ1(String masterCode,int electricIndex, int roomIndex,int oldElectricSequ, int newElectricSequ){
         mDC.mDB.updateElectricSequ1(masterCode,electricIndex, roomIndex,oldElectricSequ,newElectricSequ);
     }
-
+    public void moveRoomIndex(String masterCode,int electricIndex,int newroomid){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("room_index",newroomid);
+        mDC.mDB.updateElectric(masterCode,electricIndex, contentValues);
+    }
+    public void moveElectricSequ(String masterCode,int electricIndex,int maxElectricSequ){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("electric_sequ",maxElectricSequ);
+        mDC.mDB.updateElectric(masterCode,electricIndex, contentValues);
+    }
 
     //整型转换为字符型
     public static byte[] int2byte(int res)

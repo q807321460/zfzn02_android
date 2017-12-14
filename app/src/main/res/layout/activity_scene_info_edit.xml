@@ -9,9 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/scene_info_edit_title_back"
                 android:layout_width="40dp"
@@ -19,54 +21,100 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layout_15"
-                android:src="@drawable/back"
-                android:onClick="sceneInfoEditBack"/>
+                android:onClick="sceneInfoEditBack"
+                android:src="@drawable/back" />
+
             <TextView
                 android:id="@+id/scene_info_edit_title_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="22sp"
+                android:text="情景信息"
                 android:textColor="@color/text_color"
-                android:text="情景信息"/>
+                android:textSize="22sp" />
+
             <TextView
                 android:id="@+id/scene_info_edit_title_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="@dimen/margin_15"
                 android:clickable="true"
-                android:textSize="16sp"
-                android:textColor="@color/text_color_select"
+                android:onClick="sceneInfoEditSave"
                 android:text="保存"
-                android:onClick="sceneInfoEditSave"/>
+                android:textColor="@color/text_color_select"
+                android:textSize="16sp" />
 
         </RelativeLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
+
         <TextView
             android:id="@+id/scene_info_edit_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_15"
-            android:text="情景名称"
+            android:text="情景编辑："
+            android:textColor="@color/text_color_select"
+            android:textSize="20sp"
+            android:clickable="true"
+            android:onClick="editSceneName"/>
+        <TextView
+            android:id="@+id/scene_info_save_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:text="保存编辑："
+            android:textColor="@color/text_color_select"
+            android:textSize="20sp"
+            android:clickable="true"
+            android:onClick="saveSceneName"/>
+
+        <TextView
+            android:id="@+id/scene_info_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/scene_info_edit_name"
+            android:layout_toRightOf="@+id/scene_info_edit_name"
+            android:background="@null"
+            android:text="回家l"
             android:textColor="@color/text_color"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/scene_info_name11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/scene_info_save_name"
+            android:layout_toRightOf="@+id/scene_info_save_name"
+            android:background="@null"
+            android:text="回家"
+            android:textColor="@color/text_color"
+            android:textSize="20sp" />
+
         <ImageView
             android:id="@+id/scene_info_edit_img"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" 
-            android:src="@drawable/back_home"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="@dimen/margin_15"
-            />
+            android:src="@drawable/back_home" />
 
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -108,16 +156,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/scene_info_edit_add_electric"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_marginRight="@dimen/margin_15"
-            android:layout_weight="1"
-            android:text="添加动作"
-            android:textSize="20sp"
-            android:textColor="@color/text_color"
-            android:onClick="sceneInfoEditAddAction"/>
+        android:id="@+id/scene_info_edit_add_electric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_15"
+        android:layout_marginRight="@dimen/margin_15"
+        android:layout_weight="1"
+        android:text="添加动作"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:onClick="sceneInfoEditAddAction"/>
         <Button
             android:id="@+id/scene_info_edit_add_time"
             android:layout_width="wrap_content"
@@ -128,12 +176,14 @@
             android:text="添加间隔"
             android:textSize="20sp"
             android:textColor="@color/text_color"/>
+
+
     </LinearLayout>
+
     <Button
         android:id="@+id/scene_info_edit_delete_scene"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_5"
         android:layout_marginLeft="@dimen/margin_15"
         android:layout_marginRight="@dimen/margin_15"
         android:layout_marginBottom="@dimen/margin_10"
@@ -141,5 +191,6 @@
         android:textSize="20sp"
         android:textColor="@color/text_color"
         android:onClick="sceneInfoEditDeleteScene"/>
+
 
 </LinearLayout>

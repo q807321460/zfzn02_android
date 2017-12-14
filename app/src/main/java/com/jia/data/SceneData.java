@@ -109,8 +109,13 @@ public class SceneData {
             int flag = mDC.mDB.insertScene(contentValues);
             contentValues.clear();
         }
-
     }
+    public void updateSceneNewname(String masterCode, int sceneIndex, String sceneName){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("scene_name",sceneName);
+        mDC.mDB.updateScene(masterCode, sceneIndex, contentValues);
+    }
+
 
 
     public class SceneDataInfo{
