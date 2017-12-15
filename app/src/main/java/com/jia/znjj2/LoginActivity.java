@@ -48,8 +48,6 @@ import java.util.HashMap;
  */
 public class LoginActivity extends Activity{
     StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-
     private static final String TAG = "LoginActivity";
     private DataControl mDC;
     private ImageView mIvAccountPhoto;

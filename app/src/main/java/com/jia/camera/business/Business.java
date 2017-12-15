@@ -45,7 +45,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Business {
+public class
+Business {
 
 	private static class Instance {
 		static Business instance = new Business();
