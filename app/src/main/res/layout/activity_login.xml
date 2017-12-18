@@ -166,7 +166,7 @@
     <ListView
         android:id="@+id/login_account_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignLeft="@id/login_account"
         android:layout_alignRight="@id/login_account"
         android:layout_below="@id/login_account"
