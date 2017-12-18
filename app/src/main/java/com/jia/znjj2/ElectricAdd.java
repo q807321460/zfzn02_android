@@ -34,7 +34,7 @@ import com.jia.camera.manager.DeviceAddActivity;
 import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
 import com.jia.data.RoomData;
-import com.jia.ezcamera.add.ActivityAdd;
+
 import com.jia.ir.db.ETDB;
 import com.jia.ir.etclass.ETDevice;
 import com.jia.ir.etclass.ETDeviceAIR;

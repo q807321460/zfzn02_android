@@ -14,7 +14,6 @@ android {
     buildToolsVersion '25.0.0'
     defaultConfig {
        applicationId "com.jia.znjj2"
-        // applicationId "com.vveye.ezcam"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
