@@ -20,6 +20,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
             android:src="@drawable/delete_icon"
+            android:visibility="invisible"
            />
         <ImageView
             android:id="@+id/move_img"
@@ -29,6 +30,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="10dp"
             android:src="@drawable/move_icon"
+            android:visibility="invisible"
             />
 
 
