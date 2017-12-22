@@ -10,6 +10,7 @@
 package com.jia.camera.mediaplay.fragment;
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.media.MediaScannerConnection;
@@ -35,6 +36,11 @@ import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.camera.business.entity.ChannelPTZInfo;
 import com.jia.camera.business.util.MediaPlayHelper;
 import com.jia.camera.common.ProgressDialog;
+import com.jia.camera.listview.DevicelistActivity;
+import com.jia.camera.listview.RecordListActivity;
+import com.jia.camera.mediaplay.MediaPlayActivity;
+import com.jia.camera.message.AlarmMessageActivity;
+import com.jia.data.DataControl;
 import com.jia.znjj2.R;
 import com.lechange.opensdk.listener.LCOpenSDK_EventListener;
 import com.lechange.opensdk.listener.LCOpenSDK_TalkerListener;
@@ -46,10 +52,10 @@ import java.io.FileOutputStream;
  * 描述：实时视频监控 作者： lc
  */
 public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClickListener {
-	
+	DataControl mDC;
 	private static final String TAG = "MediaPlayOnlineFragment";
 	private String direction = "normal";
-	
+	ChannelInfo mInfo;
 	protected static final int MediaMain = 0;                        //主码流
 	protected static final int MediaAssist = 1;                      //辅码流	
 	protected static final int RECORDER_TYPE_DAV = 3;  			     //录制格式DAV
@@ -81,6 +87,7 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 	private ImageView mLiveScreenshot;
 	private ImageView mLiveTalk;
 	private ImageView mLiveRecord;
+	private ImageView mLiveSOS;
 
 	/**
 	 *      描述：
@@ -99,6 +106,8 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 			getActivity().setResult(-1);
 			getActivity().finish();
 		}
+		mDC=DataControl.getInstance();
+
 	}
 
 	/**
@@ -136,7 +145,7 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 			mLiveScreenshot = (ImageView) mView.findViewById(R.id.live_screenshot);
 			mLiveTalk = (ImageView) mView.findViewById(R.id.live_talk);
 			mLiveRecord = (ImageView) mView.findViewById(R.id.live_record);
-
+		    mLiveSOS=(ImageView) mView.findViewById(R.id.live_sos);
 			mReplayTip.setOnClickListener(this);
 			mLiveMode.setOnClickListener(this);
 			mLivePtz.setOnClickListener(this);
@@ -147,6 +156,7 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 			mLiveScreenshot.setOnClickListener(this);
 			mLiveTalk.setOnClickListener(this);
 			mLiveRecord.setOnClickListener(this);
+		    mLiveSOS.setOnClickListener(this);
 
 			return mView;
 
@@ -722,13 +732,11 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 			}
 			break;
 		case R.id.live_scale:
-			if("LANDSCAPE".equals(mLiveScale.getTag())){
-				mOrientation = ORIENTATION.isPortRait;
-				getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-			}else{
-				mOrientation = ORIENTATION.isLandScape;
-				getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-			}		
+			Intent intent = new Intent(getActivity(), RecordListActivity.class);
+			intent.putExtra("UUID",mDC.UUID );
+			intent.putExtra("TYPE", MediaPlayActivity.IS_VIDEO_REMOTE_RECORD);
+			intent.putExtra("MEDIA_TITLE", R.string.local_records_name);
+			getActivity().startActivity(intent);
 			break;
 		case R.id.live_reverse:
 			if(direction.equals("normal")){
@@ -745,6 +753,13 @@ public class MediaPlayOnlineFragment extends MediaPlayFragment implements OnClic
 							System.out.println(msg.toString());
 						}
 					});
+			break;
+			case R.id.live_sos:
+			Intent intent1 = new Intent(getActivity(), AlarmMessageActivity.class);
+			intent1.putExtra("sn", mDC.DeviceCode);
+			intent1.putExtra("UUID", mDC.UUID );
+			intent1.putExtra("index", mDC.DeviceIndex);
+			getActivity().startActivity(intent1);
 				break;
 		case R.id.live_mode:
 			if(isPlaying) //播放是个异步的,多次点击会使停止播放顺序乱掉

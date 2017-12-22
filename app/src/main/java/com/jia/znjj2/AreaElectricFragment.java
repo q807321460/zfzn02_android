@@ -585,6 +585,8 @@ public class AreaElectricFragment extends Fragment {
 		String electricCode = mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricCode();
 		for (ChannelInfo info: mChannelInfoList ) {
 			if (info.getDeviceCode() != null && info.getDeviceCode().equals(electricCode)) {
+				mDC.DeviceCode=info.getDeviceCode();
+				mDC.DeviceIndex=info.getIndex();
 				return info.getUuid();
 			}
 		}
@@ -592,6 +594,7 @@ public class AreaElectricFragment extends Fragment {
 	}
 
 	private void toMediaPlayAcitvity(int position){
+		mDC.UUID=getUuid(position);
 		// 启动实时视频
 		Intent intent = new Intent(getActivity(), MediaPlayActivity.class);
 		intent.putExtra("UUID", getUuid(position));

@@ -11,6 +11,7 @@ import com.jia.camera.business.entity.RecordInfo;
 import com.jia.camera.business.util.OpenApiHelper;
 import com.jia.camera.business.util.TaskPoolHelper;
 import com.jia.camera.business.util.TimeHelper;
+import com.jia.data.DataControl;
 import com.lechange.opensdk.api.LCOpenSDK_Api;
 import com.lechange.opensdk.api.bean.BindDevice;
 import com.lechange.opensdk.api.bean.BindDeviceInfo;
@@ -45,8 +46,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class
-Business {
+public class Business {
 
 	private static class Instance {
 		static Business instance = new Business();

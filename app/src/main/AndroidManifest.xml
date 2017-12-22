@@ -242,9 +242,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ChangeAccount"></activity>
         <activity android:name=".RoomList"/>
-        <activity
-            android:name=".CameraActivity"
-            android:screenOrientation="portrait" />
+
 
 
 

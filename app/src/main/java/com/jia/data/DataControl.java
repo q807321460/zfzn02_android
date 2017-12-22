@@ -3,6 +3,7 @@ package com.jia.data;
 import android.content.Context;
 import android.content.res.TypedArray;
 
+import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.connection.WebSocket;
 import com.jia.znjj2.R;
 
@@ -156,7 +157,10 @@ public class DataControl
     public String sVer3 = "005";    //软件版本号，此处不同仍能使用，不是必须更新
     //public String appVersion = "1.0.006";
     public AppInfo appInfo;
-
+    public ChannelInfo channelInfo;
+    public String UUID;
+    public String DeviceCode;
+    public int DeviceIndex;
 
     public String sAccountCode;        //账户名字
     public String sLePhoneNumber;
@@ -207,6 +211,7 @@ public class DataControl
     {
         mElectricState = new HashMap<>();
         appInfo = new AppInfo();
+        channelInfo=new ChannelInfo();
         mDB = new DBHelper(paramContext);
         mAccountData = new AccountData();
         mAccount = mAccountData.new AccountDataInfo();

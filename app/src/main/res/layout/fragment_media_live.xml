@@ -53,13 +53,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/record_btn_fullscreen"/>
+               android:src="@drawable/list_btn_localvideo"/>
+           <ImageView
+               android:id="@+id/live_sos"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:src="@drawable/list_btn_message"/>
            <ImageView
                android:id="@+id/live_reverse"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"
                android:src="@drawable/record_btn_reverse"/>
+
        </LinearLayout>
        
        <!-- 播放加载提示 -->
