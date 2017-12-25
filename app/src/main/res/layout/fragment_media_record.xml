@@ -43,7 +43,7 @@
                 android:textSize="12sp"
                 android:textColor="#ffffffff" />
            
-           <com.lechange.demo.common.RecoderSeekBar
+           <com.jia.camera.common.RecoderSeekBar
                 android:id="@+id/record_seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
        </LinearLayout>
        
        <!-- 播放加载提示 -->
-       <com.lechange.demo.common.ProgressDialog
+       <com.jia.camera.common.ProgressDialog
             android:id="@+id/record_play_load"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

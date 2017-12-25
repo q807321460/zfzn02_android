@@ -23,8 +23,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-
-
 import com.jia.camera.business.Business;
 import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.camera.business.entity.RecordInfo;

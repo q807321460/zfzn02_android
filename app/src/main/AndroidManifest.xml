@@ -240,14 +240,9 @@
         <activity
             android:name=".Warnifo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ChangeAccount"></activity>
-        <activity android:name=".RoomList"/>
-
-
-
-
-
-
+        <activity android:name=".ChangeAccount" />
+        <activity android:name=".RoomList" />
+        <activity android:name=".SetSceneTimeActivity"></activity>
     </application>
 
 </manifest>

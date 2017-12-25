@@ -285,6 +285,8 @@ public class HomeFragment extends Fragment {
         rlHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SetSceneTimeActivity.class);
+                startActivity(intent);
 
 
             }

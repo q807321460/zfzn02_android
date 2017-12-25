@@ -293,7 +293,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@id/left_menu_help_img"
-                android:text="帮助与反馈"
+                android:text="定时场景"
                 android:textColor="@color/text_color"
                 android:textSize="20sp"/>
             <ImageView
