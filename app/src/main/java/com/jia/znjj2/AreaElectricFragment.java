@@ -429,6 +429,12 @@ public class AreaElectricFragment extends Fragment {
 							mPosition=position;
 							startActivity(intent);
 							break;
+						case 25:
+							intent = new Intent(getContext(),AirCenterMoreActivity.class);
+							intent.putExtra("roomSequ",roomPosition);
+							intent.putExtra("electricSequ", position);
+							mPosition=position;
+							startActivity(intent);
 						default:
 							intent = new Intent(getContext(), ElectricDetail.class);
 							intent.putExtra("roomSequ",roomPosition);

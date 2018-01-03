@@ -1,37 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.jia.znjj2.SetSceneTimeActivity">
 
-    <TimePicker android:id="@+id/timePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+    <LinearLayout
+        android:id="@+id/set_scene_time_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/set_scene_time_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:src="@drawable/back"
+                android:onClick="myMasterNodeBack"/>
+            <TextView
+                android:id="@+id/set_scene_time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text="情景定时"/>
 
-    <Button android:id="@+id/normal_button"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
-        android:text="设置简单闹铃" />
+        </RelativeLayout>
 
-    <Button android:id="@+id/repeating_button"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timePicker"
-        android:layout_toRightOf="@id/normal_button"
-        android:text="设置重复闹铃" />
+    </LinearLayout>
+    <View
+        android:id="@+id/set_scene_time_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/set_scene_time_title"
+        android:background="@color/divider_color"></View>
 
-    <Button android:id="@+id/cancel_button"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="-50dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/repeating_button"
-        android:layout_toRightOf="@id/normal_button"
-        android:text="取消闹铃" />
+
+    <ListView
+        android:id="@+id/set_scene_time_list"
+        android:layout_below="@+id/set_scene_time_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+
+
 
 </RelativeLayout>
+
 

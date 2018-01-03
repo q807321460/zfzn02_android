@@ -242,7 +242,10 @@
             android:screenOrientation="portrait" />
         <activity android:name=".ChangeAccount" />
         <activity android:name=".RoomList" />
-        <activity android:name=".SetSceneTimeActivity"></activity>
+        <activity android:name=".SetSceneTimeActivity" />
+        <activity android:name=".AirCenterMoreActivity" />
+        <activity android:name=".ForgetPasswordActivity" />
+        <activity android:name=".ResetPassword"></activity>
     </application>
 
 </manifest>

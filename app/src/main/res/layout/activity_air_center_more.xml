@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/air_center_more_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:src="@drawable/back"
+                android:onClick="AirMoreBack"/>
+            <TextView
+                android:id="@+id/air_center_more_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text=""/>
+            <TextView
+                android:id="@+id/air_center_more_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:textSize="20sp"
+                android:textColor="@color/text_color_select"
+                android:clickable="true"
+                android:text="编辑"
+                android:onClick="AirMoreEdit"/>
+            <TextView
+                android:id="@+id/air_center_more_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:textSize="22sp"
+                android:textColor="@color/text_color"
+                android:text="保存"
+                android:clickable="true"
+                android:onClick="AirMoreSave"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+   <ListView
+       android:id="@+id/air_center_more_list"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"></ListView>
+</LinearLayout>

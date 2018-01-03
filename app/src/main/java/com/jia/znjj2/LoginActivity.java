@@ -57,6 +57,7 @@ public class LoginActivity extends Activity{
     private EditText mEtAccount;
     private EditText mEtPassword;
     private CheckBox mCbRemeberPassword;
+    private TextView mTvForgetPassword;
     private ProgressDialog dialog;
     private LinearLayout ll_bt;
 
@@ -220,6 +221,7 @@ public class LoginActivity extends Activity{
         mEtAccount = (EditText) findViewById(R.id.login_account);
         mEtPassword = (EditText) findViewById(R.id.login_password);
         mCbRemeberPassword = (CheckBox) findViewById(R.id.login_remember_password);
+        mTvForgetPassword= (TextView) findViewById(R.id.login_forget_password);
         ll_bt= (LinearLayout) findViewById(R.id.ll_bt);
 
         ll_bt.setVisibility(View.VISIBLE);
@@ -328,6 +330,13 @@ public class LoginActivity extends Activity{
                 }
             }
 
+        });
+        mTvForgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forIntent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                startActivity(forIntent);
+            }
         });
     }
 

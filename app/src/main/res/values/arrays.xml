@@ -26,6 +26,7 @@
         <item>中央空调</item>
         <item>新门锁</item>
         <item>电视(智能学习）</item>
+        <item>中央空调(新）</item>
     </string-array>
 
     <array name="dev_type_images">
@@ -54,6 +55,7 @@
         <item>@drawable/center_air</item>
         <item>@drawable/electric_type_newdoor</item>
         <item>@drawable/electric_type_tv</item>
+        <item>@drawable/center_air</item>
     </array>
     <array name="swift_two_images">
         <item>@drawable/electric_type_swift2_left</item>

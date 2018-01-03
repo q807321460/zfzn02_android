@@ -342,7 +342,7 @@ public class ElectricAdd extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 iElectricType = position;
-                if (iElectricType != 8  && iElectricType != 25) {
+                if (iElectricType != 8) {
                     mLLElectricAdd1.setVisibility(View.GONE);
                     mLLElectricAdd2.setVisibility(View.VISIBLE);
                     if(position == 2){
@@ -532,6 +532,9 @@ public class ElectricAdd extends Activity {
                     str2 = str2.substring(1,13);
                 }else {
                     str2=null;
+                    Message msg = new Message();
+                    msg.what=0x2222;
+                    handler.sendMessage(msg);
                 }
                 if(str2!=null){
                     System.out.println("str2**********： " +str2);

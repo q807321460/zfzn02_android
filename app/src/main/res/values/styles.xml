@@ -139,5 +139,17 @@
     <style name="myDialog" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <!-- This theme is similar to the Theme.Dialog.Alert but does not rely on a non-public resource. -->
+    -<style name="alarm_alert" parent="android:Theme.Dialog">
+    <item name="android:windowBackground">@android:color/transparent</item>
+</style>
 
 </resources>
