@@ -71,11 +71,11 @@ public class CurtainDetail extends ElectricBase {
         if(electric.getElectricType() == 6){
             electricImg = R.drawable.electric_type_curtain;
             electricImgOn = R.drawable.electric_type_curtain_on;
-            ivCurtainImg.setImageResource(R.drawable.electric_type_curtain);
+            //ivCurtainImg.setImageResource(R.drawable.electric_type_curtain);
         }else if(electric.getElectricType() == 7){
             electricImg = R.drawable.electric_type_window;
             electricImgOn = R.drawable.electric_type_window_on;
-            ivCurtainImg.setImageResource(R.drawable.electric_type_window);
+           // ivCurtainImg.setImageResource(R.drawable.electric_type_window);
             tvTextClose.setVisibility(View.GONE);
             tvTextOpen.setVisibility(View.GONE);
             tvCurtainPercent.setVisibility(View.GONE);
@@ -83,7 +83,7 @@ public class CurtainDetail extends ElectricBase {
         }else if(electric.getElectricType() == 11){
             electricImg = R.drawable.electric_type_arm_close1;
             electricImgOn = R.drawable.electric_type_armon;
-            ivCurtainImg.setImageResource(R.drawable.electric_type_arm);
+           // ivCurtainImg.setImageResource(R.drawable.electric_type_arm);
             tvTextClose.setVisibility(View.GONE);
             tvTextOpen.setVisibility(View.GONE);
             tvCurtainPercent.setVisibility(View.GONE);
@@ -158,16 +158,17 @@ public class CurtainDetail extends ElectricBase {
             }else {
                 ivCurtainImg.setImageResource(R.drawable.electric_type_curtain);
             }
+            tvCurtainPercent.setText("状态："+percent+"%");
+            System.out.println("窗帘打开的比例："+percent);
+            curtainSeekBar.setProgress(percent);
         }
 
-        if(percent > 0){
-            ivCurtainImg.setImageResource(electricImgOn);
-        }else {
-            ivCurtainImg.setImageResource(electricImg);
-        }
-        tvCurtainPercent.setText("状态："+percent+"%");
-        System.out.println("窗帘打开的比例："+percent);
-        curtainSeekBar.setProgress(percent);
+//        if(percent > 0){
+//            ivCurtainImg.setImageResource(electricImgOn);
+//        }else {
+//            ivCurtainImg.setImageResource(electricImg);
+//        }
+
     }
 
     private String percentToString(int n){

@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jia.data.DataControl;
 import com.jia.data.UserData;
+import com.jia.util.Util;
 
 public class UserEditActivity extends Activity {
     public String result3;
@@ -21,14 +23,18 @@ public class UserEditActivity extends Activity {
     private DataControl mDC;
     private Intent intent;
     private EditText etUserName;
-    private EditText etMasterCode;
-    private EditText etUserIp;
+    private TextView etMasterCode;
+    private TextView etUserIp;
+    private TextView tvRecentVersion;
+    private TextView tvNewVersion;
     private Button btnSave;
     private Button btnGiveUpAdmin;
     private Button btnShareMasterNode;
     private Button btnGetAdmin;
     private Button btnAquireAdmin;
     private int position;
+    private String RecentVersion;
+    private String NewVersion;
     private UserData.UserDataInfo userDataInfo;
 
     private Handler handler = new Handler(){
@@ -95,8 +101,10 @@ public class UserEditActivity extends Activity {
         intent = getIntent();
         position = intent.getIntExtra("user_sequ", 0);
         etUserName = (EditText) findViewById(R.id.user_edit_user_name);
-        etUserIp = (EditText) findViewById(R.id.user_edit_user_ip);
-        etMasterCode = (EditText) findViewById(R.id.user_edit_master_code);
+        etUserIp = (TextView) findViewById(R.id.user_edit_user_ip);
+        etMasterCode = (TextView) findViewById(R.id.user_edit_master_code);
+        tvRecentVersion= (TextView) findViewById(R.id.user_edit_user_version_recent);
+        tvNewVersion= (TextView) findViewById(R.id.user_edit_user_version_new);
         btnSave = (Button) findViewById(R.id.user_edit_btn_save);
         btnGiveUpAdmin = (Button) findViewById(R.id.user_edit_btn_giveup);
         btnGetAdmin = (Button) findViewById(R.id.user_edit_btn_get);
@@ -107,6 +115,22 @@ public class UserEditActivity extends Activity {
         etUserName.setText(userDataInfo.getUserName());
         etMasterCode.setText(userDataInfo.getMasterCode());
         etUserIp.setText(userDataInfo.getUserIP());
+        new Thread(){
+            @Override
+            public void run() {
+                NewVersion=mDC.mWS.getMasterVersion();
+                RecentVersion=mDC.mWS.getMasterVersionBy(userDataInfo.getMasterCode());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvNewVersion.setText(NewVersion);
+                        tvRecentVersion.setText(RecentVersion);
+                    }
+                });
+            }
+        }.start();
+
+
         if(userDataInfo.getIsAdmin() == 1){     //管理员
             etUserIp.setFocusable(true);
             etMasterCode.setFocusable(true);
