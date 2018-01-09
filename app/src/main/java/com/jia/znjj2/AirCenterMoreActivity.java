@@ -3,6 +3,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.jia.util.NetworkUtil;
+
 public class AirCenterMoreActivity extends ElectricBase {
     private TextView tvTitleName;
     private TextView tvTitleEdit;
@@ -28,5 +30,10 @@ public class AirCenterMoreActivity extends ElectricBase {
         tvTitleSave.setVisibility(View.GONE);
         tvTitleName.setText(electric.getElectricName());
 
+    }
+    public void sendCommand(View view){
+        String order = "<" + electric.getElectricCode()+"013101010103"+ "FF" + ">";
+        System.out.println("本地开电气： "+order);
+        NetworkUtil.out.println(order);
     }
 }

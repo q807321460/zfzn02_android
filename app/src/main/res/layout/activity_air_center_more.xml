@@ -56,9 +56,9 @@
 
         </RelativeLayout>
     </LinearLayout>
-
-   <ListView
-       android:id="@+id/air_center_more_list"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"></ListView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送指令"
+        android:onClick="sendCommand"/>
 </LinearLayout>

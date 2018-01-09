@@ -1,6 +1,7 @@
 package com.jia.znjj2;
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class SetSceneTimeActivity extends AppCompatActivity {
+public class SetSceneTimeActivity extends AppCompatActivity{
     private ListView lvSetSceneTime;
     private DataControl mDC;
     private WeekGridAdpter inGridAdapter;
@@ -148,7 +149,7 @@ public class SetSceneTimeActivity extends AppCompatActivity {
                 }
             });
 
-            this.holder.sceneSet = ((TextView) paramView.findViewById(this.valueViewID[2]));
+            this.holder.sceneSet = ((TextView) paramView.findViewById(this.valueViewID[3]));
             this.holder.sceneSet.setText(alarmsSetting.getInHour()+":"+alarmsSetting.getInMinutes());
 
             this.holder.gridSelect = ((GridView) paramView.findViewById(this.valueViewID[4]));

@@ -43,7 +43,6 @@ public class SceneAddElectric extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scene_add_electric);
-
         initView();
         addListener();
 

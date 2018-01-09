@@ -309,9 +309,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 //获取wifi服务
                 WifiManager wifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                 //判断wifi是否开启
-                if (!wifiManager.isWifiEnabled()) {
-                    wifiManager.setWifiEnabled(true);
-                }
+//                if (!wifiManager.isWifiEnabled()) {
+//                    wifiManager.setWifiEnabled(true);
+//                }
                 WifiInfo wifiInfo = wifiManager.getConnectionInfo();
                 int ipAddress = wifiInfo.getIpAddress();
                 String end_IP = Util.intToEndIp(ipAddress);
@@ -336,6 +336,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         }
                     }
                 }
+                mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
             } catch (Exception e) {
 
             }

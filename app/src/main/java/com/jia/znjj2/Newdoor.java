@@ -4,12 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jia.data.DataControl;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by 212 on 2017/9/21.
@@ -26,6 +32,9 @@ public class Newdoor extends ElectricBase {
     public Button doorInfobn;
     public Intent intent;
     public static String record;
+    boolean mCliked=true;
+    boolean isOpen=false;
+    Timer timer=new Timer();
 
     Handler handler = new Handler(){
         @Override
@@ -72,7 +81,7 @@ public class Newdoor extends ElectricBase {
 
     }
     public void updateUI(){
-        String electricCode = electric.getElectricCode();
+        final String electricCode = electric.getElectricCode();
         String electricState = mDC.mElectricState.get(electric.getElectricCode())[0];
         String stateInfo = mDC.mElectricState.get(electric.getElectricCode())[1];
         System.out.println("更新页面： 电器编号---->" + electricCode + "电器状态：" +
@@ -103,6 +112,7 @@ public class Newdoor extends ElectricBase {
                 case 2:
                     newDoorImg.setImageDrawable(getResources().getDrawable(R.drawable.electric_type_newdoor_open));
                     newDoorinfo.setText("电量足，开锁成功");
+                    isOpen=true;
                     break;
                 case 3:
                     newDoorImg.setImageDrawable(getResources().getDrawable(R.drawable.electric_type_newdoor_close));
@@ -111,6 +121,7 @@ public class Newdoor extends ElectricBase {
                 case 4:
                     newDoorImg.setImageDrawable(getResources().getDrawable(R.drawable.electric_type_newdoor_open));
                     newDoorinfo.setText("电量不足，开锁成功");
+                    isOpen=true;
                     break;
                 case 5:
                     newDoorImg.setImageDrawable(getResources().getDrawable(R.drawable.electric_type_newdoor_close));
@@ -136,11 +147,27 @@ public class Newdoor extends ElectricBase {
                     newDoorImg.setImageDrawable(getResources().getDrawable(R.drawable.electric_type_newdoor_close));
             }
         }
+        if(isOpen==true&& mCliked==true){
+            new Thread(){
+                @Override
+                public void run() {
+                    mDC.mWS.UpdateDoorOpenPerson(electricCode,mDC.sAccountCode);
+                }
+            }.start();
+        }
     }
 
     public void newdoorOpen(View view){
         orderInfo = "01********";
         super.open(view);
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    mCliked=false;
+                }
+            },5000);
+
+
     }
     public void newdoorClose(View view){
         orderInfo = "02********";

@@ -3285,7 +3285,44 @@ public class WebService {
             return -1 + "";
         }
     }
+    public synchronized void UpdateDoorOpenPerson(String electricCode,String accountCode){
+        if(!mDC.bUseWeb)
+        {
+            return ;
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "updateDoorOpenPerson";
+            soapAction = SERVICE_NS + methodName;
 
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("electricCode", electricCode);
+            soapObject.addProperty("accountCode", accountCode);
+            try {
+                ht.call(soapAction, envelope);
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+        }
+    }
     public  String moveElectricToAnotherRoom(String masterCode, int electricIndex,  int roomIndex){
         if(!mDC.bUseWeb)
         {
