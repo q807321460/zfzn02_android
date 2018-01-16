@@ -36,30 +36,13 @@ public class NewdoorInfo extends Activity {
     public void doorinfoBack(View view) {
         finish();
     }
-
-
-    //    public void doorinfoList() {
-//        flag= Newdoor.record;
-//        List DoorRecord= new ArrayList();
-//        String abc="e";
-//        for(int i=0;i<flag.length();i++) {
-//            if(flag.substring(i,i+1).equals("m")){
-//                DoorRecord.add(flag.substring(i+5,i+24));
-//            }
-//        }
-//
-//        int size = DoorRecord.size();
-//        String[] arr = (String[])DoorRecord.toArray(new String[size]);
-//        ArrayAdapter<String> adapter1 =new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,arr);
-//        list1.setAdapter(adapter1);
-//        }
     public void doorrecordlist(){
         flag= Newdoor.record;
         List DoorRecord = new ArrayList();
         List<Map<String,String>> listObjectDoor = (List<Map<String,String>>) JSONArray.parse(flag);
         for(Map<String,String> doorinfomap : listObjectDoor){
             for (Map.Entry entry : doorinfomap.entrySet()){
-                if(entry.getKey().equals("openTime")){
+                if(entry.getKey().equals("openTime")||entry.getKey().equals("byPerson")){
                     DoorRecord.add(entry.getValue());
                 }
             }

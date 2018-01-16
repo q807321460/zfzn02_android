@@ -185,12 +185,6 @@ private void initView(){
 
             }
             if (mDC.socketCrash || mDC.bIsRemote || checkNetConnection()){
-                if(control==mDC.airSet){
-
-                }else {
-                   temper="**";
-                }
-
                 //if (true){
                 new Thread(){
                     @Override

@@ -71,6 +71,7 @@ public class WebSocket{
                         @Override
                         public void onClose(int code, String reason) {
                             Log.i(TAG, "Connection lost..");
+                            OpenPolling();
                         }
                     });
                 } catch (WebSocketException e) {

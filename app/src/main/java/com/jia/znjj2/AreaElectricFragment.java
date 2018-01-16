@@ -435,6 +435,7 @@ public class AreaElectricFragment extends Fragment {
 							intent.putExtra("electricSequ", position);
 							mPosition=position;
 							startActivity(intent);
+							break;
 						default:
 							intent = new Intent(getContext(), ElectricDetail.class);
 							intent.putExtra("roomSequ",roomPosition);

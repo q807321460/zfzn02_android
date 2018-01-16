@@ -151,7 +151,7 @@ public class Newdoor extends ElectricBase {
             new Thread(){
                 @Override
                 public void run() {
-                    mDC.mWS.UpdateDoorOpenPerson(electricCode,mDC.sAccountCode);
+                    String res=mDC.mWS.UpdateDoorOpenPerson(electricCode,mDC.sAccountCode);
                 }
             }.start();
         }

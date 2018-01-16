@@ -3285,10 +3285,10 @@ public class WebService {
             return -1 + "";
         }
     }
-    public synchronized void UpdateDoorOpenPerson(String electricCode,String accountCode){
+    public synchronized String UpdateDoorOpenPerson(String electricCode,String accountCode){
         if(!mDC.bUseWeb)
         {
-            return ;
+            return "-2";
         }else {
             HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
             ht.debug = true;
@@ -3312,6 +3312,14 @@ public class WebService {
             soapObject.addProperty("accountCode", accountCode);
             try {
                 ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
             } catch (IOException e) {
                 System.out.println("*********Webservice updateSceneName IOException1");
                 e.printStackTrace();
@@ -3322,6 +3330,7 @@ public class WebService {
                 resetParam();
             }
         }
+        return -1 + "";
     }
     public  String moveElectricToAnotherRoom(String masterCode, int electricIndex,  int roomIndex){
         if(!mDC.bUseWeb)
