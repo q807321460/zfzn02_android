@@ -240,12 +240,17 @@
         <activity
             android:name=".Warnifo"
             android:screenOrientation="portrait" />
-        <activity android:name=".ChangeAccount" />
+        <activity android:name=".ChangeAccount"
+            android:screenOrientation="portrait"/>
         <activity android:name=".RoomList" />
-        <activity android:name=".SetSceneTimeActivity" />
-        <activity android:name=".AirCenterMoreActivity" />
-        <activity android:name=".ForgetPasswordActivity" />
-        <activity android:name=".ResetPassword"></activity>
+        <activity android:name=".SetSceneTimeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AirCenterMoreActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ForgetPasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ResetPassword"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
