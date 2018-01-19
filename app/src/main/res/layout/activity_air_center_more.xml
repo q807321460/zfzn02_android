@@ -58,6 +58,17 @@
 
         </RelativeLayout>
     </LinearLayout>
+    <EditText
+        android:id="@+id/air_more_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="玄关灯"
+        android:textColor="@color/text_color"
+        android:background="@drawable/edittext_border_electric_name"
+        android:focusable="false"
+        android:textSize="20sp"
+        android:visibility="gone"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/rb_homit"
+                    android:id="@+id/rb_humit"
                     android:text="除湿"/>
         </LinearLayout>
         <LinearLayout
