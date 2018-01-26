@@ -44,8 +44,8 @@ public class ServiceSocket extends Service {
         if(!mDC.bIsRemote && NetworkUtil.socket!=null && NetworkUtil.socket.isConnected()){
             serviceSocket();
         }else {
-            //readFromWebService();//显示具体界面里的电器状态
-            webSocket();
+           // readFromWebService();//显示具体界面里的电器状态
+             webSocket();
         }
 
         handler = new Handler();
@@ -95,7 +95,8 @@ public class ServiceSocket extends Service {
                     // 故下方的判断网络的都是多余的
                     while(NetworkUtil.socket == null || !checkNetConnection()) {
                         mDC.bIsRemote = true;
-                        //readFromWebService();
+                       //readFromWebService();
+                        webSocket();
 
                     }
                     //取得输入输出流
@@ -137,9 +138,9 @@ public class ServiceSocket extends Service {
                 catch (IOException e) {
                     e.printStackTrace();
                     System.out.println("本地切换远程");
-                    //readFromWebService();
                     mDC.socketCrash = true;
                     mDC.bIsRemote = true;
+                    webSocket();
                 }
             }
         }).start();
@@ -151,8 +152,7 @@ public class ServiceSocket extends Service {
                 //设置intent,让其能够通知上层调用
                 final Intent intent = new Intent();
                 intent.setAction("android.intent.action.MY_RECEIVER");
-
-                              TimerTask timerTask = new TimerTask() {
+                TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
                         new Thread(){
@@ -164,14 +164,14 @@ public class ServiceSocket extends Service {
 
                     }
                 };
-                timer.schedule(timerTask,500,500);
+             timer.schedule(timerTask,500,500);
 
 
             }
         }.start();
 
     }
-
+//
 //    public void readFromWebService(){
 //        new Thread(){
 //            @Override
@@ -195,7 +195,7 @@ public class ServiceSocket extends Service {
 //
 //                    }
 //                };
-//                timer.schedule(timerTask,500,500);
+//                timer.schedule(timerTask,500,5000);
 //
 //
 //            }

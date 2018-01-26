@@ -71,7 +71,6 @@ public class AreaElectricFragment extends Fragment {
 		initView(view);
 		upDateGridView();
 		addListener();
-
 		/*设置接收后台的广播消息*/
 		receiver = new BrdcstReceiver();
 		IntentFilter filter = new IntentFilter();
@@ -82,7 +81,7 @@ public class AreaElectricFragment extends Fragment {
 
 	@Override
 	public void onResume() {
-		super.onResume();
+        super.onResume();
 	}
 
 	private void initView(View view){

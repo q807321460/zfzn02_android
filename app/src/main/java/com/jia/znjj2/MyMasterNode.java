@@ -285,11 +285,8 @@ public class MyMasterNode extends Activity {
             mDC.mUserData.updateUserSequ(mDC.sMasterCode);
             mDC.mUserData.loadUserList();
             //mDC.mAreaData.loadAreaList();
-
             mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
             mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
-
-
             mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
 
             String str = "";

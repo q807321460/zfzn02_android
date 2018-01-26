@@ -336,7 +336,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                         }
                     }
                 }
-                mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
             } catch (Exception e) {
 
             }

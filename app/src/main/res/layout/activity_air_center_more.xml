@@ -240,7 +240,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:src="@drawable/air_center_more_close"
             android:layout_gravity="center_vertical"/>
         <TextView
             android:layout_width="wrap_content"

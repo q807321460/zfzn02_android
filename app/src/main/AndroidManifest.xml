@@ -243,8 +243,6 @@
         <activity android:name=".ChangeAccount"
             android:screenOrientation="portrait"/>
         <activity android:name=".RoomList" />
-        <activity android:name=".SetSceneTimeActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".AirCenterMoreActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ForgetPasswordActivity"

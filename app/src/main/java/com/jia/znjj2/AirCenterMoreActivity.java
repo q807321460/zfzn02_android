@@ -881,7 +881,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
 
                 onDeal(stOrder,stCount);
                 if(cb0100.isChecked()){
-
+                 iv0100.setBackgroundResource(R.drawable.air_center_more_open);
                 }
                 break;
             case R.id.rb_close:
@@ -892,6 +892,9 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                     stCount="31";
                 }
                 onDeal(stOrder,stCount);
+                if(cb0100.isChecked()){
+                    iv0100.setBackgroundResource(R.drawable.air_center_more_close);
+                }
                 break;
             case R.id.rb_cold:
                 stOrder="013301";

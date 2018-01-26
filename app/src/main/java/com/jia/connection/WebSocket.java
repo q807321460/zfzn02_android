@@ -1,6 +1,8 @@
 package com.jia.connection;
 
+import android.content.Intent;
 import android.os.Handler;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import com.jia.data.DataControl;
@@ -107,14 +109,16 @@ public class WebSocket{
         if (mPolling==true){
             return;
         }
-        mHandler.postDelayed(mReconnectTask,5000);
+        mHandler.postDelayed(mReconnectTask,8000);
         mPolling=true;
 
     }
     public void RunPolling(){
-        if (mDC.bIsRemote){
+//        if (mDC.bIsRemote){
             ConnectToWebSocket(mDC.sMasterCode);
-        }
+            System.out.println("重连##########");
+//
+
     }
     public void StopPolling(){
         if (mPolling==false){
@@ -127,7 +131,9 @@ public class WebSocket{
         StopPolling();
         //重连后，从服务器调用最新的所有电器的状态
         mDC.mWS.getElectricStateByUser(mDC.sAccountCode, mDC.sMasterCode);
+       // mDC.mElectricData.updateElectricState();
         //发送广播
+
     }
     private Runnable mReconnectTask = new Runnable() {
 

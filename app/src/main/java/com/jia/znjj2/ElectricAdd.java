@@ -526,7 +526,7 @@ public class ElectricAdd extends Activity {
             public void run() {
                  str2= new MasterSocket().getInfoFromMasterNode(str1);
                 System.out.println("添加电器返回str2： " +str2);
-                if (str2 != null &&str2.startsWith("#")&&str2.length() ==24){
+                if (str2 != null &&str2.startsWith("#")&&(!str2.substring(9,10).equals("U"))&&str2.length() ==24){
                     str2 = str2.substring(1,9);
                 }else if(str2 != null&&str2.startsWith("#")&& str2.length() ==28){
                     str2 = str2.substring(1,13);
