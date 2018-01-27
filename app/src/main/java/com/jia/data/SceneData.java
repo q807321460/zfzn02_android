@@ -28,6 +28,9 @@ public class SceneData {
             sceneDataInfo.sceneIndex =  localCursor.getInt(localCursor.getColumnIndex("scene_index"));
             sceneDataInfo.sceneImg = localCursor.getInt(localCursor.getColumnIndex("scene_img"));
             sceneDataInfo.sceneSequ = localCursor.getInt(localCursor.getColumnIndex("scene_sequ"));
+            sceneDataInfo.detailTiming = localCursor.getString(localCursor.getColumnIndex("detail_timing"));
+            sceneDataInfo.weeklyDays = localCursor.getString(localCursor.getColumnIndex("weekly_days"));
+            sceneDataInfo.daliyTiming = localCursor.getString(localCursor.getColumnIndex("daliy_timing"));
             //此处应该查询更新电器
             sceneDataInfo.sceneElectricInfos=mDC.mSceneElectricData.loadSceneElectricListBySceneIndex(sceneDataInfo.sceneIndex);
             mDC.mSceneList.add(sceneDataInfo);
@@ -106,6 +109,9 @@ public class SceneData {
             contentValues.put("scene_index", list.get(i).sceneIndex);
             contentValues.put("scene_sequ", list.get(i).sceneSequ);
             contentValues.put("scene_img", list.get(i).sceneImg);
+            contentValues.put("detail_timing", list.get(i).detailTiming);
+            contentValues.put("weekly_days", list.get(i).weeklyDays);
+            contentValues.put("daliy_timing", list.get(i).daliyTiming);
             int flag = mDC.mDB.insertScene(contentValues);
             contentValues.clear();
         }
@@ -115,6 +121,21 @@ public class SceneData {
         contentValues.put("scene_name",sceneName);
         mDC.mDB.updateScene(masterCode, sceneIndex, contentValues);
     }
+    public void updateSceneDetailTime(String masterCode, int sceneIndex, String detailTiming){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("detail_timing",detailTiming);
+        mDC.mDB.updateScene(masterCode, sceneIndex, contentValues);
+    }
+    public void updateSceneWeeklyDays(String masterCode, int sceneIndex, String weeklyDays){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("weekly_days",weeklyDays);
+        mDC.mDB.updateScene(masterCode, sceneIndex, contentValues);
+    }
+    public void updateSceneWeeklyTime(String masterCode, int sceneIndex, String daliyTiming){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("daliy_timing",daliyTiming);
+        mDC.mDB.updateScene(masterCode, sceneIndex, contentValues);
+    }
 
 
 
@@ -122,6 +143,9 @@ public class SceneData {
         private String accountCode;
         private String masterCode;
         private String sceneName;
+        private String detailTiming;
+        private String weeklyDays;
+        private String daliyTiming;
         private int sceneIndex;
         private int sceneSequ;
         private int sceneImg;
@@ -178,12 +202,30 @@ public class SceneData {
         public void setSceneElectricInfos(List<SceneElectricData.SceneElectricInfo> sceneElectricInfos) {
             this.sceneElectricInfos = sceneElectricInfos;
         }
-
+        public String getDetailTiming() {
+            return detailTiming;
+        }
+        public void setDetailTiming(String detailTiming) {
+            this.detailTiming = detailTiming;
+        }
+        public String getWeeklyDays() {
+            return weeklyDays;
+        }
+        public void setWeeklyDays(String weeklyDays) {
+            this.weeklyDays = weeklyDays;
+        }
+        public String getDaliyTiming(){
+            return daliyTiming;
+        }
+        public void setDaliyTiming(String daliyTiming){
+            this.daliyTiming=daliyTiming;
+        }
         @Override
         public String toString() {
             return "accountCode=" + accountCode + ", masterCode=" + masterCode
                     + ", sceneName=" + sceneName + ", sceneIndex=" + sceneIndex + ", sceneSequ=" + sceneSequ + ", sceneImg="
-                    + sceneImg + ", buildTime=" + buildTime + "]";
+                    + sceneImg + ", buildTime=" + buildTime+ ", detailTiming=" + detailTiming +",weeklyDays"+weeklyDays
+                    +",daliyTiming"+daliyTiming+ "]";
         }
     }
 }

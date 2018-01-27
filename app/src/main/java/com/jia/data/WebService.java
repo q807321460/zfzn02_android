@@ -2115,6 +2115,24 @@ public class WebService {
                         sceneDataInfo.setSceneIndex(Integer.parseInt(obj.getProperty("sceneIndex").toString()));
                         sceneDataInfo.setSceneSequ(Integer.parseInt(obj.getProperty("sceneSequ").toString()));
                         sceneDataInfo.setSceneImg(Integer.parseInt(obj.getProperty("sceneImg").toString()));
+                        if(obj.hasProperty("detailTiming")){
+                            if(obj.getProperty("detailTiming").toString().equals("anyType{}")){
+                                sceneDataInfo.setDetailTiming(null);
+                            }else{
+                                sceneDataInfo.setDetailTiming(obj.getProperty("detailTiming").toString());}
+                        }
+                        if(obj.hasProperty("weeklyDays")){
+                            if(obj.getProperty("weeklyDays").toString().equals("anyType{}")){
+                                sceneDataInfo.setWeeklyDays(null);
+                            }else{
+                                sceneDataInfo.setWeeklyDays(obj.getProperty("weeklyDays").toString());}
+                        }
+                        if(obj.hasProperty("daliyTiming")){
+                            if(obj.getProperty("daliyTiming").toString().equals("anyType{}")){
+                                sceneDataInfo.setDetailTiming(null);
+                            }else{
+                                sceneDataInfo.setDetailTiming(obj.getProperty("daliyTiming").toString());}
+                        }
                         list.add(sceneDataInfo);
                     }
                     mDC.mSceneData.loadSceneFromWs(list);
@@ -3380,6 +3398,157 @@ public class WebService {
             return -1 + "";
         }
     }
+
+    public synchronized String updateSceneDetailTiming(String masterCode, int sceneIndex, String detailTiming){
+        if(!mDC.bUseWeb)
+        {
+            return "-2";
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "updateSceneDetailTiming";
+            soapAction = SERVICE_NS + methodName;
+
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("masterCode", masterCode);
+            soapObject.addProperty("sceneIndex", sceneIndex);
+            soapObject.addProperty("detailTiming", detailTiming);
+
+            try {
+                ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+            return -1 + "";
+        }
+    }
+
+    public synchronized String updateSceneDaliyTiming(String masterCode, int sceneIndex, String weeklyDays, String daliyTiming){
+        if(!mDC.bUseWeb)
+        {
+            return "-1";
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "updateSceneDetailTiming";
+            soapAction = SERVICE_NS + methodName;
+
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("masterCode", masterCode);
+            soapObject.addProperty("sceneIndex", sceneIndex);
+            soapObject.addProperty("weeklyDays", weeklyDays);
+            soapObject.addProperty("daliyTiming",daliyTiming);
+
+            try {
+                ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+            return -1 + "";
+        }
+    }
+
+    public synchronized  String deleteSceneTiming(String masterCode, int sceneIndex){
+        if(!mDC.bUseWeb)
+        {
+            return "-2";
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "updateSceneDetailTiming";
+            soapAction = SERVICE_NS + methodName;
+
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("masterCode", masterCode);
+            soapObject.addProperty("sceneIndex", sceneIndex);
+
+            try {
+                ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+            return -1 + "";
+        }
+    }
+
 
     private void resetParam(){
         envelope = null;

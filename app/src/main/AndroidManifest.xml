@@ -249,6 +249,14 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".ResetPassword"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".TimeSelector"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".DataTimeSelector"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".WeekTimeSelector"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".WeekTime"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

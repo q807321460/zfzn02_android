@@ -109,5 +109,8 @@
 
     <color name="colorGray">#EFEFEF</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="timeSelector1">#59B29C</color>
+    <color name="timeSelector2">#333333</color>
+    <color name="background">#FFFFFF</color>
 
 </resources>

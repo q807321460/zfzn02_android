@@ -36,6 +36,9 @@ public class SceneInfo extends Activity {
     private TextView tvSceneName;
     private ListView lvSceneElectricList;
     private SceneData.SceneDataInfo sceneDataInfo;
+    public static String tmMastercode;
+    public static int tmsceneindex;
+    public static int sceneNumber;
 
     Socket socket = NetworkUtil.socket;
     @Override
@@ -57,6 +60,7 @@ public class SceneInfo extends Activity {
         mDC = DataControl.getInstance();
         scenePosition = getIntent().getIntExtra("scenePosition",-1);
         if(scenePosition != -1 && scenePosition < mDC.mSceneList.size()){
+            sceneNumber=scenePosition;
             sceneDataInfo = mDC.mSceneList.get(scenePosition);
         }
         ivSceneImg = (ImageView) findViewById(R.id.scene_info_img);
@@ -64,6 +68,8 @@ public class SceneInfo extends Activity {
         lvSceneElectricList = (ListView) findViewById(R.id.scene_info_list);
         tvSceneName.setText(sceneDataInfo.getSceneName());
         ivSceneImg.setImageResource(mDC.mSceneTypeImages.getResourceId(sceneDataInfo.getSceneImg(),0));
+        tmMastercode = mDC.sMasterCode;
+        tmsceneindex = sceneDataInfo.getSceneIndex();
     }
 
     public void updateListView()
@@ -237,7 +243,10 @@ public class SceneInfo extends Activity {
 
         }
     }
-
+    public void sceneTimeSelector(View view){
+        Intent intent = new Intent(SceneInfo.this, TimeSelector.class);
+        startActivity(intent);
+    }
     private boolean checkNetConnection() {
         try{
             socket.sendUrgentData(0xFF);

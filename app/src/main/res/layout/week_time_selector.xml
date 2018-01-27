@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#ffffff"
+        android:id="@+id/relativeLayout">
+
+        <com.jia.widget.PickerView
+            android:id="@+id/whour_pv"
+            android:layout_width="80dp"
+            android:layout_height="160dp" />
+
+        <TextView
+            android:id="@+id/whour_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/whour_pv"
+            android:text="时"
+            android:textColor="#ffaa33"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <com.jia.widget.PickerView
+            android:id="@+id/wminute_pv"
+            android:layout_width="80dp"
+            android:layout_height="160dp"
+            android:layout_toRightOf="@id/whour_tv" />
+
+        <TextView
+            android:id="@+id/wminute_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/wminute_pv"
+            android:text="分"
+            android:textColor="#ffaa33"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp">
+        <Button
+            android:id="@+id/week_time_selector_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_15"
+            android:gravity="center"
+            android:onClick="wkTimeSave"
+            android:text="保存定时"
+            android:textColor="@color/text_color"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>

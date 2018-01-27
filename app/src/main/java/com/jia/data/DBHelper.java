@@ -109,6 +109,9 @@ public class DBHelper extends SQLiteOpenHelper
                 "[scene_sequ] integer," +
                 "[scene_img] integer," +
                 "[build_time] varchar(20) ," +
+                "[detail_timing] varchar(20) default null," +
+                "[weekly_days] varchar(30) default null," +
+                "[daliy_timing] varchar(30) default null," +
                 "primary key(master_code, scene_index));");
 
         paramSQLiteDatabase.execSQL("create table if not exists [scene_electrics] " +
