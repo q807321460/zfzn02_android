@@ -34,12 +34,12 @@ public class WeekTime extends Activity {
         List<String> seconds = new ArrayList<String>();
         wkhour = "0";
         wkminute = "0";
-        for (int i = 0; i <23; i++)
+        for (int i = 0; i <24; i++)
         {
             data.add("" + i);}
         for (int i = 0; i < 60; i++)
         {
-            seconds.add(i < 23 ? "" + i : "" + i);
+            seconds.add(i < 24 ? "" + i : "" + i);
         }
         whour_pv.setData(data);
         whour_pv.setSelected(0);

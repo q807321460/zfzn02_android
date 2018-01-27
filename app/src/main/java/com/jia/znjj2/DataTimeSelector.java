@@ -27,7 +27,7 @@ public class DataTimeSelector extends Activity implements View.OnClickListener {
     private RelativeLayout selectTime;
     private TextView appointTime,currentTime;
     private CustomDataSelector customDataSelector;
-    public static String abc;
+    public  static String abc;
     public String dataSelctor;
     private Handler handler = new Handler(){
         @Override
@@ -38,7 +38,10 @@ public class DataTimeSelector extends Activity implements View.OnClickListener {
                     finish();
                     break;
                 case 0x2202:
-                    Toast.makeText(DataTimeSelector.this, "单次定时失败，请检查网络和主机", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DataTimeSelector.this, "单次定时失败，请检查主机联网", Toast.LENGTH_SHORT).show();
+                    break;
+                case 0x2203:
+                    Toast.makeText(DataTimeSelector.this, "单次定时失败", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -84,7 +87,7 @@ public class DataTimeSelector extends Activity implements View.OnClickListener {
             }
         }, "2018-01-01 00:00", now); // 初始化日期格式请用：yyyy-MM-dd HH:mm，否则不能正常运行
         customDataSelector.showSpecificTime(true); // 显示时和分
-        customDataSelector.setIsLoop(false); // 允许循环滚动
+        customDataSelector.setIsLoop(true); // 允许循环滚动
     }
     public void dataSelectorSave(View view){
         dataSelctor = abc;
@@ -94,17 +97,19 @@ public class DataTimeSelector extends Activity implements View.OnClickListener {
                 mDC.mWS.deleteSceneTiming(SceneInfo.tmMastercode, SceneInfo.tmsceneindex);
                 String wsanswer = mDC.mWS.updateSceneDetailTiming(SceneInfo.tmMastercode, SceneInfo.tmsceneindex,dataSelctor);
                 if (wsanswer.equals("1")) {
-                    mDC.mSceneData.updateSceneDetailTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, dataSelctor);
                     sceneDataInfo.setDetailTiming(dataSelctor);
+                    mDC.mSceneData.updateSceneDetailTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, dataSelctor);
                     mDC.mSceneList.get(SceneInfo.sceneNumber).setWeeklyDays(null);
-                    mDC.mSceneList.get(SceneInfo.sceneNumber).setDaliyTiming(null);
                     mDC.mSceneData.updateSceneWeeklyDays(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
+                    mDC.mSceneList.get(SceneInfo.sceneNumber).setDaliyTiming(null);
                     mDC.mSceneData.updateSceneWeeklyTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
-                    mDC.mSceneData.loadSceneList();
                     msg.what = 0x2201;
                     handler.sendMessage(msg);
-                } else {
+                } else if(wsanswer.equals("0")) {
                     msg.what = 0x2202;
+                    handler.sendMessage(msg);
+                }else{
+                    msg.what = 0x2203;
                     handler.sendMessage(msg);
                 }
 

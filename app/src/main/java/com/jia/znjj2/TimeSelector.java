@@ -39,9 +39,15 @@ public class TimeSelector extends Activity {
             switch (msg.what){
                 case 0x2201:
                     Toast.makeText(TimeSelector.this, "定时删除成功", Toast.LENGTH_SHORT).show();
+                    dataTime.setText(null);
+                    WeekTime1.setAdapter(null);
+                    deleteTimeSelector.setVisibility(View.GONE);
                     break;
                 case 0x2202:
-                    Toast.makeText(TimeSelector.this, "定时删除失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TimeSelector.this, "定时删除失败，请检查主机联网", Toast.LENGTH_SHORT).show();
+                    break;
+                case 0x2203:
+                    Toast.makeText(TimeSelector.this, "定时删除失败 ", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -58,9 +64,11 @@ public class TimeSelector extends Activity {
 
     protected void onResume() {
         super.onResume();
-        initView();
         dataTimeshow();
         updateWeekTime();
+        if(sceneDataInfo.getDetailTiming() != null || sceneDataInfo.getWeeklyDays() != null){
+            deleteTimeSelector.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initView() {
@@ -142,12 +150,16 @@ public class TimeSelector extends Activity {
                     mDC.mSceneList.get(SceneInfo.sceneNumber).setWeeklyDays(null);
                     mDC.mSceneList.get(SceneInfo.sceneNumber).setDaliyTiming(null);
                     mDC.mSceneList.get(SceneInfo.sceneNumber).setDetailTiming(null);
-                    WeekTime1.setAdapter(null);
-                    dataTime.setText(null);
+                    mDC.mSceneData.updateSceneWeeklyDays(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
+                    mDC.mSceneData.updateSceneWeeklyTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
+                    mDC.mSceneData.updateSceneDetailTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
                     msg.what = 0x2201;
                     handler.sendMessage(msg);
-                }else{
+                }else if(abc.equals("0")){
                     msg.what = 0x2202;
+                    handler.sendMessage(msg);
+                }else{
+                    msg.what = 0x2203;
                     handler.sendMessage(msg);
                 }
             }

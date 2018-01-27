@@ -42,10 +42,16 @@ public class WeekTimeSelector extends Activity implements View.OnClickListener {
                     finish();
                     break;
                 case 0x2202:
-                    Toast.makeText(WeekTimeSelector.this, "循环定时失败,请检查网络和主机", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WeekTimeSelector.this, "循环定时失败，请检查主机联网", Toast.LENGTH_SHORT).show();
                     break;
                 case 0x2203:
+                    Toast.makeText(WeekTimeSelector.this, "循环定时失败", Toast.LENGTH_SHORT).show();
+                    break;
+                case 0x2204:
                     Toast.makeText(WeekTimeSelector.this, "请设定时间", Toast.LENGTH_SHORT).show();
+                    break;
+                case 0x2205:
+                    Toast.makeText(WeekTimeSelector.this, "请设定工作日", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -101,6 +107,10 @@ public class WeekTimeSelector extends Activity implements View.OnClickListener {
                             str += checkBox.getText().toString() + "，";
                         }
                     }
+                    if(str==""){
+                        msg.what =0x2205;
+                        handler.sendMessage(msg);
+                    }else if(str != ""){
                     selectweek = str + "时间保存成功";
                     String[] week = selectweek.split("，");
                     ArrayList listWeek = new ArrayList();
@@ -132,21 +142,24 @@ public class WeekTimeSelector extends Activity implements View.OnClickListener {
                     mDC.mWS.deleteSceneTiming(SceneInfo.tmMastercode, SceneInfo.tmsceneindex);
                     String flag = mDC.mWS.updateSceneDaliyTiming(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, localweekdays,appointWeekTime);
                     if(flag.equals("1")) {
-                        msg.what = 0x2201;
-                        handler.sendMessage(msg);
-                        mDC.mSceneData.updateSceneWeeklyTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex,appointWeekTime);
                         mDC.mSceneList.get(SceneInfo.sceneNumber).setDaliyTiming(appointWeekTime);
-                        mDC.mSceneData.updateSceneWeeklyDays(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, localweekdays);
+                        mDC.mSceneData.updateSceneWeeklyTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex,appointWeekTime);
                         mDC.mSceneList.get(SceneInfo.sceneNumber).setWeeklyDays(localweekdays);
+                        mDC.mSceneData.updateSceneWeeklyDays(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, localweekdays);
                         mDC.mSceneList.get(SceneInfo.sceneNumber).setDetailTiming(null);
                         mDC.mSceneData.updateSceneDetailTime(SceneInfo.tmMastercode, SceneInfo.tmsceneindex, null);
-                        mDC.mSceneData.loadSceneList();
-                    }else if(flag != "1"){
+                        msg.what = 0x2201;
+                        handler.sendMessage(msg);
+                    }else if(flag.equals("0")){
                         msg.what = 0x2202;
                         handler.sendMessage(msg);
+                    }else{
+                        msg.what = 0x2203;
+                        handler.sendMessage(msg);
+                        }
                     }
                 } else {
-                    msg.what =0x2203;
+                    msg.what =0x2204;
                     handler.sendMessage(msg);
                 }
             }

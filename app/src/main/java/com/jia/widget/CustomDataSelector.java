@@ -293,7 +293,7 @@ public class CustomDataSelector {
             @Override
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.YEAR, Integer.parseInt(text));
-                monthChange();
+                //monthChange();
             }
         });
 
@@ -310,7 +310,7 @@ public class CustomDataSelector {
             @Override
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.DAY_OF_MONTH, Integer.parseInt(text));
-                hourChange();
+                //hourChange();
             }
         });
 
@@ -318,7 +318,7 @@ public class CustomDataSelector {
             @Override
             public void onSelect(String text) {
                 selectedCalender.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
-                minuteChange();
+                //minuteChange();
             }
         });
 

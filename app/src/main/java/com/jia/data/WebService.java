@@ -38,7 +38,7 @@ public class WebService {
     //命名空间
     private final static String SERVICE_NS = "http://ws.smarthome.zfznjj.com/";
     // EndPoint
-   //private final static String SERVICE_URL = "http://192.168.1.133:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
+   //private final static String SERVICE_URL = "http://192.168.0.200:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
 
     //阿里云
     private final static String SERVICE_URL = "http://101.201.211.87:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
@@ -2129,9 +2129,9 @@ public class WebService {
                         }
                         if(obj.hasProperty("daliyTiming")){
                             if(obj.getProperty("daliyTiming").toString().equals("anyType{}")){
-                                sceneDataInfo.setDetailTiming(null);
+                                sceneDataInfo.setDaliyTiming(null);
                             }else{
-                                sceneDataInfo.setDetailTiming(obj.getProperty("daliyTiming").toString());}
+                                sceneDataInfo.setDaliyTiming(obj.getProperty("daliyTiming").toString());}
                         }
                         list.add(sceneDataInfo);
                     }
@@ -3459,7 +3459,7 @@ public class WebService {
             SoapSerializationEnvelope envelope;
             SoapObject soapObject;
             SoapObject result;
-            methodName = "updateSceneDetailTiming";
+            methodName = "updateSceneDaliyTiming";
             soapAction = SERVICE_NS + methodName;
 
             // 使用SOAP1.1协议创建Envelop对象
@@ -3510,7 +3510,7 @@ public class WebService {
             SoapSerializationEnvelope envelope;
             SoapObject soapObject;
             SoapObject result;
-            methodName = "updateSceneDetailTiming";
+            methodName = "deleteSceneTiming";
             soapAction = SERVICE_NS + methodName;
 
             // 使用SOAP1.1协议创建Envelop对象
