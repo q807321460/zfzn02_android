@@ -60,7 +60,7 @@
             android:gravity="center"
             android:onClick="wkTimeSave"
             android:text="保存定时"
-            android:textColor="@color/text_color"
+            android:textColor="#ffff0000"
             android:textSize="20sp" />
     </LinearLayout>
 </RelativeLayout>
