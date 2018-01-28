@@ -31,6 +31,8 @@ import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.data.DataControl;
 import com.jia.data.ElectricInfoData;
 import com.jia.data.RoomData;
+import com.jia.data.SceneData;
+import com.jia.data.SceneElectricData;
 import com.jia.widget.DragAdapterInterface;
 import com.jia.widget.DragCallback;
 import com.jia.widget.DragGridView;
@@ -583,6 +585,9 @@ public class AreaEdit extends Activity {
                     mDC.mAreaData.loadAreaList();
                     //mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().remove(position);
                     msg.what = 0x1087;
+//                    for (SceneElectricData.SceneElectricInfo sed : mDC.mSceneList.get(roomPosition).getSceneElectricInfos()){
+//                        if (sed.getElectricIndex() ==mDC.mSceneList.get(roomPosition).) {
+//                    }
                 }
                 handler.sendMessage(msg);
             }

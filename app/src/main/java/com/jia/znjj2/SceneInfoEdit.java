@@ -444,6 +444,7 @@ public class SceneInfoEdit extends Activity {
                                                             , sceneDataInfo.getSceneIndex());
                                                     sceneDataInfo.getSceneElectricInfos().remove(position);
                                                     msg.what = 0x1102;
+
                                                 }
                                                 handler.sendMessage(msg);
                                             }
