@@ -109,6 +109,22 @@ public class AreaEdit extends Activity {
             }
         }
     };
+    private Handler handler1 = new Handler(){
+        @Override
+        public void handleMessage(Message msg1) {
+            switch (msg1.what){
+                case 0x1100:
+                    Toast.makeText(AreaEdit.this, "情景电器删除失败，请检查网络", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x1101:
+                    Toast.makeText(AreaEdit.this, "情景电器删除失败，稍候重试", Toast.LENGTH_LONG).show();
+                    break;
+                case 0x1102:
+                    Toast.makeText(AreaEdit.this, "情景电器删除成功", Toast.LENGTH_LONG).show();
+//                    updateListView();
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -583,12 +599,28 @@ public class AreaEdit extends Activity {
                             mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricSequ(),
                             mDC.mAreaList.get(roomPosition).getRoomIndex());
                     mDC.mAreaData.loadAreaList();
+                    mDC.mSceneElectricData.deleteSceneElectric(mDC.sMasterCode
+                            ,mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricIndex()
+                            , mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getSceneIndex());
                     //mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().remove(position);
                     msg.what = 0x1087;
-//                    for (SceneElectricData.SceneElectricInfo sed : mDC.mSceneList.get(roomPosition).getSceneElectricInfos()){
-//                        if (sed.getElectricIndex() ==mDC.mSceneList.get(roomPosition).) {
-//                    }
+                    for (int i=0;i<mDC.mSceneList.size();i++){
+                        for(int j=0;j<mDC.mSceneList.get(i).getSceneElectricInfos().size();j++){
+                            if(mDC.mSceneList.get(i).getSceneElectricInfos().get(j).getElectricIndex()
+                                    ==mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricIndex()){
+                        mDC.mSceneList.get(i).getSceneElectricInfos().remove(j);
+
+                            }
+                        }
+                    }
+
+
+
                 }
+
+
+
+
                 handler.sendMessage(msg);
             }
         }.start();

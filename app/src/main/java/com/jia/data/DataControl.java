@@ -196,6 +196,7 @@ public class DataControl
     public ArrayList<UserData.UserDataInfo> mUserList = new ArrayList();
     public List<AccountData.AccountDataInfo> mSharedAccountList = new ArrayList();
     public List<SceneData.SceneDataInfo> mSceneList = new ArrayList<>();
+    public List<SceneElectricData.SceneElectricInfo> mSceneElectricList = new ArrayList<>();
     public volatile HashMap<String, String[]> mElectricState;
 
     /**
