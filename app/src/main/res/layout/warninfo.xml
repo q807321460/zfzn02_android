@@ -30,9 +30,10 @@
 
         </RelativeLayout>
     </LinearLayout>
+
     <ListView
         android:id="@+id/warn_info_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

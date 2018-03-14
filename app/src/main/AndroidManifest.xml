@@ -257,6 +257,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".WeekTime"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".AddAirCenterMore"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
