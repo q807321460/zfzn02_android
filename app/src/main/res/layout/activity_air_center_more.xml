@@ -231,7 +231,8 @@
                 android:layout_centerInParent="true"
                 android:layout_marginRight="@dimen/margin_10"
                 android:layout_toLeftOf="@+id/air_center_more_text"
-                android:src="@drawable/fresh" />
+                android:src="@drawable/fresh"
+                android:onClick="refresh"/>
 
             <TextView
                 android:id="@+id/air_center_more_text"
@@ -252,15 +253,36 @@
                 android:layout_marginRight="@dimen/margin_15" />
         </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/wk_CheckBoxList"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_air_center_number"
+        android:text="选中空调的数量"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:layout_gravity="center_vertical" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
     <Button
-    android:id="@+id/btn_ok"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="删除空调" />
+        android:id="@+id/btn_ok"
+        android:layout_width="174dp"
+        android:layout_height="match_parent"
+        android:text="确认选择"
+        android:onClick="aircentersure"/>
+        <Button
+            android:id="@+id/btn_deleter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="删除选择"
+            android:onClick="aircenterdelete"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ListView
+            android:id="@+id/air_center_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
 </LinearLayout>
