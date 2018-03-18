@@ -1,31 +1,56 @@
 package com.jia.znjj2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jia.data.DataControl;
 import com.jia.util.NetworkUtil;
+import com.jia.widget.AirCenterAdapter;
+import com.jia.widget.AirCenterAdapter.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
+import static com.jia.widget.AirCenterAdapter.getIsSelected;
+
+
 public class AirCenterMoreActivity extends ElectricBase implements View.OnClickListener {
     public static int aircenterelectricIndex;
+    public static String airCenterInfo;
+    private ProgressDialog dialog;
     private TextView tvTitleName;
     private TextView tvTitleEdit;
     private TextView tvTitleSave;
+    private ListView aircenterList;
+    private int checkNum;
     private ImageButton ibAddAircenter;
     private CheckBox cbCheckAll;
+    private AirCenterAdapter adapter;
+    public  ArrayList<String> list1;
+    public  ArrayList<String> list2;
+    public  ArrayList<String> list3;
+    public  ArrayList<String> list4;
+    public  ArrayList<String> list5;
+    public  ArrayList<String> list6;
+    public  ArrayList<String> list7;
+
+
+    private TextView tvNo;
     String  strNumber=null;
     String order=null;
     String stAllCheck="FFFFFF";
@@ -61,6 +86,16 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                 case 0x1061:
                     Toast.makeText(AirCenterMoreActivity.this,"更改失败",Toast.LENGTH_LONG).show();
                     break;
+                case 0x1062:
+                    dialog.cancel();
+                    Toast.makeText(AirCenterMoreActivity.this,"清先选择空调",Toast.LENGTH_LONG).show();
+                    break;
+                case 0x1063:
+                    mDC.mAreaData.loadAreaList();
+                    dialog.cancel();
+                    Toast.makeText(AirCenterMoreActivity.this,"空调删除成功",Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
             }
         }
     };
@@ -72,11 +107,82 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         setContentView(R.layout.activity_air_center_more);
         initView();
         aircenterelectricIndex=electric.getElectricIndex();
+        initDate();
+        adapter = new AirCenterAdapter(list1,list2,list3,list4,list5,list6,list7,this);
+        aircenterList.setAdapter(adapter);
+        aircenterList.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                ViewHolder holder = (ViewHolder) arg1.getTag();
+                holder.cb.toggle();
+                getIsSelected().put(arg2, holder.cb.isChecked());
+                if (holder.cb.isChecked() == true) {
+                    checkNum++;
+                } else {
+                    checkNum--;
+                }
+                tvNo.setText("当前将选择" + checkNum + "台空调");
+            }
+        });
     }
 
-    @Override
-    public void updateUI() {
+    protected void onResume() {
+        super.onResume();
+        initView();
+        checkNum=0;
+        tvNo.setText("当前将选择" + checkNum + "台空调");
+        electric = mDC.mAreaList.get(roomSequ).getmElectricInfoDataList().get(electricSequ);
+        initDate();
+        adapter = new AirCenterAdapter(list1,list2,list3,list4,list5,list6,list7,this);
+        aircenterList.setAdapter(adapter);
 
+    }
+
+   public void initDate(){
+       list1 = new ArrayList<String>();
+       list2 = new ArrayList<String>();
+       list3 = new ArrayList<String>();
+       list4 = new ArrayList<String>();
+       list5 = new ArrayList<String>();
+       list6 = new ArrayList<String>();
+       list7 = new ArrayList<String>();
+        if(electric.getExtras().equals("[]")){
+            list1.add("无空调记录");
+            list2.add("开/关：" + " ");
+            list3.add("模式" + " ");
+            list4.add("风速" + " ");
+            list5.add("温度" + " ");
+            list6.add("室温" + " ");
+            list7.add("错误信息" + " ");
+        }else{
+        String number = electric.getExtras().substring(1,electric.getExtras().length()-1);
+        String No[] = number.split(",");
+        for (int i = 0; i < No.length; i++) {
+            String a = No[i].substring(1,3)+"-"+No[i].substring(3,5);
+            list1.add(a);
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list2.add("开/关：" + " ");
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list3.add("模式" + " ");
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list4.add("风速" + " ");
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list5.add("温度" + " ");
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list6.add("室温" + " ");
+        }
+        for (int i = 0; i < list1.size(); i++) {
+            list7.add("错误信息" + " ");
+        }
+        }
+
+    }
+        @Override
+    public void updateUI() {
     }
     public void AirMoreEdit(View view){
         tvTitleEdit.setVisibility(View.GONE);
@@ -116,18 +222,18 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
 
     }
     private void initView(){
+        mDC = DataControl.getInstance();
         tvTitleName = (TextView)findViewById(R.id.air_center_more_name);
         tvTitleEdit = (TextView)findViewById(R.id.air_center_more_edit);
         tvTitleSave = (TextView)findViewById(R.id.air_center_more_save);
         ibAddAircenter = (ImageButton)findViewById(R.id.air_center_more_img_add);
+        tvNo = (TextView)findViewById(R.id.tv_air_center_number);
         tvTitleEdit.setVisibility(View.VISIBLE);
         tvTitleSave.setVisibility(View.GONE);
 
         tvTitleEdit.setVisibility(View.VISIBLE);
         tvTitleSave.setVisibility(View.GONE);
         etElectricName= (EditText) findViewById(R.id.air_more_name);
-        cbCheckAll= (CheckBox) findViewById(R.id.air_center_more_selectall);
-        cbCheckAll.setOnCheckedChangeListener(listener);
         checkedStr=new TreeMap<String, Integer>();
         btOpen= (Button) findViewById(R.id.rb_open);
         btOpen.setOnClickListener(this);
@@ -157,6 +263,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         bt30.setOnClickListener(this);
         tvTitleName.setText(electric.getElectricName());
         etElectricName.setText(electric.getElectricName());
+        aircenterList = (ListView)findViewById(R.id.air_center_list);
 
     }
    public void addAirCenter(View view){
@@ -166,26 +273,6 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     public void AirMoreBack(View view){
         finish();
     }
-    private CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener()
-    {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView,boolean isChecked)
-        {
-            switch(buttonView.getId())
-            {
-                case R.id.air_center_more_selectall:
-                    if(isChecked){
-                       checkForAll=true;
-
-                    }else {
-                        checkForAll=false;
-                    }
-
-                    break;
-
-            }
-        }
-    };
     private void onDeal(String str1,String firstCount){
         i = checkedStr.size();
         strNumber= String.valueOf(i);
@@ -220,6 +307,9 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     }
     @Override
     public void onClick(View v) {
+        if (checkedStr.size()==0){
+            Toast.makeText(AirCenterMoreActivity.this,"请先确认您的空调选择",Toast.LENGTH_LONG).show();
+        }else{
         switch (v.getId()){
             case R.id.rb_open:
                 stOrder="013101";
@@ -343,6 +433,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
 
         }
     }
+    }
     public void open(final String order2){
         if (mDC.socketCrash || mDC.bIsRemote || checkNetConnection()){
             //if (true){
@@ -361,4 +452,77 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             NetworkUtil.out.println(order1);
         }
     }
+    public void refresh(View view){
+        airCenterInfo = null;
+        open("0150FFFFFFFF4D");
+        new Thread(){
+            public void run(){
+                try {
+                    sleep(2000);
+                    updateUI();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                String abc = airCenterInfo;
+                System.out.print(abc);
+
+            }
+        }.start();
+
+
+    }
+    public void aircentersure(View view){
+        checkedStr.clear();
+        ArrayList<String> choiceList = new ArrayList<String>();
+        for (int i = 0; i < list1.size(); i++) {
+            if (AirCenterAdapter.getIsSelected().get(i)) {
+                String haschecked = list1.get(i);
+                choiceList.add(haschecked.substring(0,2)+haschecked.substring(3,5));
+            }
+        }
+        for(int i = 0;i<choiceList.size();i++) {
+            String outer = choiceList.get(i).substring(0,2);
+            String inner = choiceList.get(i).substring(2,4);
+            int a = Integer.parseInt(outer,16);
+            int b = Integer.parseInt(inner,16);
+            int key = a+b;
+            String value =choiceList.get(i);
+            checkedStr.put(value,key);
+        }
+
+    }
+    public void aircenterdelete(View view){
+        dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setTitle("提示");
+        dialog.setMessage("正在删除空调");
+        dialog.show();
+        new Thread(){
+            public void run(){
+                Message msg = new Message();
+                ArrayList<String> deleteList = new ArrayList<String>();
+                for (int i = 0; i < list1.size(); i++) {
+                    if (AirCenterAdapter.getIsSelected().get(i)) {
+                        String haschecked = list1.get(i);
+                        deleteList.add(haschecked.substring(0,2)+haschecked.substring(3,5));
+                    }
+                }
+                if(deleteList.size()==0){
+                    msg.what=0x1062;
+                    handler.sendMessage(msg);
+                }
+                for(int i = 0;i<deleteList.size();i++){
+                    mDC.mWS.deleteCentralAir(electric.getMasterCode(),electric.getElectricIndex(),deleteList.get(i));
+                    mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),AirCenterMoreActivity.this);
+                    }
+                    if(true){
+                        msg.what=0x1063;
+                        handler.sendMessage(msg);
+                    }
+            }
+        }.start();
+    }
 }
+

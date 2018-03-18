@@ -79,7 +79,7 @@ public class DBHelper extends SQLiteOpenHelper
                 "[electric_code] varchar(20)," +
                 "[electric_type] integer not null," +
                 "[belong] char(1) default null," +
-                "[extras] varchar(50) default null," +
+                "[extras] varchar(250) default null," +
                 "[scene_index] integer," +
                 "[order_info] varchar(2) default null," +
                 "primary key (account_code,master_code, electric_index));");
