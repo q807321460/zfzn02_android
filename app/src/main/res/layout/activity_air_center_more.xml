@@ -198,6 +198,7 @@
         android:layout_height="1px"
         android:background="#000000"
         />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp">
@@ -206,53 +207,54 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginLeft="15dp"
                 android:gravity="center_vertical"
-                android:text="空调选择"
+                android:text="取消全选"
                 android:textColor="@color/text_color"
-                android:textSize="20sp" />
+                android:textSize="15sp"
+                android:onClick="deleteSelectAll"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp" />
 
             <ImageButton
                 android:id="@+id/air_center_more_img_add"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/add"
-                android:layout_centerHorizontal="true"
                 android:layout_alignBottom="@+id/air_center_more_img_fresh"
-                android:onClick="addAirCenter"/>
+                android:layout_centerHorizontal="true"
+                android:onClick="addAirCenter"
+                android:src="@drawable/add" />
 
             <ImageButton
                 android:id="@+id/air_center_more_img_fresh"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/margin_10"
-                android:layout_toLeftOf="@+id/air_center_more_text"
-                android:src="@drawable/fresh"
-                android:onClick="refresh"/>
+                android:layout_alignBottom="@+id/air_center_more_text"
+                android:layout_toEndOf="@+id/air_center_more_img_add"
+                android:layout_toRightOf="@+id/air_center_more_img_add"
+                android:onClick="refresh"
+                android:src="@drawable/fresh" />
 
-            <TextView
+            <Button
                 android:id="@+id/air_center_more_text"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toLeftOf="@+id/air_center_more_selectall"
                 android:gravity="center_vertical"
-                android:text="全选"
+                android:text="空调全选"
                 android:textColor="@color/text_color"
-                android:textSize="20sp" />
-
-            <CheckBox
-                android:id="@+id/air_center_more_selectall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_15" />
+                android:textSize="20sp"
+                android:onClick="selectAllairCenter"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
         </RelativeLayout>
     </LinearLayout>
+
     <TextView
         android:id="@+id/tv_air_center_number"
         android:text="选中空调的数量"
