@@ -53,8 +53,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding_5"
-        android:paddingBottom="@dimen/padding_5">
+        android:paddingBottom="@dimen/padding_5"
+        android:paddingTop="@dimen/padding_5">
 
         <TextView
             android:id="@+id/person_account_head_tv"
@@ -64,27 +64,29 @@
             android:layout_marginLeft="20dp"
             android:text="头像"
             android:textColor="@color/text_color"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
+
         <com.jia.widget.RoundImageView
             android:id="@+id/person_account_head_iv"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/person_account_head_tv"
             android:layout_marginLeft="20dp"
-            android:src="@drawable/people"/>
+            android:layout_toRightOf="@id/person_account_head_tv"
+            android:src="@drawable/people" />
 
 
         <ImageView
             android:id="@+id/person_account_head_more"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:src="@drawable/left_menu_more"/>
+            android:src="@drawable/left_menu_more" />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

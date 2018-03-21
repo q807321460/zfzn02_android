@@ -23,7 +23,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -112,6 +111,7 @@ public class LoginActivity extends Activity{
                     }
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_LONG).show();
                     dialog.show();
+
                     loginSuccess();
                     break;
                 case 0x1004:
