@@ -30,18 +30,6 @@
                 android:textSize="22sp"
                 android:textColor="@color/text_color"
                 android:text="选择设备"/>
-            <TextView
-                android:id="@+id/scene_info_edit_title_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="@dimen/margin_15"
-                android:clickable="true"
-                android:textSize="16sp"
-                android:textColor="@color/text_color_select"
-                android:text="添加"
-                android:onClick="sceneAddElectricSave"/>
 
         </RelativeLayout>
     </LinearLayout>
