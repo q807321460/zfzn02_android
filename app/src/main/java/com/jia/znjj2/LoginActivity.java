@@ -111,7 +111,6 @@ public class LoginActivity extends Activity{
                     }
                     Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_LONG).show();
                     dialog.show();
-
                     loginSuccess();
                     break;
                 case 0x1004:

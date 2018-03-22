@@ -38,10 +38,10 @@ public class WebService {
     //命名空间
     private final static String SERVICE_NS = "http://ws.smarthome.zfznjj.com/";
     // EndPoint
-   private final static String SERVICE_URL = "http://192.168.0.108:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
+//  private final static String SERVICE_URL = "http://192.168.0.108:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
 
     //阿里云
-    //private final static String SERVICE_URL = "http://101.201.211.87:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
+    private final static String SERVICE_URL = "http://101.201.211.87:8080/zfzn02/services/smarthome?wsdl=SmarthomeWs.wsdl";
     //lv
     //private final static String SERVICE_URL = "http://192.168.0.104:8080/ZFZNJJ_WS/services/samrthome?wsdl=SmarthomeWs.wsdl";
     // SOAP Action
