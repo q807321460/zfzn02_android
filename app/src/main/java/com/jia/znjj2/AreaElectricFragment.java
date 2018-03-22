@@ -243,7 +243,21 @@ public class AreaElectricFragment extends Fragment {
 							}
 
 						}
-					}else if (electricType == 10){
+					} else if(electricType==6) {
+						if (electricState.equals("XG")) {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
+						} else if (electricState.equals("XH") || electricState.equals("XI")) {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain_on);
+						}
+					}
+					else if(electricType==7) {
+						if (electricState.equals("XG")) {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window);
+						} else if (electricState.equals("XH") || electricState.equals("XI")) {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window_on);
+						}
+					}
+					else if (electricType == 10){
 						if (electricInfoData.getOrderInfo().equals("01")){
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_swift4_left1);
 						}else if(electricInfoData.getOrderInfo().equals("02")){
