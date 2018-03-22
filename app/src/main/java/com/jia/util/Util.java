@@ -77,7 +77,7 @@ public class Util {
         }else if(string.length()>26){
             electricCode = string.substring(0,12);
             electricState = string.substring(12,14);
-            stateInfo = string.substring(14,string.length());
+            stateInfo = string.substring(14,string.length()-2);
             airCenterInfo = stateInfo;
         }
 
