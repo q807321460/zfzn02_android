@@ -441,6 +441,7 @@ public class LoginActivity extends Activity{
                 //将本地数据库中该账户下的全部user导入到内存设备中
                 mDC.mUserData.loadUserList();
 
+
                 if(mDC.mUserList.size() != 0){  //该账号下有用户user
                     mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
                     mDC.sUserIP = mDC.mUserList.get(0).getUserIP();

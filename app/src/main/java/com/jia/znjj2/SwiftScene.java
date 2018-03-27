@@ -29,7 +29,7 @@ public class SwiftScene extends ElectricBase {
     private LinearLayout llSelectScene;
     private Spinner spSelectScene;
     private SlipButton ibSwift;
-
+    private static int sceneposition;
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -88,10 +88,15 @@ public class SwiftScene extends ElectricBase {
 
         if(-1 != electric.getSceneIndex()){
             for(int i = 0; i<mDC.mSceneList.size();i++){
+                System.out.println(mDC.mSceneList.get(i));
                 if(mDC.mSceneList.get(i).getSceneIndex() == electric.getSceneIndex()){
                     tvSceneName.setText("关联情景："+mDC.mSceneList.get(i).getSceneName());
+                    sceneposition = mDC.mSceneList.get(i).getSceneSequ();
                 }
             }
+        }
+        if(tvSceneName.getText().toString().equals("无关联情景")){
+            electric.setSceneIndex(-1);
         }
 
 
@@ -160,7 +165,7 @@ public class SwiftScene extends ElectricBase {
         };
         spSelectScene.setAdapter(localAdapter);
         if(-1 != electric.getSceneIndex()){
-            spSelectScene.setSelection(electric.getSceneIndex());
+            spSelectScene.setSelection(0);
         }
 
     }
@@ -193,11 +198,12 @@ public class SwiftScene extends ElectricBase {
     }
     public void swiftSceneSave(View view){
         final String electricName = etElectricName.getText().toString();
+       final int touchsecneIndex = mDC.mSceneList.get(spSelectScene.getSelectedItemPosition()).getSceneIndex();
         new Thread(){
             @Override
             public void run() {
                 String result = mDC.mWS.updateElectric(mDC.sMasterCode,electric.getElectricCode()
-                        ,electric.getElectricIndex(),electricName, spSelectScene.getSelectedItemPosition());
+                        ,electric.getElectricIndex(),electricName, touchsecneIndex);
                 Message msg = new Message();
                 if(result.startsWith("-2")){
                     msg.what = 0x1140;
@@ -207,11 +213,11 @@ public class SwiftScene extends ElectricBase {
                     msg.what = 0x1142;
 
                     electric.setElectricName(electricName);
-                    electric.setSceneIndex(spSelectScene.getSelectedItemPosition());
+                    electric.setSceneIndex(touchsecneIndex);
                     updateSceneElectricName(electric.getElectricIndex(),electricName);
                     mDC.mSceneElectricData.updateSceneElectric(electric.getElectricIndex(), electricName);
                     mDC.mElectricData.updateElectric(electric.getElectricIndex()
-                            ,electricName, spSelectScene.getSelectedItemPosition());
+                            ,electricName, touchsecneIndex);
                 }
                 handler.sendMessage(msg);
             }
