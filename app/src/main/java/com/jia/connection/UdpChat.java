@@ -38,7 +38,7 @@ public class UdpChat {
     }
     public ArrayList<String> init(String IP) throws IOException
     {
-        InetAddress address = InetAddress.getByName(IP);
+        InetAddress address = InetAddress.getByName("255.255.255.255");
         try//创建键盘输入流
         {
             //创建用于发送、接收数据的MulticastSocket对象
@@ -49,7 +49,7 @@ public class UdpChat {
             socket.joinGroup(broadcastAddress);
             //设置本MulticastSocket发送的数据报会发送到本身
             socket.setLoopbackMode(false);
-            socket.setSoTimeout(10000);
+            socket.setSoTimeout(5000);
             //初始化发送用的DatagramPacket，它包含一个长度为0的字节数组
             outPacket = new DatagramPacket(new byte[0],0,address,48899);
 
