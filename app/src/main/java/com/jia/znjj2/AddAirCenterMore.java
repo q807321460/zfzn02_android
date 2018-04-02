@@ -22,6 +22,7 @@ public class AddAirCenterMore extends Activity {
     private TextView tvTitle;
     private EditText outerAddress;
     private EditText innerAddress;
+    private EditText aircenterName;
     public DataControl mDC;
     public ElectricInfoData electric;
     public static String aircode;
@@ -62,6 +63,8 @@ public class AddAirCenterMore extends Activity {
         tvTitle = (TextView)findViewById(R.id.add_air_center);
         outerAddress = (EditText)findViewById(R.id.outer_address);
         innerAddress = (EditText)findViewById(R.id.inner_address);
+        aircenterName = (EditText)findViewById(R.id.air_center_name);
+
     }
     public void airCenterinfoBack(View view){
        finish();
@@ -76,6 +79,7 @@ public class AddAirCenterMore extends Activity {
         dialog.show();
         final String OuterAddress = outerAddress.getText().toString();
         final String InnerAddress = innerAddress.getText().toString();
+        final String airName = aircenterName.getText().toString();
          aircode = OuterAddress+InnerAddress;
         final String msCode =  mDC.sMasterCode;
         final int ecIndex = AirCenterMoreActivity.aircenterelectricIndex;
