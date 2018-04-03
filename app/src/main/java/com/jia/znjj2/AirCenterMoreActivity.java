@@ -363,7 +363,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     }
     private void onDeal(String str1,String firstCount){
         i = checkedStr.size();
-        strNumber= String.valueOf(i);
+        strNumber= Integer.toHexString(i);
         int checkSum = 0;
         int count=0;
         StringBuffer sb = new StringBuffer();
@@ -372,7 +372,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             sb.append(entry.getKey());
             checkSum = checkSum + entry.getValue();
         }
-        count=checkSum+ parseInt(strNumber,10)+ parseInt(firstCount,16);
+        count=checkSum+ parseInt(strNumber,16)+ parseInt(firstCount,16);
         int mod = count % 256;
         String hex = Integer.toHexString(mod);
         int len = hex.length();
@@ -383,11 +383,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         if(strNumber.length()<2){
             strNumber="0"+strNumber;
         }
-        if(checkForAll==false) {
             order = str1 + strNumber + sb + hex;
-        }else {
-            order = str1 + stAllCheck + firstCount;
-        }
         if(order.length()>13) {
             open(order);
         }
