@@ -15,16 +15,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.jia.data.DataControl;
 import com.jia.util.NetworkUtil;
 import com.jia.widget.AirCenterAdapter;
 import com.jia.widget.AirCenterAdapter.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.TreeMap;
 
 import static com.jia.widget.AirCenterAdapter.getIsSelected;
@@ -33,7 +34,7 @@ import static java.lang.Integer.parseInt;
 
 public class AirCenterMoreActivity extends ElectricBase implements View.OnClickListener {
     public static int aircenterelectricIndex;
-    public static String airCenterInfo;
+    public static ArrayList<String>  airCenterInfoList;
     private ProgressDialog dialog;
     private ProgressDialog dialog1;
     private ProgressDialog dialog2;
@@ -51,6 +52,8 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     public  ArrayList<String> list5;
     public  ArrayList<String> list6;
     public  ArrayList<String> list7;
+    public static ArrayList<String> aircenterNamelist8;
+    public  ArrayList<String> list9;
     private ArrayList<String> check_list;
 
 
@@ -149,64 +152,59 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             }
         });
 
-        final String order = dealRefresh(list1);
-        if(order!="1"){
-        if(order != "1"){Toast.makeText(AirCenterMoreActivity.this,"正在为您获取空调信息刷新界面，请您耐心等待几秒",Toast.LENGTH_LONG).show();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                airCenterInfo =null;
-                    open(order);
-                    new Thread(){
-                        Message msg =new Message();
-                        public void run(){
-                            try {
-                                sleep(4000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            String abc = airCenterInfo;
-                            String abc1 = null;
-                            if(abc==null){
-                                msg.what=0x123;
-                                handler.sendMessage(msg);
-                            }else{
-                                if(airCenterInfo.substring(0,2).equals("Z0")){
-                                    abc1 = abc.substring(10,abc.length()-2);
-                                }else {
-                                    abc1 = abc.substring(8,abc.length()-2);
-                                }
-                                int a = abc1.length();
-                                int j=0;
-                                String[] str = new String[a/20];
-                                for(int i=0;i<a/20;i++){
-                                    str[i] = abc1.substring(j,j+20);
-                                    j=j+20;
-                                }
-                                for(int i=0;i<str.length;i++){
-                                    ArrayList<String> list = new ArrayList<String>();
-                                    list = null;
-                                    list = dealRefreshData(str[i]);
-                                    int no =list.size();
-                                    list2.set(i, list.get(no-6));
-                                    list3.set(i, list.get(no-5));
-                                    list4.set(i, list.get(no-4));
-                                    list5.set(i, list.get(no-3));
-                                    list6.set(i, list.get(no-2));
-                                    list7.set(i, list.get(no-1));
-                                }
-                                msg.what=0x122;
-                                handler.sendMessage(msg);
-                            }
-                        }
-                    }.start();
-            }
-            };
-        Timer timer = new Timer();
-        timer.schedule(task, 1);
-    }
+//        final String order = dealRefresh(list8);
+//        if(order != "1")
+//        {Toast.makeText(AirCenterMoreActivity.this,"正在为您获取空调信息刷新界面，请您耐心等待几秒",Toast.LENGTH_LONG).show();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                    new Thread(){
+//                        Message msg =new Message();
+//                        public void run(){
+//                            airCenterInfoList=new ArrayList<>();
+//                            try {
+//                                String order = dealRefresh(list8);
+//                                open(order);
+//                                sleep(2800+list1.size()*500);
+//                                removeRepeat(airCenterInfoList);
+//                            } catch (InterruptedException e) {
+//                                e.printStackTrace();
+//                            }
+//                            if(airCenterInfoList.size()==0){
+//                                msg.what=0x123;
+//                                handler.sendMessage(msg);
+//                            }else{
+//                                for(int i=0;i<list1.size();i++){
+//                                    String airCenterInfo = airCenterInfoList.get(i);
+//                                    String abc1 = null;
+//                                    if(airCenterInfo.substring(0,2).equals("Z0")){
+//                                        abc1 = airCenterInfo.substring(10,airCenterInfo.length()-2);
+//                                    }else {
+//                                        abc1 = airCenterInfo.substring(8,airCenterInfo.length()-2);
+//                                    }
+//                                    ArrayList<String> list = new ArrayList<String>();
+//                                    list = null;
+//                                    list = dealRefreshData(abc1);
+//                                    int no =list.size();
+//                                    list2.set(i, list.get(no-6));
+//                                    list3.set(i, list.get(no-5));
+//                                    list4.set(i, list.get(no-4));
+//                                    list5.set(i, list.get(no-3));
+//                                    list6.set(i, list.get(no-2));
+//                                    list7.set(i, list.get(no-1));
+//                                }
+//                                msg.what=0x122;
+//                                handler.sendMessage(msg);
+//                            }
+//                        }
+//                    }.start();
+//            }
+//            };
+//        Timer timer = new Timer();
+//        timer.schedule(task, 1);
+//    }
         }
-    }
+
 
     protected void onResume() {
         super.onResume();
@@ -220,14 +218,16 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     }
 
    public void initDate(){
-       list1 = new ArrayList<String>();
-       list2 = new ArrayList<String>();
-       list3 = new ArrayList<String>();
-       list4 = new ArrayList<String>();
-       list5 = new ArrayList<String>();
-       list6 = new ArrayList<String>();
-       list7 = new ArrayList<String>();
-        if(electric.getExtras().equals("[]")||electric.getExtras().equals("anyType")){
+       list1 = new ArrayList<>();
+       list2 = new ArrayList<>();
+       list3 = new ArrayList<>();
+       list4 = new ArrayList<>();
+       list5 = new ArrayList<>();
+       list6 = new ArrayList<>();
+       list7 = new ArrayList<>();
+       list9 = new ArrayList<>();
+       aircenterNamelist8 = new ArrayList<>();
+        if(electric.getExtras().equals("{}")||electric.getExtras().equals("anyType{}")){
             list1.add("无空调记录");
             list2.add("开/关：" + " ");
             list3.add("模式" + " ");
@@ -236,11 +236,17 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             list6.add("室温" + " ");
             list7.add("错误信息" + " ");
         }else{
-        String number = electric.getExtras().substring(1,electric.getExtras().length()-1);
-        String No[] = number.split(",");
-            for (int i = 0; i < No.length; i++) {
-                String a = No[i].substring(1,3)+"-"+No[i].substring(3,5);
-                list1.add(a);}
+        String extras = electric.getExtras();
+            Map maps = (Map) JSON.parse(extras);
+            List<Map<String,Object>> listItems = new ArrayList<Map<String, Object>>();
+            for (Object map : maps.entrySet()){
+                list9.add(((Map.Entry)map).getKey().toString());
+              }
+            aircenterNamelist8 = new ArrayList<>(list9);
+            Collections.sort(aircenterNamelist8);
+            for(int i=0;i<aircenterNamelist8.size();i++){
+                list1.add((String) maps.get(aircenterNamelist8.get(i)));
+            }
             for (int i = 0; i < list1.size(); i++) {
                 list2.add("开/关");
                        }
@@ -259,6 +265,8 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             for (int i = 0; i < list1.size(); i++) {
                 list7.add("错误信息" );
                        }
+            for (int i = 0; i < list1.size(); i++) {
+            }
         }
        }
         @Override
@@ -272,7 +280,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         etElectricName.setFocusable(true);
         etElectricName.setFocusableInTouchMode(true);
         etElectricName.requestFocus();
-    }
+        }
     public void AirMoreSave(View view){
         final String electricName = etElectricName.getText().toString();
         new Thread(){
@@ -345,7 +353,6 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         tvTitleName.setText(electric.getElectricName());
         etElectricName.setText(electric.getElectricName());
         aircenterList = (ListView)findViewById(R.id.air_center_list);
-
     }
    public void addAirCenter(View view){
         Intent intent = new Intent(AirCenterMoreActivity.this,AddAirCenterMore.class);
@@ -542,40 +549,35 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         dialog1.setTitle("提示");
         dialog1.setMessage("正在查询空调状态，请稍候");
         dialog1.show();
-        airCenterInfo =null;
-        String order = dealRefresh(list1);
+        airCenterInfoList=new ArrayList<>();
+        final String order = dealRefresh(aircenterNamelist8);
         if(order != "1"){
-            open(order);
         new Thread(){
             Message msg =new Message();
             public void run(){
                 try {
-                    sleep(6500);
+                    open(order);
+                    sleep(2800+list1.size()*500);
+                    removeRepeat(airCenterInfoList);
+                    System.out.print(airCenterInfoList);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                String abc = airCenterInfo;
-                String abc1 = null;
-                if(abc==null){
+                if(airCenterInfoList.size()==0||airCenterInfoList.size()!=aircenterNamelist8.size()){
                     msg.what=0x1235;
                     handler.sendMessage(msg);
-                }else{
+                }else if(airCenterInfoList.size()==aircenterNamelist8.size()){
+                    for(int i=0;i<list1.size();i++){
+                        String airCenterInfo = airCenterInfoList.get(i);
+                        String abc1 = null;
                 if(airCenterInfo.substring(0,2).equals("Z0")){
-                     abc1 = abc.substring(10,abc.length()-2);
+                     abc1 = airCenterInfo.substring(10,airCenterInfo.length()-2);
                 }else {
-                     abc1 = abc.substring(8,abc.length()-2);
+                     abc1 = airCenterInfo.substring(8,airCenterInfo.length()-2);
                 }
-                int a = abc1.length();
-                int j=0;
-                String[] str = new String[a/20];
-                for(int i=0;i<a/20;i++){
-                    str[i] = abc1.substring(j,j+20);
-                    j=j+20;
-                }
-                for(int i=0;i<str.length;i++){
                     ArrayList<String> list = new ArrayList<String>();
                     list = null;
-                    list = dealRefreshData(str[i]);
+                    list = dealRefreshData(abc1);
                     int no =list.size();
                     list2.set(i, list.get(no-6));
                     list3.set(i, list.get(no-5));
@@ -584,9 +586,9 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                     list6.set(i, list.get(no-2));
                     list7.set(i, list.get(no-1));
                 }
-                msg.what=0x1234;
-                handler.sendMessage(msg);
-            }
+                    msg.what=0x1234;
+                    handler.sendMessage(msg);
+                }
             }
         }.start();}
         else{
@@ -597,10 +599,10 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     public void aircentersure(View view){
         checkedStr.clear();
         ArrayList<String> choiceList = new ArrayList<String>();
-        for (int i = 0; i < list1.size(); i++) {
+        for (int i = 0; i < aircenterNamelist8.size(); i++) {
             if (AirCenterAdapter.getIsSelected().get(i)) {
-                String haschecked = list1.get(i);
-                choiceList.add(haschecked.substring(0,2)+haschecked.substring(3,5));
+                String haschecked = aircenterNamelist8.get(i);
+                choiceList.add(haschecked);
             }
         }
         for(int i = 0;i<choiceList.size();i++) {
@@ -625,23 +627,18 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         new Thread(){
             public void run(){
                 Message msg = new Message();
-                ArrayList<String> deleteList = new ArrayList<String>();
-                for (int i = 0; i < list1.size(); i++) {
-                    if (AirCenterAdapter.getIsSelected().get(i)) {
-                        String haschecked = list1.get(i);
-                        deleteList.add(haschecked.substring(0,2)+haschecked.substring(3,5));
-                    }
-                }
-                if(deleteList.size()==0){
+                if(list1.size()==0){
                     msg.what=0x1062;
                     handler.sendMessage(msg);
                 }
-                for(int i = 0;i<deleteList.size();i++){
-                    mDC.mWS.deleteCentralAir(electric.getMasterCode(),electric.getElectricIndex(),deleteList.get(i));
-                    mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),AirCenterMoreActivity.this);
+                for(int i = 0;i<list1.size();i++){
+                        if (AirCenterAdapter.getIsSelected().get(i)) {
+                            mDC.mWS.deleteCentralAir(electric.getMasterCode(),electric.getElectricIndex(),aircenterNamelist8.get(i),list1.get(i));
+                        }
                     }
                     if(true){
                         msg.what=0x1063;
+                        mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),AirCenterMoreActivity.this);
                         handler.sendMessage(msg);
                     }
             }
@@ -657,8 +654,8 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         if(list.size()==0||list.get(0)=="无空调记录"){
             refreshorder ="1";
         }else if(list.size()==1){
-              air_code = list.get(0).substring(0,2)+list.get(0).substring(3,5);
-            int a = parseInt(list.get(0).substring(0,2),16)+ parseInt(list.get(0).substring(3,5),16);
+            air_code = list.get(0);
+            int a = parseInt(list.get(0).substring(0,2),16)+ parseInt(list.get(0).substring(2,4),16);
             int b = 83+a;
             if(b<256){
                 check_sum= Integer.toHexString(b);
@@ -670,8 +667,8 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         }else if(list.size()<16){
             String check_NO = Integer.toHexString(list.size());
             for(int i=0;i<list.size();i++){
-                String a =list.get(i).substring(0,2)+list.get(i).substring(3,5);
-                int b = parseInt(list.get(i).substring(0,2),16)+ parseInt(list.get(i).substring(3,5),16);
+                String a =list.get(i);
+                int b = parseInt(list.get(i).substring(0,2),16)+ parseInt(list.get(i).substring(2,4),16);
                 air_code_no=air_code_no+b;
                 air_code = air_code+a;
             }
@@ -683,11 +680,11 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                 check_sum = "FF";
                 refreshorder = str2+"0"+check_NO+air_code+check_sum;
             }
-        }else if(list.size()<16){
+        }else if(list.size()>=16){
             String check_NO = Integer.toHexString(list.size());
             for(int i=0;i<list.size();i++){
-                String a =list.get(i).substring(0,2)+list.get(i).substring(3,5);
-                int b = parseInt(list.get(i).substring(0,2),16)+ parseInt(list.get(i).substring(3,5),16);
+                String a =list.get(i);
+                int b = parseInt(list.get(i).substring(0,2),16)+ parseInt(list.get(i).substring(2,4),16);
                 air_code_no=b;
                 air_code = air_code+a;
             }
@@ -697,7 +694,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                 refreshorder = str2+check_NO+air_code+check_sum;
             }else{
                 check_sum = "FF";
-                refreshorder = str2+"0"+check_NO+air_code+check_sum;
+                refreshorder = str2+check_NO+air_code+check_sum;
             }
         }
         return refreshorder;
@@ -760,7 +757,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         if(str.substring(14,16).equals("00")){
             list.add("无错误信息");
         }else{
-            list.add("无错误信息");
+            list.add("出现错误");
         }
 
         return list;
@@ -775,5 +772,17 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
          }
      }
  }
+    public  void removeRepeat(List list) {
+        for (int i=0;i<list.size();i++) {
+            for (int j=list.size()-1;j>i;j--){
+                if (list.get(j).equals(list.get(i))) {
+                    list.remove(j);
+                }
+            }
+        }
+    }
+    public void updateAirCentralName(View view){
+        Intent intent = new Intent(AirCenterMoreActivity.this,UpdateAirCenterName.class);
+        startActivity(intent);
+    }
 }
-

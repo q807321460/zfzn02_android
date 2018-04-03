@@ -10,9 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/air_center_more_back"
                 android:layout_width="40dp"
@@ -20,41 +22,44 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/layout_15"
-                android:src="@drawable/back"
-                android:onClick="AirMoreBack"/>
+                android:onClick="AirMoreBack"
+                android:src="@drawable/back" />
+
             <TextView
                 android:id="@+id/air_center_more_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="22sp"
+                android:text=""
                 android:textColor="@color/text_color"
-                android:text=""/>
+                android:textSize="22sp" />
+
             <TextView
                 android:id="@+id/air_center_more_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="@dimen/margin_15"
-                android:textSize="20sp"
-                android:textColor="@color/text_color_select"
                 android:clickable="true"
+                android:onClick="AirMoreEdit"
                 android:text="编辑"
-                android:onClick="AirMoreEdit"/>
+                android:textColor="@color/text_color_select"
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/air_center_more_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
                 android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="@dimen/margin_15"
-                android:textSize="22sp"
-                android:textColor="@color/text_color"
-                android:text="保存"
                 android:clickable="true"
                 android:onClick="AirMoreSave"
-                android:visibility="gone"/>
+                android:text="保存"
+                android:textColor="@color/text_color"
+                android:textSize="22sp"
+                android:visibility="gone" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -263,18 +268,27 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
-    <Button
+        <Button
         android:id="@+id/btn_ok"
-        android:layout_width="174dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="确认选择"
-        android:onClick="aircentersure"/>
+        android:onClick="aircentersure"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/btn_deleter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="删除选择"
-            android:onClick="aircenterdelete"/>
+            android:onClick="aircenterdelete"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="重新命名"
+            android:layout_weight="1"
+            android:onClick="updateAirCentralName"/>
         </LinearLayout>
 
     <LinearLayout

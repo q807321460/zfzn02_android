@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-import static com.jia.znjj2.AirCenterMoreActivity.airCenterInfo;
+import static com.jia.znjj2.AirCenterMoreActivity.airCenterInfoList;
 
 /**
  * Created by Jia on 2016/5/15.
@@ -74,11 +74,11 @@ public class Util {
             electricCode = string.substring(0,12);
             electricState = string.substring(12,14);
             stateInfo = string.substring(14,24);
-        }else if(string.length()>26){
+        }else if(string.length()>40){
             electricCode = string.substring(0,12);
             electricState = string.substring(12,14);
             stateInfo = string.substring(14,string.length()-2);
-            airCenterInfo = stateInfo;
+            airCenterInfoList.add(stateInfo);
         }
 
         String[] strings = {electricState,stateInfo};

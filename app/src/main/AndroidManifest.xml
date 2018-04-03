@@ -243,7 +243,8 @@
         <activity android:name=".ChangeAccount"
             android:screenOrientation="portrait"/>
         <activity android:name=".RoomList" />
-        <activity android:name=".AirCenterMoreActivity"
+        <activity
+            android:name=".AirCenterMoreActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".ForgetPasswordActivity"
             android:screenOrientation="portrait"/>
@@ -258,6 +259,8 @@
         <activity android:name=".WeekTime"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".AddAirCenterMore"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".UpdateAirCenterName"
             android:screenOrientation="portrait"></activity>
     </application>
 

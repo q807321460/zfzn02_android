@@ -91,7 +91,7 @@ public class AddAirCenterMore extends Activity {
                     msg.what = 0x1103;
                     handler.sendMessage(msg);
                 }else{
-                    String result = mDC.mWS.addCentralAir(msCode,ecIndex,aircode);
+                    String result = mDC.mWS.addCentralAir(msCode,ecIndex,aircode,airName);
                     mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),AddAirCenterMore.this);
                 if(result.startsWith("-2")){
                     msg.what = 0x1100;
