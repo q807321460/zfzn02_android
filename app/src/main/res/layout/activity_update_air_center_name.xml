@@ -30,24 +30,11 @@
                 android:text="修改空调所在房间信息"
                 android:textColor="@color/text_color"
                 android:textSize="22sp" />
-            <TextView
-                android:id="@+id/air_center_more_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/margin_15"
-                android:clickable="true"
-                android:onClick="SaveNewAirCenterName"
-                android:text="保存"
-                android:textColor="@color/text_color_select"
-                android:textSize="20sp" />
-
         </RelativeLayout>
     </LinearLayout>
 
     <ListView
-        android:id="@+id/warn_info_list"
+        android:id="@+id/air_center_detail_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

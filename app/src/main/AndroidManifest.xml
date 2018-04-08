@@ -262,6 +262,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".UpdateAirCenterName"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".AirCenterSingleName"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

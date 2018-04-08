@@ -3662,7 +3662,7 @@ public class WebService {
             SoapSerializationEnvelope envelope;
             SoapObject soapObject;
             SoapObject result;
-            methodName = "deleteCentralAir";
+            methodName = "updateCentralAirName";
             soapAction = SERVICE_NS + methodName;
 
             // 使用SOAP1.1协议创建Envelop对象
