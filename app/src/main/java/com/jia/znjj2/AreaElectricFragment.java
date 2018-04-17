@@ -243,19 +243,20 @@ public class AreaElectricFragment extends Fragment {
 							}
 
 						}
-					} else if(electricType==6) {
-						if (electricState.equals("XG")) {
-							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
-						} else if (electricState.equals("XH") || electricState.equals("XI")) {
+					}
+					else if(electricType==6) {
+						if (electricState.equals("XH") || electricState.equals("XI")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain_on);
+						}else  {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
 						}
 					}
 					else if(electricType==7) {
-						if (electricState.equals("XG")) {
-							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window);
-						} else if (electricState.equals("XH") || electricState.equals("XI")) {
+						 if (electricState.equals("XH") || electricState.equals("XI")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window_on);
-						}
+						}else{
+							 viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window);
+						 }
 					}
 					else if (electricType == 10){
 						if (electricInfoData.getOrderInfo().equals("01")){
@@ -268,10 +269,10 @@ public class AreaElectricFragment extends Fragment {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_swift4_right1);
 						}
 					}else if(electricType==11) {
-						if (electricState.equals("ZV")) {
-							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_armon);
-						} else if (electricState.equals("ZW") || electricState.equals("ZU")) {
+						if (electricState.equals("ZW") || electricState.equals("ZU")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_arm_close1);
+						}else {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_armon);
 						}
 
 					}
