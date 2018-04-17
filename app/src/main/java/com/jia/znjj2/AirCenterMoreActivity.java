@@ -553,7 +553,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             public void run(){
                 try {
                     open(order);
-                    sleep(2800+aircenterNumberlist1.size()*500);
+                    sleep(4500+aircenterNumberlist1.size()*500);
                     removeRepeat(airCenterInfoList);
                     System.out.print(airCenterInfoList);
                 } catch (InterruptedException e) {
@@ -743,7 +743,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             list.add("风速高");
         }else if(str.substring(10,12).equals("02")){
             list.add("风速中");
-        }else if(str.substring(10,12).equals("04")){
+        }else {
             list.add("风速低");
         }
 

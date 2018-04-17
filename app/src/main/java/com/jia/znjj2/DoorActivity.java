@@ -148,11 +148,11 @@ public class DoorActivity extends ElectricBase {
                 }else {
                     if(-1 != electric.getSceneIndex()){
                         for(int i = 0; i<mDC.mSceneList.size();i++){
-                            if(Integer.parseInt((String) json.get("SH")) == electric.getSceneIndex()){
-                                int j=Integer.parseInt((String) json.get("SH"));
-
-                                        tvOpenScene.setText(mDC.mSceneList.get(j).getSceneName());
-                                    ivOpenScene.setImageResource(mDC.mSceneList.get(j).getSceneImg());
+                            int number  = mDC.mSceneList.get(i).getSceneIndex();
+                            System.out.print(number);
+                            if(Integer.parseInt((String) json.get("SH")) == number){
+                                    tvOpenScene.setText(mDC.mSceneList.get(i).getSceneName());
+                                    ivOpenScene.setImageResource(mDC.mSceneList.get(i).getSceneImg());
                             }
                         }
                     }
@@ -165,10 +165,11 @@ public class DoorActivity extends ElectricBase {
                 }else {
                     if(-1 != electric.getSceneIndex()){
                         for(int i = 0; i<mDC.mSceneList.size();i++){
-                            if(Integer.parseInt((String) json.get("SG")) == electric.getSceneIndex()){
-                                int j=Integer.parseInt((String) json.get("SG"));
-                                tvCloseScene.setText(mDC.mSceneList.get(j).getSceneName());
-                                ivCloseScene.setImageResource(mDC.mSceneList.get(j).getSceneImg());
+                            int number  = mDC.mSceneList.get(i).getSceneIndex();
+                            System.out.print(number);
+                            if(Integer.parseInt((String) json.get("SG"))==number){
+                                tvCloseScene.setText(mDC.mSceneList.get(i).getSceneName());
+                                ivCloseScene.setImageResource(mDC.mSceneList.get(i).getSceneImg());
                             }
                         }
                     }
@@ -232,7 +233,7 @@ public class DoorActivity extends ElectricBase {
         };
         spSelectScene.setAdapter(localAdapter);
         if(-1 != electric.getSceneIndex()){
-            spSelectScene.setSelection(electric.getSceneIndex());
+            spSelectScene.setSelection(0);
         }
 
     }

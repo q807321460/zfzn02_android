@@ -49,6 +49,10 @@ public class AddAirCenterMore extends Activity {
                     dialog.cancel();
                     Toast.makeText(AddAirCenterMore.this, "空调内地址或外地址不能为空值", Toast.LENGTH_SHORT).show();
                     break;
+                case 0x1104:
+                    dialog.cancel();
+                    Toast.makeText(AddAirCenterMore.this, "空调地址格式错误", Toast.LENGTH_SHORT).show();
+                    break;
             }
         }
     };
@@ -89,6 +93,9 @@ public class AddAirCenterMore extends Activity {
                 Message msg = new Message();
                 if(OuterAddress.equals("")||InnerAddress.equals("")){
                     msg.what = 0x1103;
+                    handler.sendMessage(msg);
+                } if(OuterAddress.length()!=2||InnerAddress.length()!=2){
+                    msg.what = 0x1104;
                     handler.sendMessage(msg);
                 }else{
                     String result = mDC.mWS.addCentralAir(msCode,ecIndex,aircode,airName);
