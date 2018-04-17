@@ -245,14 +245,14 @@ public class AreaElectricFragment extends Fragment {
 						}
 					}
 					else if(electricType==6) {
-						if (electricState.equals("XH") || electricState.equals("XI")) {
+						if (electricState.equals("ZU") ) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain_on);
 						}else  {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
 						}
 					}
 					else if(electricType==7) {
-						 if (electricState.equals("XH") || electricState.equals("XI")) {
+						 if (electricState.equals("ZV") || electricState.equals("ZU")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window_on);
 						}else{
 							 viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_window);
@@ -269,7 +269,7 @@ public class AreaElectricFragment extends Fragment {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_swift4_right1);
 						}
 					}else if(electricType==11) {
-						if (electricState.equals("ZW") || electricState.equals("ZU")) {
+						if (electricState.equals("ZV") || electricState.equals("ZU")) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_arm_close1);
 						}else {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_armon);
