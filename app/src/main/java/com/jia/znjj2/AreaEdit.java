@@ -31,8 +31,6 @@ import com.jia.camera.business.entity.ChannelInfo;
 import com.jia.data.DataControl;
 import com.jia.data.ElectricInfoData;
 import com.jia.data.RoomData;
-import com.jia.data.SceneData;
-import com.jia.data.SceneElectricData;
 import com.jia.widget.DragAdapterInterface;
 import com.jia.widget.DragCallback;
 import com.jia.widget.DragGridView;
@@ -81,6 +79,7 @@ public class AreaEdit extends Activity {
                     Toast.makeText(AreaEdit.this,"删除电器失败，稍候重试",Toast.LENGTH_LONG).show();
                     break;
                 case 0x1087:
+                    mDC.mAreaData.loadAreaList();
                     Toast.makeText(AreaEdit.this,"删除电器成功",Toast.LENGTH_LONG).show();
                     updateView();
                     break;
@@ -598,7 +597,6 @@ public class AreaEdit extends Activity {
                             mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricIndex(),
                             mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricSequ(),
                             mDC.mAreaList.get(roomPosition).getRoomIndex());
-                    mDC.mAreaData.loadAreaList();
                     mDC.mSceneElectricData.deleteSceneElectric(mDC.sMasterCode
                             ,mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getElectricIndex()
                             , mDC.mAreaList.get(roomPosition).getmElectricInfoDataList().get(position).getSceneIndex());

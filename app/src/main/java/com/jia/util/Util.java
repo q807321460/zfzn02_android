@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 import static com.jia.znjj2.AirCenterMoreActivity.airCenterInfoList;
+import static com.jia.znjj2.AirCenterMoreActivity.aircenterinfoback;
 
 /**
  * Created by Jia on 2016/5/15.
@@ -79,6 +80,8 @@ public class Util {
             electricState = string.substring(12,14);
             stateInfo = string.substring(14,string.length()-2);
             airCenterInfoList.add(stateInfo);
+        }else{
+            aircenterinfoback = string;
         }
 
         String[] strings = {electricState,stateInfo};

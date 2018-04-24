@@ -35,6 +35,7 @@ import static java.lang.Integer.parseInt;
 public class AirCenterMoreActivity extends ElectricBase implements View.OnClickListener {
     public static int aircenterelectricIndex;
     public static ArrayList<String>  airCenterInfoList;
+    public static String aircenterinfoback;
     private ProgressDialog dialog;
     private ProgressDialog dialog1;
     private ProgressDialog dialog2;
@@ -123,6 +124,13 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                     adapter = new AirCenterAdapter(aircenterNumberlist1,list2,list3,list4,list5,list6,list7,AirCenterMoreActivity.this);
                     aircenterList.setAdapter(adapter);
                     Toast.makeText(AirCenterMoreActivity.this,"已经获取空调状态，请进行操作",Toast.LENGTH_LONG).show();
+                    break;
+                case 0x0001:
+                    adapter = new AirCenterAdapter(aircenterNumberlist1,list2,list3,list4,list5,list6,list7,AirCenterMoreActivity.this);
+                    aircenterList.setAdapter(adapter);
+                    for(int i=0;i<check_list.size();i++){
+                        AirCenterAdapter.getIsSelected().put(Integer.parseInt(check_list.get(i)),true);
+                    }
                     break;
             }
         }
@@ -396,122 +404,368 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         }else{
         switch (v.getId()){
             case R.id.rb_open:
+                aircenterinfoback = "";
                 stOrder="013101";
                 if(checkForAll==false){
                     stCount="33";
                 }else {
                     stCount="30";
                 }
-
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list2.set(Integer.parseInt(check_list.get(i)),"开机");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_close:
+                aircenterinfoback = "";
                 stOrder="013102";
                 if(checkForAll==false){
                     stCount="34";
                 }else {
                     stCount="31";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list2.set(Integer.parseInt(check_list.get(i)),"关机");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_cold:
+                aircenterinfoback = "";
                 stOrder="013301";
                 if(checkForAll==false){
                     stCount="35";
                 }else {
                     stCount="32";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list4.set(Integer.parseInt(check_list.get(i)),"制冷");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_hot:
+                aircenterinfoback = "";
                 stOrder="013308";
                 if(checkForAll==false){
                     stCount="3C";
                 }else {
                     stCount="39";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list4.set(Integer.parseInt(check_list.get(i)),"制热");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_wind:
+                aircenterinfoback = "";
                 stOrder="013304";
                 if(checkForAll==false){
                     stCount="38";
                 }else {
                     stCount="35";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list4.set(Integer.parseInt(check_list.get(i)),"送风");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_humit:
+                aircenterinfoback = "";
                 stOrder="013302";
                 if(checkForAll==false){
                     stCount="36";
                 }else {
                     stCount="33";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list4.set(Integer.parseInt(check_list.get(i)),"除湿");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_high:
+                aircenterinfoback = "";
                 stOrder="013401";
                 if(checkForAll==false){
                     stCount="36";
                 }else {
                     stCount="33";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list5.set(Integer.parseInt(check_list.get(i)),"风速高");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_mid:
+                aircenterinfoback = "";
                 stOrder="013402";
                 if(checkForAll==false){
                     stCount="37";
                 }else {
                     stCount="34";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list5.set(Integer.parseInt(check_list.get(i)),"风速中");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_low:
+                aircenterinfoback = "";
                 stOrder="013404";
                 if(checkForAll==false){
                     stCount="39";
                 }else {
                     stCount="36";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list5.set(Integer.parseInt(check_list.get(i)),"风速低");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_18:
+                aircenterinfoback = "";
                 stOrder="013212";
                 if(checkForAll==false){
                     stCount="45";
                 }else {
                     stCount="42";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list3.set(Integer.parseInt(check_list.get(i)),"温度:18℃");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_22:
+                aircenterinfoback = "";
                 stOrder="013216";
                 if(checkForAll==false){
                     stCount="49";
                 }else {
                     stCount="46";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list3.set(Integer.parseInt(check_list.get(i)),"温度:22℃");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_26:
+                aircenterinfoback = "";
                 stOrder="01321A";
                 if(checkForAll==false){
                     stCount="4D";
                 }else {
                     stCount="4A";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list3.set(Integer.parseInt(check_list.get(i)),"温度:26℃");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             case R.id.rb_30:
+                aircenterinfoback = "";
                 stOrder="01321E";
                 if(checkForAll==false){
                     stCount="51";
                 }else {
                     stCount="4E";
                 }
-                onDeal(stOrder,stCount);
+                keepcheck();
+                new Thread(){
+                    Message msg = new Message();
+                    public void run(){
+                        try{
+                            onDeal(stOrder,stCount);
+                            sleep(2500);
+                        }catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        if(aircenterinfoback!=""){
+                            for(int i=0;i<check_list.size();i++){
+                                list3.set(Integer.parseInt(check_list.get(i)),"温度:30℃");
+                            }
+                            msg.what=0x0001;
+                            handler.sendMessage(msg);
+                        }
+                    }
+                }.start();
                 break;
             default:
 
@@ -553,7 +807,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             public void run(){
                 try {
                     open(order);
-                    sleep(4500+aircenterNumberlist1.size()*500);
+                    sleep(4300+aircenterNumberlist1.size()*500);
                     removeRepeat(airCenterInfoList);
                     System.out.print(airCenterInfoList);
                 } catch (InterruptedException e) {
