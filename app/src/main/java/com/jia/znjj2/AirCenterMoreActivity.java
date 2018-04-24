@@ -235,7 +235,8 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
        list7 = new ArrayList<>();
        list9 = new ArrayList<>();
        aircenterNamelist8 = new ArrayList<>();
-        if(electric.getExtras().equals("{}")||electric.getExtras().equals("anyType{}")){
+
+       if(electric.getExtras()==null||electric.getExtras().equals("anyType{}")||electric.getExtras().equals("{}")){
             aircenterNumberlist1.add("无空调记录");
             list2.add("开/关：" + " ");
             list3.add("模式" + " ");
