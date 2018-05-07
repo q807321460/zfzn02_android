@@ -264,6 +264,8 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".AirCenterSingleName"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".LampbeltActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

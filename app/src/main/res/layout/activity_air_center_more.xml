@@ -19,11 +19,11 @@
                 android:id="@+id/air_center_more_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/layout_15"
                 android:onClick="AirMoreBack"
-                android:src="@drawable/back" />
+                android:src="@drawable/back"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/air_center_more_save"
+                android:layout_toEndOf="@+id/air_center_more_save" />
 
             <TextView
                 android:id="@+id/air_center_more_name"
@@ -264,32 +264,36 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
+
         <Button
-        android:id="@+id/btn_ok"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="确认选择"
-        android:onClick="aircentersure"
-            android:layout_weight="1"/>
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="aircentersure"
+            android:text="确认选择" />
+
         <Button
             android:id="@+id/btn_deleter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="删除选择"
+            android:layout_weight="1"
             android:onClick="aircenterdelete"
-            android:layout_weight="1"/>
+            android:text="删除选择" />
+
         <Button
             android:id="@+id/btn_update"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="重新命名"
             android:layout_weight="1"
-            android:onClick="updateAirCentralName"/>
-        </LinearLayout>
+            android:onClick="updateAirCentralName"
+            android:text="重新命名" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

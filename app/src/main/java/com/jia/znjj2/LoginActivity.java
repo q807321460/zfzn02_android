@@ -408,7 +408,7 @@ public class LoginActivity extends Activity{
         editor2.putString(lastAccount, mDC.sAccountCode);
         editor2.commit();
 
-        new Thread(){
+          new Thread(){
             @Override
             public void run() {
                 Looper.prepare();

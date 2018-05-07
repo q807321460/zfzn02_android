@@ -253,7 +253,7 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
               }
             aircenterNamelist8 = new ArrayList<>(list9);
             Collections.sort(aircenterNamelist8);
-            for(int i=0;i<aircenterNamelist8.size();i++){
+             for(int i=0;i<aircenterNamelist8.size();i++){
                 aircenterNumberlist1.add((String) maps.get(aircenterNamelist8.get(i)));
             }
             for (int i = 0; i < aircenterNumberlist1.size(); i++) {
@@ -791,6 +791,20 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
             NetworkUtil.out.println(order1);
         }
     }
+    public  void  localopen(final String order2){
+        String order1 = "<" + electric.getElectricCode()+mDC.orderSign+mDC.airSet + order2 + "FF"+">";
+        System.out.println("本地开电气： "+order1);
+        NetworkUtil.out.println(order1);
+    }
+    public  void  webopen(final String order2){
+        new Thread(){
+            @Override
+            public void run() {
+                mDC.mWS.updateElectricOrder(mDC.sMasterCode,electric.getElectricCode(),""+mDC.orderSign+mDC.airSet,order2);
+                System.out.println("远程开电器：");
+            }
+        }.start();
+    }
     public void refresh(View view){
         keepcheck();
         dialog1 = new ProgressDialog(this);
@@ -806,9 +820,13 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         new Thread(){
             Message msg =new Message();
             public void run(){
-                try {
-                    open(order);
-                    sleep(4300+aircenterNumberlist1.size()*500);
+                try {if(mDC.socketCrash || mDC.bIsRemote || checkNetConnection()){
+                    webopen(order);
+                    sleep(4500+aircenterNumberlist1.size()*450);
+                }else{
+                    localopen(order);
+                    sleep(2500+aircenterNumberlist1.size()*280);
+                }
                     removeRepeat(airCenterInfoList);
                     System.out.print(airCenterInfoList);
                 } catch (InterruptedException e) {
@@ -1038,6 +1056,5 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         startActivity(intent);}else{
             Toast.makeText(AirCenterMoreActivity.this,"请先添加空调",Toast.LENGTH_LONG).show();
         }
-
     }
 }
