@@ -247,7 +247,7 @@ public class AreaElectricFragment extends Fragment {
 					else if(electricType==6) {
 						if (electricState.equals("ZU") ) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain_on);
-						}else  {
+						}else {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
 						}
 					}
@@ -452,6 +452,13 @@ public class AreaElectricFragment extends Fragment {
 							break;
 						case 26:
 							intent = new Intent(getContext(),LampbeltActivity.class);
+							intent.putExtra("roomSequ",roomPosition);
+							intent.putExtra("electricSequ", position);
+							mPosition=position;
+							startActivity(intent);
+							break;
+						case 27:
+							intent = new Intent(getContext(),DuplexSwiftActivity.class);
 							intent.putExtra("roomSequ",roomPosition);
 							intent.putExtra("electricSequ", position);
 							mPosition=position;

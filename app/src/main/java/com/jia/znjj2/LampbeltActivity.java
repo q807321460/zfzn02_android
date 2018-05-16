@@ -98,12 +98,12 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
-                timeTX.setText("时间间隔" + Integer.toString(progress));
                 if(Integer.toString(progress).length()<2){
                     timeType = "0"+Integer.toString(progress);
-                 }else {
+                }else {
                     timeType = Integer.toString(progress);
                 }
+                timeTX.setText("时间间隔:" + timeType);
             }
 
             @Override
@@ -120,8 +120,8 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
-                lightTX.setText("亮度等级" + Integer.toString(progress));
-                lightType = "0"+Integer.toString(progress);
+                lightType = "0"+Integer.toString(progress+1);
+                lightTX.setText("亮度等级:" + lightType);
             }
 
             @Override
@@ -216,11 +216,10 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
         Toast.makeText(LampbeltActivity.this,"第"+colorlist.size()+"组颜色已选中",Toast.LENGTH_LONG).show();
     }
     public void BeltLampOpen(View view){
-        if(colorlist.size()<2) {
-            Toast.makeText(LampbeltActivity.this, "请选择至少两组颜色", Toast.LENGTH_LONG).show();
-        }else if(changeType!="00"&&changeType!="01"){
-            Toast.makeText(LampbeltActivity.this,"请选择变化类型",Toast.LENGTH_LONG).show();
-        }else if((changeType!="00"||changeType!="01")&&(colorlist.size()>=2)){
+        if((redrgb==0)&&(bluergb==0)&&(greenrgb==0)){
+            Toast.makeText(LampbeltActivity.this,"请先设置颜色",Toast.LENGTH_LONG).show();
+        }else{
+        if(colorlist.size()<5) {
             beltorder = lightType + timeType + changeType;
             int n = colorlist.size();
             if(n<10){
@@ -247,7 +246,10 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
                 System.out.println("本地开电气： "+order1);
                 NetworkUtil.out.println(order1);
             }
+        }else{
+            Toast.makeText(LampbeltActivity.this,"设置颜色过多",Toast.LENGTH_LONG).show();
         }
+    }
     }
     public void BeltLampLast(View view){
         if (mDC.socketCrash || mDC.bIsRemote || checkNetConnection()){
@@ -284,8 +286,16 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
             System.out.println("本地关电气： "+order1);
             NetworkUtil.out.println(order1);
         }
-        colorlist.clear();
     }
+    public void BeltLampClear(View view){
+        colorlist.clear();
+        redSB.setProgress(0);
+        greenSB.setProgress(0);
+        blueSB.setProgress(0);
+        Toast.makeText(LampbeltActivity.this,"灯带颜色组合已经清除，请重新添加颜色组合",Toast.LENGTH_LONG).show();
+
+    }
+
 
 
     @Override
@@ -294,6 +304,9 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
     }
 
     private void initView() {
+        timeType = "00";
+        lightType = "01";
+        changeType = "00";
         tvTitleName = (TextView) findViewById(R.id.lamp_belt_name);
         tvTitleEdit = (TextView) findViewById(R.id.lamp_belt_edit);
         tvTitleSave = (TextView) findViewById(R.id.lamp_belt_save);

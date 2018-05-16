@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/duplex_swift_title_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:onClick="DuplexSwiftBack"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/duplex_swift_title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/duplex_swift_title_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:clickable="true"
+                android:onClick="DuplexSwiftEdit"
+                android:text="编辑"
+                android:textColor="@color/text_color_select"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/duplex_swift_title_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/margin_15"
+                android:clickable="true"
+                android:onClick="DuplexSwiftSave"
+                android:text="保存"
+                android:textColor="@color/text_color"
+                android:textSize="22sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/duplex_swift_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:id="@+id/duplex_swift_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/duplex_swift_img"
+            android:background="@drawable/edittext_border_electric_name"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="玄关灯"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/duplex_swift_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="所属区域"
+            android:textColor="@color/hint_text"
+            android:textSize="16sp"
+            android:layout_below="@+id/duplex_swift_img"
+            android:layout_toRightOf="@+id/duplex_swift_name"
+            android:layout_toEndOf="@+id/duplex_swift_name" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bind_swift_bn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BindSwift"
+            android:text="添加绑定" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/binding_swift_electric_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           ></ImageView>
+
+        <TextView
+            android:id="@+id/binding_swift_electric_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="原绑定电器已经删除，请重新绑定"
+            android:textColor="@color/text_color_select"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bind_swift_sure_bn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="BindSwiftSure"
+            android:text="确认绑定" />
+
+        <Button
+            android:id="@+id/bind_swift_delete_bn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="DeleteBindingSwift"
+            android:text="解除绑定" />
+    </LinearLayout>
+</LinearLayout>

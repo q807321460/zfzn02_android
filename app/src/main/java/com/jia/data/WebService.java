@@ -3702,6 +3702,104 @@ public class WebService {
             return -1 + "";
         }
     }
+    public synchronized  String bindingDuplexSwift(String masterCode, int electricIndex,
+                                                     String roomIndex,String bindingIndex){
+        if(!mDC.bUseWeb)
+        {
+            return "-2";
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "bindingDuplexSwift";
+            soapAction = SERVICE_NS + methodName;
+
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("masterCode", masterCode);
+            soapObject.addProperty("electricIndex", electricIndex);
+            soapObject.addProperty("roomIndex", roomIndex);
+            soapObject.addProperty("bindingIndex", bindingIndex);
+
+            try {
+                ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+            return -1 + "";
+        }
+    }public synchronized  String deleteDuplexSwift(String masterCode, int electricIndex){
+        if(!mDC.bUseWeb)
+        {
+            return "-2";
+        }else {
+            HttpTransportSE ht = new HttpTransportSE(SERVICE_URL) ;
+            ht.debug = true;
+            SoapSerializationEnvelope envelope;
+            SoapObject soapObject;
+            SoapObject result;
+            methodName = "deleteDuplexSwift";
+            soapAction = SERVICE_NS + methodName;
+
+            // 使用SOAP1.1协议创建Envelop对象
+            envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);  // ②
+            // 实例化SoapObject对象
+            soapObject = new SoapObject(SERVICE_NS, methodName); // ③
+            // 将soapObject对象设置为 SoapSerializationEnvelope对象的传出SOAP消息
+            envelope.bodyOut = soapObject;  // ⑤
+            envelope.dotNet = true;
+            envelope.setOutputSoapObject(soapObject);
+
+            StringBuffer str = new StringBuffer();
+            soapObject.addProperty("masterCode", masterCode);
+            soapObject.addProperty("electricIndex", electricIndex);
+
+            try {
+                ht.call(soapAction, envelope);
+                if (envelope.getResponse() != null) {
+                    // 获取服务器响应返回的SOAP消息
+                    result = (SoapObject) envelope.bodyIn; // ⑦
+                    // 接下来就是从SoapObject对象中解析响应数据的过程了
+                    String flag = result.getProperty(0).toString();
+                    System.out.println("*********Webservice updateSceneName 服务器返回值：" + flag);
+                    return flag;
+                }
+            } catch (IOException e) {
+                System.out.println("*********Webservice updateSceneName IOException1");
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                System.out.println("*********Webservice updateSceneName IOException2");
+                e.printStackTrace();
+            } finally {
+                resetParam();
+            }
+            return -1 + "";
+        }
+    }
 
     private void resetParam(){
         envelope = null;

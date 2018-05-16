@@ -46,7 +46,6 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -265,6 +264,10 @@
         <activity android:name=".AirCenterSingleName"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".LampbeltActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".DuplexSwiftActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".BingdingSwiftActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

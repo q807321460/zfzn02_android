@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/activity_binding_swift_title_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/layout_15"
+                android:onClick="bindingSwiftBack"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/activity_binding_swift_title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可绑定情景开关列表"
+                android:textColor="@color/text_color"
+                android:textSize="22sp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ExpandableListView
+        android:id="@+id/binding_swift_electric_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+    </LinearLayout>

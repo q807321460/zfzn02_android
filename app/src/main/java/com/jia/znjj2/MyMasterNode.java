@@ -6,12 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +20,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import static android.content.ContentValues.TAG;
 
 public class MyMasterNode extends Activity {
     private ListView lvMasterNode;
@@ -289,20 +284,20 @@ public class MyMasterNode extends Activity {
             mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
             mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
 
-            String str = "";
-            str = (new MasterSocket()).getMasterNodeCode();
-            //str = "#AA00BB00";   //模拟搜索到主节点
-            if(str != null && !str.equals("") && str.length()>=9){
-                str = str.substring(1,9);
-                //mDC.sMasterCode = str;//待定
-            }else{
-                System.out.println("搜索主节点失败");
-            }
-            if(str.equals(mDC.sMasterCode)){
-                mDC.bIsRemote = false;
-            }else {
-                mDC.bIsRemote = true;
-            }
+//            String str = "";
+//            str = (new MasterSocket()).getMasterNodeCode();
+//            //str = "#AA00BB00";   //模拟搜索到主节点
+//            if(str != null && !str.equals("") && str.length()>=9){
+//                str = str.substring(1,9);
+//                //mDC.sMasterCode = str;//待定
+//            }else{
+//                System.out.println("搜索主节点失败");
+//            }
+//            if(str.equals(mDC.sMasterCode)){
+//                mDC.bIsRemote = false;
+//            }else {
+//                mDC.bIsRemote = true;
+//            }
 
             mDC.mWS.loadUserRoomFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getAreaTime());
             mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),MyMasterNode.this);

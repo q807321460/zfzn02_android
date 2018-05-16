@@ -36,10 +36,17 @@ import com.jia.data.ElectricInfoData;
 import com.jia.jdplay.JdDeviceListActivity;
 import com.jia.update.UpdateService;
 import com.jia.util.CreateImage;
+import com.jia.util.NetworkUtil;
 import com.jia.util.Util;
 import com.jia.widget.SlidingMenu;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.Socket;
 
 import static com.jia.znjj2.LoginActivity.userlogin;
 
@@ -101,6 +108,14 @@ public class HomeFragment extends Fragment {
                 case 0x1113:
                     Toast.makeText(getContext(), "无报警信息", Toast.LENGTH_LONG).show();
                     break;
+                case 0x1200:
+                    Toast.makeText(getContext(), "主机显示为本地", Toast.LENGTH_LONG).show();
+                    tvTitleText.setText("-本地");
+                    break;
+                case 0x1201:
+                    Toast.makeText(getContext(), "主机显示为远程", Toast.LENGTH_LONG).show();
+                    tvTitleText.setText("-远程");
+                    break;
             }
         }
     };
@@ -112,6 +127,45 @@ public class HomeFragment extends Fragment {
         initView();
         updateGridView();
         addListener();
+        new Thread(){
+            public void run(){
+                Message msg = new Message();
+                String str = "";
+                str = (new MasterSocket()).getMasterNodeCode();
+                //str = "#AA00BB00";   //模拟搜索到主节点
+                if(str != null && !str.equals("")){
+                    str = str.substring(1,9);
+                    //mDC.sMasterCode = str;//待定
+                }else{
+                    System.out.println("搜索主节点失败");
+                }
+                if(str.equals(mDC.sMasterCode)){
+                    mDC.bIsRemote = false;
+                    msg.what = 0x1200;
+
+                }else {
+                    mDC.bIsRemote = true;
+                    msg.what = 0x1201;
+                }
+                if(!mDC.bIsRemote) {
+                    try {
+                        int port = mDC.iUserPort;
+                        Socket socket = new Socket(mDC.sUserIP, port);
+                        /**
+                         * 设置网络，输入流，输出流
+                         */
+                        NetworkUtil.socket = socket;
+                        NetworkUtil.out = new PrintWriter(socket.getOutputStream(), true);
+                        NetworkUtil.br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                handler.sendMessage(msg);
+            }
+        }.start();
         return view;
     }
 
@@ -120,6 +174,7 @@ public class HomeFragment extends Fragment {
         super.onResume();
         System.out.println("HomeFragment onResume()");
         initView();
+        setTitleText();
         updateGridView();
     }
 
@@ -147,7 +202,6 @@ public class HomeFragment extends Fragment {
         rlVersion = (RelativeLayout) view.findViewById(R.id.left_menu_version_rl);
 
 
-        setTitleText();
 
 
         Bitmap bitmap = CreateImage.getLoacalBitmap(mDC.sUrlDir + mDC.sAccountCode+".jpg");

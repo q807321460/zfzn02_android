@@ -184,6 +184,7 @@ public class RoomData {
         int iAmount;//区域存储电器数目
         //区域的电器的列表
         ArrayList<ElectricInfoData> mElectricInfoDataList;
+        ArrayList<ElectricInfoData> mSwiftElectricInfoDataList;
         public RoomDataInfo() {
             mElectricInfoDataList = new ArrayList<>();
         }
@@ -239,7 +240,6 @@ public class RoomData {
         public ArrayList<ElectricInfoData> getmElectricInfoDataList() {
             return mElectricInfoDataList;
         }
-
         public void setmElectricInfoDataList(ArrayList<ElectricInfoData> mElectricInfoDataList) {
             this.mElectricInfoDataList = mElectricInfoDataList;
         }

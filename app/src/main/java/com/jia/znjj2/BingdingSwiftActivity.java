@@ -2,7 +2,6 @@ package com.jia.znjj2;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -19,75 +18,51 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jia.data.DataControl;
 import com.jia.data.ElectricInfoData;
 import com.jia.data.RoomData;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SceneAddElectric extends Activity {
+/**
+ * Created by ShengYi on 2018/5/11.
+ */
 
+public class BingdingSwiftActivity extends Activity {
     private DataControl mDC;
-    private ExpandableListView elvElectric;
-    private int roomPosition;
-    private int electricPosition;
-    private int scenePosition;
-    private String electricOrder;
-    private String orderInfo;
-
-    @Override
+    private ExpandableListView elvSwiftElectric;
+    private ArrayList<ElectricInfoData> getmSwiftInfoDataList;
+    public static int BindingSwiftIndex;
+    public static int SwiftRoomIndex;
+    public static int checkSwiftChange;
+    public int RoomPosition;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scene_add_electric);
+        setContentView(R.layout.actuivity_binding_swift);
         initView();
-        addListener();
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initView();
-    }
-
-    private void initView(){
-        mDC = DataControl.getInstance();
-        scenePosition = getIntent().getIntExtra("scenePosition", -1);
-        elvElectric = (ExpandableListView) findViewById(R.id.scene_add_electric_list);
         ExpandalbeGridAdaper adaper = new ExpandalbeGridAdaper();
-        elvElectric.setAdapter(adaper);
-        int group = elvElectric.getCount();
+        elvSwiftElectric.setAdapter(adaper);
+    }
+
+    private void initView() {
+        mDC = DataControl.getInstance();
+        elvSwiftElectric = (ExpandableListView)findViewById(R.id.binding_swift_electric_list);
+        ExpandalbeGridAdaper adaper = new ExpandalbeGridAdaper();
+        elvSwiftElectric.setAdapter(adaper);
+        checkSwiftChange = 0;
+        int group = elvSwiftElectric.getCount();
         if(1 <= group){
-            elvElectric.expandGroup(0);
+            elvSwiftElectric.expandGroup(0);
         }
     }
-
-    private void addListener(){
-        elvElectric.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Intent intent = new Intent(SceneAddElectric.this,SceneAddElectricDetail.class);
-                intent.putExtra("groupPosition",groupPosition);
-                intent.putExtra("groupPosition",childPosition);
-                startActivity(intent);
-                return false;
-            }
-        });
-    }
-
-    public void sceneAddElectricBack(View view){
-        finish();
-    }
-
-    public class ExpandalbeGridAdaper extends BaseExpandableListAdapter{
+    public class ExpandalbeGridAdaper extends BaseExpandableListAdapter {
         private List<RoomData.RoomDataInfo> areaList;
         private List<List<ElectricInfoData>> electricList;
         LayoutInflater inflater = LayoutInflater.from(getBaseContext());
         public ExpandalbeGridAdaper(){
             areaList = mDC.mAreaList;
-
         }
 
         @Override
@@ -127,12 +102,12 @@ public class SceneAddElectric extends Activity {
 
         @Override
         public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-            LinearLayout ll = new LinearLayout(SceneAddElectric.this);
+            LinearLayout ll = new LinearLayout(BingdingSwiftActivity.this);
             ll.setOrientation(LinearLayout.VERTICAL);
 //            ImageView logo = new ImageView(SceneAddElectric.this);
 //            logo.setImageResource(logos[groupPosition]);
 //            ll.addView(logo);
-            TextView textView = new TextView(SceneAddElectric.this);
+            TextView textView = new TextView(BingdingSwiftActivity.this);
             textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
             textView.setPadding(36, 6, 0, 6);
             textView.setTextSize(20);
@@ -168,16 +143,19 @@ public class SceneAddElectric extends Activity {
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(position).getElectricType()!=27){
-                    Intent intent = new Intent(SceneAddElectric.this,SceneAddElectricDetail.class);
-                    intent.putExtra("roomPosition", groupPosition);
-                    intent.putExtra("electricPosition", position);
-                    intent.putExtra("scenePosition", scenePosition);
-                    roomPosition = groupPosition;
-                    electricPosition = position;
-                    startActivity(intent);}else{
-                        Toast.makeText(SceneAddElectric.this,"双联开关无需加入情景，请选择其他情景电器",Toast.LENGTH_LONG).show();
+                    RoomPosition = groupPosition;
+
+                    for(int j=0;j<mDC.mAreaList.get( RoomPosition).getmElectricInfoDataList().size();j++){
+                        if((mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==1)
+                                ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==2)
+                                ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==3)){
+                            getmSwiftInfoDataList.add(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j));
+                        }
                     }
+                    SwiftRoomIndex = RoomPosition;
+                    BindingSwiftIndex = getmSwiftInfoDataList.get(position).getElectricIndex();
+                    checkSwiftChange = 1;
+                    finish();
                 }
             });
             return convertView;
@@ -189,7 +167,7 @@ public class SceneAddElectric extends Activity {
         }
     }
 
-    class GridAdapter extends BaseAdapter{
+    class GridAdapter extends BaseAdapter {
         private int groupPosition;
         private Context context;
         public GridAdapter(Context context,int position){
@@ -198,7 +176,15 @@ public class SceneAddElectric extends Activity {
         }
         @Override
         public int getCount() {
-            return mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().size();
+            getmSwiftInfoDataList = new ArrayList<ElectricInfoData>() ;
+            for(int i=0;i<mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().size();i++){
+                if((mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(i).getElectricType()==1)
+                    ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(i).getElectricType()==2)
+                    ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(i).getElectricType()==3)){
+                    getmSwiftInfoDataList.add(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(i));
+                }
+            }
+            return getmSwiftInfoDataList.size();
         }
 
         @Override
@@ -229,8 +215,15 @@ public class SceneAddElectric extends Activity {
             int i = (int)(loacalDisplayMetrics.heightPixels/loacalDisplayMetrics.density);
 
             if (position < mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().size()) {
-                viewHolder.electricImg.setBackgroundResource(mDC.mElectricTypeImages.getResourceId(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(position).getElectricType(),0));
-                viewHolder.electricName.setText(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(position).getElectricName());
+                for(int j=0;j<mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().size();j++){
+                    if((mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==1)
+                            ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==2)
+                            ||(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j).getElectricType()==3)){
+                        getmSwiftInfoDataList.add(mDC.mAreaList.get(groupPosition).getmElectricInfoDataList().get(j));
+                    }
+                }
+                viewHolder.electricImg.setBackgroundResource(mDC.mElectricTypeImages.getResourceId(getmSwiftInfoDataList.get(position).getElectricType(),0));
+                viewHolder.electricName.setText(getmSwiftInfoDataList.get(position).getElectricName());
             }else {
                 viewHolder.electricImg.setBackgroundResource(R.drawable.add);
                 viewHolder.electricName.setVisibility(View.GONE);
@@ -261,5 +254,8 @@ public class SceneAddElectric extends Activity {
         public ImageView electricImg;
         public TextView electricName;
         public ImageView delete;
+    }
+    public void bindingSwiftBack(View view){
+        finish();
     }
 }

@@ -114,6 +114,7 @@ public class DataControl
     public static String ELECTRIC_TYPE_TV1 = "09";   //24
     public static String ELECTRIC_TYPE_CENTER_AIR2 = "1100";//25
     public static String ELECTRIC_TYPE_LAMP_BELT = "1200";//26
+    public static String ELECTRIC_TYPE_DUPLEX_SWIFT = "0A01";//27
 
     //public String[] electricTypeCode = {"00","01","02","03","04","05","06","07","08","09","0A","0B","09","0D","0D","0D","0D"};
     public static String[] electricTypeCode = {
@@ -143,13 +144,14 @@ public class DataControl
             ELECTRIC_TYPE_NEWDOOR,
             ELECTRIC_TYPE_TV1,
             ELECTRIC_TYPE_CENTER_AIR2,
-            ELECTRIC_TYPE_LAMP_BELT
+            ELECTRIC_TYPE_LAMP_BELT,
+            ELECTRIC_TYPE_DUPLEX_SWIFT
     };
     public char orderSign = 'X', addSign = 'Y' , stateSign = 'Z';
     public char orderClose = 'G', orderOpen = 'H', orderStop = 'I';
     public char stateClose = 'W', stateOpen = 'V', stateStop = 'U';
     public char airInside='C',airSet='S',airWindLow='L',airWindMid='K',airWindHigh='J',airCold='M',
-                airHeat='N',airWind='O',airAuto='P';
+                airHeat='N',airWind='O',airAuto='P',deleteBinding='R';
     public String addleft = "000000";
 
     public boolean bUseWeb = true;     //是否远程

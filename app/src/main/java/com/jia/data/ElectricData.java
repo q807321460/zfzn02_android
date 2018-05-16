@@ -67,7 +67,7 @@ public class ElectricData
             String[] orderInfos = extras.split("\\|");
             addElectric(electricType, electricCode, orderInfos[0], roomIndex, areaSequ, null, "01");
             addElectric(electricType, electricCode, orderInfos[1], roomIndex, areaSequ, null, "02");
-        }else if(electricType == 3){
+        }else if(electricType == 3 || electricType == 27){
             String[] orderInfos = extras.split("\\|");
             addElectric(electricType, electricCode, orderInfos[0], roomIndex, areaSequ, null, "01");
             addElectric(electricType, electricCode, orderInfos[1], roomIndex, areaSequ, null, "02");

@@ -306,7 +306,7 @@ public class ElectricAdd extends Activity {
                         mLLElectricName2.setVisibility(View.VISIBLE);
                         mLLElectricName3.setVisibility(View.GONE);
                         mLLElectricName4.setVisibility(View.GONE);
-                    } else if (position == 3) {
+                    } else if (position == 3|| position == 27) {
                         mLLElectricName1.setVisibility(View.VISIBLE);
                         mLLElectricName2.setVisibility(View.VISIBLE);
                         mLLElectricName3.setVisibility(View.VISIBLE);
@@ -350,7 +350,7 @@ public class ElectricAdd extends Activity {
                         mLLElectricName2.setVisibility(View.VISIBLE);
                         mLLElectricName3.setVisibility(View.GONE);
                         mLLElectricName4.setVisibility(View.GONE);
-                    }else if(position == 3){
+                    }else if(position == 3 || position == 27 ){
                         mLLElectricName1.setVisibility(View.VISIBLE);
                         mLLElectricName2.setVisibility(View.VISIBLE);
                         mLLElectricName3.setVisibility(View.VISIBLE);
@@ -575,7 +575,7 @@ public class ElectricAdd extends Activity {
            String extra = null;
            if(iElectricType == 2){
                extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString();
-           }else if(iElectricType == 3){
+           }else if(iElectricType == 3 || iElectricType == 27){
                extra = mEtElectricName1.getText().toString()+ "|" + mEtElectricName2.getText().toString()+"|"
                        + mEtElectricName3.getText().toString();
            }else if(iElectricType == 4 || iElectricType == 10){

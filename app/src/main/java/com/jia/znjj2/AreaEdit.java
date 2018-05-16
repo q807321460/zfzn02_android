@@ -273,7 +273,7 @@ public class AreaEdit extends Activity {
                     }else if(electricInfoData.getOrderInfo().equals("02")){
                         holder.iconImg.setBackgroundResource(R.drawable.electric_type_swift2_right);
                     }
-                }else if(electricType == 3){
+                }else if(electricType == 3 ||electricType == 27 ){
                     if (electricInfoData.getOrderInfo().equals("01")){
                         holder.iconImg.setBackgroundResource(R.drawable.electric_type_swift3_left);
                     }else if(electricInfoData.getOrderInfo().equals("02")){

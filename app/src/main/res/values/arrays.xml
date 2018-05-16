@@ -28,6 +28,7 @@
         <item>电视(智能学习）</item>
         <item>中央空调(新）</item>
         <item>灯带</item>
+        <item>双联开关</item>
     </string-array>
 
     <array name="dev_type_images">
@@ -58,6 +59,7 @@
         <item>@drawable/electric_type_tv</item>
         <item>@drawable/center_air</item>
         <item>@drawable/lamp_belt</item>
+        <item>@drawable/duplex_swift_three</item>
     </array>
     <array name="swift_two_images">
         <item>@drawable/electric_type_swift2_left</item>

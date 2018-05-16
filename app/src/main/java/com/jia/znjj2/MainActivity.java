@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,18 +22,9 @@ import com.jia.connection.MasterSocket;
 import com.jia.connection.ServiceSocket;
 import com.jia.connection.UdpChat;
 import com.jia.data.DataControl;
-import com.jia.connection.WebSocket;
-import com.jia.util.NetworkUtil;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.Socket;
-import java.util.ArrayList;
-
 import com.jia.util.Util;
+
+import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
 
@@ -154,23 +145,23 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             @Override
             public void run() {
                 /*连接主节点*/
-
-                if(!mDC.bIsRemote) {
-                    try {
-                        int port = mDC.iUserPort;
-                        Socket socket = new Socket(mDC.sUserIP, port);
-                        /**
-                         * 设置网络，输入流，输出流
-                         */
-                        NetworkUtil.socket = socket;
-                        NetworkUtil.out = new PrintWriter(socket.getOutputStream(), true);
-                        NetworkUtil.br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+//
+//                if(!mDC.bIsRemote) {
+//                    try {
+//                        int port = mDC.iUserPort;
+//                        Socket socket = new Socket(mDC.sUserIP, port);
+//                        /**
+//                         * 设置网络，输入流，输出流
+//                         */
+//                        NetworkUtil.socket = socket;
+//                        NetworkUtil.out = new PrintWriter(socket.getOutputStream(), true);
+//                        NetworkUtil.br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
+//                    } catch (UnsupportedEncodingException e) {
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
                 /*启动后台Service服务，接受网络数据*/
                 MainActivity.this.startService(new Intent(MainActivity.this, ServiceSocket.class));
 

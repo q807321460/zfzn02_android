@@ -33,7 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jia.camera.business.Business;
-import com.jia.connection.MasterSocket;
 import com.jia.data.DataControl;
 import com.jia.data.ElectricInfoData;
 import com.jia.util.CreateImage;
@@ -446,20 +445,20 @@ public class LoginActivity extends Activity{
                     mDC.sMasterCode=mDC.mUserList.get(0).getMasterCode();
                     mDC.sUserIP = mDC.mUserList.get(0).getUserIP();
                     mDC.mWST.ConnectToWebSocket(mDC.sMasterCode);
-                    String str = "";
-                    str = (new MasterSocket()).getMasterNodeCode();
-                    //str = "#AA00BB00";   //模拟搜索到主节点
-                    if(str != null && !str.equals("")){
-                        str = str.substring(1,9);
-                        //mDC.sMasterCode = str;//待定
-                    }else{
-                        System.out.println("搜索主节点失败");
-                    }
-                    if(str.equals(mDC.sMasterCode)){
-                        mDC.bIsRemote = false;
-                    }else {
-                        mDC.bIsRemote = true;
-                    }
+//                    String str = "";
+//                    str = (new MasterSocket()).getMasterNodeCode();
+//                    //str = "#AA00BB00";   //模拟搜索到主节点
+//                    if(str != null && !str.equals("")){
+//                        str = str.substring(1,9);
+//                        //mDC.sMasterCode = str;//待定
+//                    }else{
+//                        System.out.println("搜索主节点失败");
+//                    }
+//                    if(str.equals(mDC.sMasterCode)){
+//                        mDC.bIsRemote = false;
+//                    }else {
+//                        mDC.bIsRemote = true;
+//                    }
 
                     mDC.mWS.loadUserRoomFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getAreaTime());
                     mDC.mWS.loadElectricFromWs(mDC.sMasterCode,mDC.mUserList.get(0).getElectricTime(),LoginActivity.this);

@@ -230,7 +230,7 @@
                 android:layout_marginRight="48dp"
                 android:layout_toLeftOf="@+id/jump_change"
                 android:layout_toStartOf="@+id/jump_change"
-                android:checked="false"
+                android:checked="true"
                 android:text="渐变" />
 
             <CheckBox
@@ -259,7 +259,7 @@
                 android:id="@+id/tx_lamp_belt_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间间隔"
+                android:text="时间间隔:00"
                 android:layout_above="@+id/sb_lamp_belt_time"
                 android:layout_alignLeft="@+id/sb_lamp_belt_time"
                 android:layout_alignStart="@+id/sb_lamp_belt_time" />
@@ -267,7 +267,7 @@
                 android:id="@+id/tx_lamp_belt_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="亮度等级"
+                android:text="亮度等级:01"
                 android:layout_above="@+id/sb_lamp_belt_light"
                 android:layout_alignLeft="@+id/sb_lamp_belt_light"
                 android:layout_alignStart="@+id/sb_lamp_belt_light" />
@@ -281,7 +281,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginEnd="30dp"
                 android:layout_marginRight="30dp"
-                android:max="5" />
+                android:max="4" />
 
             <SeekBar
                 android:id="@+id/sb_lamp_belt_time"
@@ -305,7 +305,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="BeltLampOpen"
-            android:text="打开" />
+            android:text="设置" />
 
         <Button
             android:id="@+id/btn_lamp_belt_close"
@@ -314,13 +314,23 @@
             android:layout_weight="1"
             android:onClick="BeltLampClose"
             android:text="关闭" />
-        <Button
-            android:id="@+id/btn_lamp_belt_last"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:onClick="BeltLampLast"
-            android:text="还原" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <Button
+        android:id="@+id/btn_lamp_belt_last"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="BeltLampLast"
+        android:text="打开" />
+    <Button
+        android:id="@+id/btn_lamp_belt_clear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:onClick="BeltLampClear"
+        android:text="清除" />
+        </LinearLayout>
 </LinearLayout>
