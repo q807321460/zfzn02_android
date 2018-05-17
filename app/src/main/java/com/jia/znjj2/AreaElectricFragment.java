@@ -245,7 +245,7 @@ public class AreaElectricFragment extends Fragment {
 						}
 					}
 					else if(electricType==6) {
-						if (electricState.equals("ZU") ) {
+						if (electricState.equals("ZV") || electricState.equals("ZU") ) {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain_on);
 						}else {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_curtain);
