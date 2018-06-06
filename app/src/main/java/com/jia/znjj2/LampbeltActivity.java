@@ -8,12 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jia.util.NetworkUtil;
+import com.jia.widget.ColorPickerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,27 +29,24 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
     private TextView tvTitleSave;
     private EditText etElectricName;
     private TextView tvRoomName;
-    private SeekBar redSB;
-    private SeekBar greenSB;
-    private SeekBar blueSB;
+    private ColorPickerView colorPickerView;
     private SeekBar lightSB;
     private SeekBar timeSB;
-    private TextView redTX;
-    private TextView greenTX;
-    private TextView blueTX;
     private TextView timeTX;
     private TextView lightTX;
-    private ImageView imcolorview;
+    private TextView tv;
     private CheckBox glchange;
     private CheckBox jpchange;
     private String changeType;
     private String lightType;
     private String timeType;
+    private LinearLayout cpView;
     private List colorlist;
     private String beltorder;
-    private static int redrgb;
-    private static int greenrgb;
-    private static int bluergb ;
+    private String redcolor;
+    private String greencolor;
+    private String bluecolor;
+    private String beltcolor;
 
     Handler handler = new Handler(){
         @Override
@@ -69,29 +67,52 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamp_belt);
         initView();
+        beltcolor = "";
         colorlist = new ArrayList();
-        redSB = (SeekBar)findViewById(R.id.red_progress);
-        greenSB = (SeekBar)findViewById(R.id.green_progress);
-        blueSB = (SeekBar)findViewById(R.id.blue_progress);
         timeSB = (SeekBar)findViewById(R.id.sb_lamp_belt_time);
         lightSB = (SeekBar)findViewById(R.id.sb_lamp_belt_light);
-        redTX = (TextView)findViewById(R.id.red_progress_text);
-        greenTX = (TextView)findViewById(R.id.green_progress_text);
-        blueTX = (TextView)findViewById(R.id.blue_progress_text);
-        imcolorview = (ImageView)findViewById(R.id.color_image_view);
         timeTX = (TextView) findViewById(R.id.tx_lamp_belt_time);
         lightTX = (TextView)findViewById(R.id.tx_lamp_belt_light);
+        tv = (TextView)findViewById(R.id.txview_lamp_belt_color);
         glchange = (CheckBox)findViewById(R.id.gradual_change);
         jpchange = (CheckBox)findViewById(R.id.jump_change);
         glchange.setOnClickListener(this);
         jpchange.setOnClickListener(this);
-        redrgb=0;
-        greenrgb=0;
-        bluergb=0;
-        setColor();
+        cpView = (LinearLayout) findViewById(R.id.color_picker_view);
+        colorPickerView = new ColorPickerView(this);
+        cpView.addView(colorPickerView);
+        colorPickerView.setOnColorBackListener(new ColorPickerView.OnColorBackListener() {
+            @Override
+            public void onColorBack(int a, int r, int g, int b) {
+                if(r==0){
+                    redcolor = "00";
+                }else if(r<16){
+                    redcolor = "0"+Integer.toHexString(r).toUpperCase();
+                }else if(r>=16){
+                    redcolor = Integer.toHexString(r).toUpperCase();
+                }
+                if(g==0){
+                    greencolor = "00";
+                }else if(g<16){
+                    greencolor = "0"+Integer.toHexString(g).toUpperCase();
+                }else if(g>=16){
+                    greencolor = Integer.toHexString(g).toUpperCase();
+                }
+                if(b==0){
+                    bluecolor = "00";
+                }else if(b<16){
+                    bluecolor = "0"+Integer.toHexString(b).toUpperCase();
+                }else if(b>=16){
+                    bluecolor = Integer.toHexString(b).toUpperCase();
+                }
+                tv.setText("颜色（RGB):"+redcolor+greencolor+bluecolor);
+                tv.setTextColor(Color.argb(a, r, g, b));
+                beltcolor = redcolor+greencolor+bluecolor;
+            }
+        });
         setlightandtime();
-
     }
+
 
     private void setlightandtime() {
         timeSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -136,97 +157,14 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
         });
     }
 
-    private void setColor() {
-        redSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
-                redTX.setText("红色" + Integer.toString(progress));
-                redrgb = progress;
-                imcolorview.setBackgroundColor(Color.rgb(redrgb,greenrgb,bluergb));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "开始滑动！");
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "停止滑动！");
-            }
-        });
-        greenSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
-                greenTX.setText("绿色" + Integer.toString(progress));
-                greenrgb = progress;
-                imcolorview.setBackgroundColor(Color.rgb(redrgb,greenrgb,bluergb));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "开始滑动！");
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "停止滑动！");
-            }
-        });
-        blueSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
-                blueTX.setText("蓝色" + Integer.toString(progress));
-                bluergb = progress;
-                imcolorview.setBackgroundColor(Color.rgb(redrgb,greenrgb,bluergb));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "开始滑动！");
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Log.e("------------", "停止滑动！");
-            }
-        });
-    }
-    public void LampBeltColorList(View view){
-        String red1 = Integer.toHexString(redrgb).toString().toUpperCase();
-        if(red1.length()<2){
-            String red = "0"+red1;
-            red1 = red;
-        }
-        String green1 = Integer.toHexString(greenrgb).toString().toUpperCase();
-        if(green1.length()<2){
-            String green = "0"+green1;
-            green1 = green;
-        }
-        String blue1 = Integer.toHexString(bluergb).toString().toUpperCase();
-        if(blue1.length()<2){
-            String blue = "0"+blue1;
-            blue1 = blue;
-        }
-        String color = blue1+green1+red1;
-        colorlist.add(color);
-        Toast.makeText(LampbeltActivity.this,"第"+colorlist.size()+"组颜色已选中",Toast.LENGTH_LONG).show();
-    }
     public void BeltLampOpen(View view){
-        if((redrgb==0)&&(bluergb==0)&&(greenrgb==0)){
-            Toast.makeText(LampbeltActivity.this,"请先设置颜色",Toast.LENGTH_LONG).show();
+        if(colorlist.size()==0||beltcolor == ""){
+                Toast.makeText(LampbeltActivity.this,"请先设置一种颜色",Toast.LENGTH_LONG).show();
         }else{
         if(colorlist.size()<5) {
             beltorder = lightType + timeType + changeType;
             int n = colorlist.size();
-            if(n<10){
-                beltorder = beltorder+ "0"+Integer.toString(n);
-            }else{
-                beltorder = beltorder+Integer.toString(n);
-            }
+            beltorder = beltorder+ "0"+Integer.toString(n);
             for(int i=0;i<n;i++){
                 beltorder=beltorder+colorlist.get(i);
             }
@@ -248,8 +186,8 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
             }
         }else{
             Toast.makeText(LampbeltActivity.this,"设置颜色过多",Toast.LENGTH_LONG).show();
+            }
         }
-    }
     }
     public void BeltLampLast(View view){
         if (mDC.socketCrash || mDC.bIsRemote || checkNetConnection()){
@@ -289,11 +227,17 @@ public class LampbeltActivity extends ElectricBase implements View.OnClickListen
     }
     public void BeltLampClear(View view){
         colorlist.clear();
-        redSB.setProgress(0);
-        greenSB.setProgress(0);
-        blueSB.setProgress(0);
         Toast.makeText(LampbeltActivity.this,"灯带颜色组合已经清除，请重新添加颜色组合",Toast.LENGTH_LONG).show();
 
+    }
+
+    public void BeltLampColorSure(View view){
+        if(beltcolor == ""){
+            Toast.makeText(LampbeltActivity.this,"请在色带处选择颜色",Toast.LENGTH_LONG).show();
+        }else{
+            colorlist.add(beltcolor);
+            Toast.makeText(LampbeltActivity.this,"颜色选择成功",Toast.LENGTH_LONG).show();
+        }
     }
 
 

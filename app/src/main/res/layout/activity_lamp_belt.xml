@@ -65,92 +65,39 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/color_picker_view"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <Button
+            android:id="@+id/btn_lamp_belt_"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="BeltLampColorSure"
+            android:text="确认" />
+
+        <TextView
+            android:id="@+id/txview_lamp_belt_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="BeltLampClose"
+            android:text="颜色（RGB)"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <SeekBar
-            android:id="@+id/red_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/text1"
-            android:max="255"
-            android:maxHeight="2dp"
-            android:minHeight="2dp"
-            android:paddingBottom="3dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="3dp"
-            android:progressDrawable="@drawable/layer_progress_red"
-            android:thumb="@drawable/shape_circle_red" />
-
-        <TextView
-            android:id="@+id/red_progress_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="left"
-            android:padding="6dp"
-            android:text="红色:0"
-            android:textColor="#FF0000"
-            android:textSize="16dp" />
-
-        <SeekBar
-            android:id="@+id/green_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/text1"
-            android:max="255"
-            android:maxHeight="2dp"
-            android:minHeight="2dp"
-            android:paddingBottom="3dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="3dp"
-            android:progressDrawable="@drawable/layer_progress_green"
-            android:thumb="@drawable/shape_circle_green" />
-
-        <TextView
-            android:id="@+id/green_progress_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="left"
-            android:padding="6dp"
-            android:text="绿色:0"
-            android:textColor="#00FF00"
-            android:textSize="16dp" />
-
-        <SeekBar
-            android:id="@+id/blue_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/text1"
-            android:max="255"
-            android:maxHeight="2dp"
-            android:minHeight="2dp"
-            android:paddingBottom="3dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="3dp"
-            android:progressDrawable="@drawable/layer_progress_blue"
-            android:thumb="@drawable/shape_circle_blue" />
-
-        <TextView
-            android:id="@+id/blue_progress_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:gravity="left"
-            android:padding="6dp"
-            android:text="蓝色:0"
-            android:textColor="#0000FF"
-            android:textSize="16dp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <EditText
             android:id="@+id/ed_lamp_belt_name"
             android:layout_width="match_parent"
@@ -163,7 +110,6 @@
             android:textColor="@color/text_color"
             android:textSize="20sp"
             android:visibility="gone" />
-
         <TextView
             android:id="@+id/lamp_belt_room"
             android:layout_width="match_parent"
@@ -177,44 +123,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/lamp_belt_color_sure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="确认"
-                android:onClick="LampBeltColorList"/>
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="颜色预览:"
-                android:layout_marginLeft="17dp"
-                android:layout_marginStart="17dp"
-                android:layout_alignBaseline="@+id/lamp_belt_color_sure"
-                android:layout_alignBottom="@+id/lamp_belt_color_sure"
-                android:layout_toRightOf="@+id/lamp_belt_color_sure"
-                android:layout_toEndOf="@+id/lamp_belt_color_sure" />
-            <ImageView
-                android:id="@+id/color_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/textView"
-                android:layout_toEndOf="@+id/textView" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -248,7 +157,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -259,18 +168,19 @@
                 android:id="@+id/tx_lamp_belt_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="时间间隔:00"
                 android:layout_above="@+id/sb_lamp_belt_time"
                 android:layout_alignLeft="@+id/sb_lamp_belt_time"
-                android:layout_alignStart="@+id/sb_lamp_belt_time" />
+                android:layout_alignStart="@+id/sb_lamp_belt_time"
+                android:text="时间间隔:00" />
+
             <TextView
                 android:id="@+id/tx_lamp_belt_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="亮度等级:01"
                 android:layout_above="@+id/sb_lamp_belt_light"
                 android:layout_alignLeft="@+id/sb_lamp_belt_light"
-                android:layout_alignStart="@+id/sb_lamp_belt_light" />
+                android:layout_alignStart="@+id/sb_lamp_belt_light"
+                android:text="亮度等级:01" />
 
             <SeekBar
                 android:id="@+id/sb_lamp_belt_light"
@@ -287,12 +197,12 @@
                 android:id="@+id/sb_lamp_belt_time"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginStart="35dp"
-                android:max="20"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:max="20" />
 
         </RelativeLayout>
     </LinearLayout>

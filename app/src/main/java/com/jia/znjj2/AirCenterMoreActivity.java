@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +40,9 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
     public static String aircenterinfoback;
     private ProgressDialog dialog;
     private ProgressDialog dialog1;
-    private ProgressDialog dialog2;
+    private int airCenterTemp;
+    private SeekBar tempSB;
+    private TextView tempTV;
     private TextView tvTitleName;
     private TextView tvTitleEdit;
     private TextView tvTitleSave;
@@ -351,14 +355,26 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         btMid.setOnClickListener(this);
         btLow= (Button) findViewById(R.id.rb_low);
         btLow.setOnClickListener(this);
-        bt18= (Button) findViewById(R.id.rb_18);
-        bt18.setOnClickListener(this);
-        bt22= (Button) findViewById(R.id.rb_22);
-        bt22.setOnClickListener(this);
-        bt26= (Button) findViewById(R.id.rb_26);
-        bt26.setOnClickListener(this);
-        bt30= (Button) findViewById(R.id.rb_30);
-        bt30.setOnClickListener(this);
+        tempSB = (SeekBar)findViewById(R.id.air_center_more_temp);
+        tempTV = (TextView)findViewById(R.id.tv_lamp_belt_time);
+        tempSB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                // 当拖动条的滑块位置发生改变时触发该方法,在这里直接使用参数progress，即当前滑块代表的进度值
+                airCenterTemp = progress+18;
+                tempTV.setText("空调温度:" + Integer.toString(airCenterTemp));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                Log.e("------------", "开始滑动！");
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.e("------------", "停止滑动！");
+            }
+        });
         tvTitleName.setText(electric.getElectricName());
         etElectricName.setText(electric.getElectricName());
         aircenterList = (ListView)findViewById(R.id.air_center_list);
@@ -656,118 +672,6 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
                     }
                 }.start();
                 break;
-            case R.id.rb_18:
-                aircenterinfoback = "";
-                stOrder="013212";
-                if(checkForAll==false){
-                    stCount="45";
-                }else {
-                    stCount="42";
-                }
-                keepcheck();
-                new Thread(){
-                    Message msg = new Message();
-                    public void run(){
-                        try{
-                            onDeal(stOrder,stCount);
-                            sleep(2500);
-                        }catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if(aircenterinfoback!=""){
-                            for(int i=0;i<check_list.size();i++){
-                                list3.set(Integer.parseInt(check_list.get(i)),"温度:18℃");
-                            }
-                            msg.what=0x0001;
-                            handler.sendMessage(msg);
-                        }
-                    }
-                }.start();
-                break;
-            case R.id.rb_22:
-                aircenterinfoback = "";
-                stOrder="013216";
-                if(checkForAll==false){
-                    stCount="49";
-                }else {
-                    stCount="46";
-                }
-                keepcheck();
-                new Thread(){
-                    Message msg = new Message();
-                    public void run(){
-                        try{
-                            onDeal(stOrder,stCount);
-                            sleep(2500);
-                        }catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if(aircenterinfoback!=""){
-                            for(int i=0;i<check_list.size();i++){
-                                list3.set(Integer.parseInt(check_list.get(i)),"温度:22℃");
-                            }
-                            msg.what=0x0001;
-                            handler.sendMessage(msg);
-                        }
-                    }
-                }.start();
-                break;
-            case R.id.rb_26:
-                aircenterinfoback = "";
-                stOrder="01321A";
-                if(checkForAll==false){
-                    stCount="4D";
-                }else {
-                    stCount="4A";
-                }
-                keepcheck();
-                new Thread(){
-                    Message msg = new Message();
-                    public void run(){
-                        try{
-                            onDeal(stOrder,stCount);
-                            sleep(2500);
-                        }catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if(aircenterinfoback!=""){
-                            for(int i=0;i<check_list.size();i++){
-                                list3.set(Integer.parseInt(check_list.get(i)),"温度:26℃");
-                            }
-                            msg.what=0x0001;
-                            handler.sendMessage(msg);
-                        }
-                    }
-                }.start();
-                break;
-            case R.id.rb_30:
-                aircenterinfoback = "";
-                stOrder="01321E";
-                if(checkForAll==false){
-                    stCount="51";
-                }else {
-                    stCount="4E";
-                }
-                keepcheck();
-                new Thread(){
-                    Message msg = new Message();
-                    public void run(){
-                        try{
-                            onDeal(stOrder,stCount);
-                            sleep(2500);
-                        }catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        if(aircenterinfoback!=""){
-                            for(int i=0;i<check_list.size();i++){
-                                list3.set(Integer.parseInt(check_list.get(i)),"温度:30℃");
-                            }
-                            msg.what=0x0001;
-                            handler.sendMessage(msg);
-                        }
-                    }
-                }.start();
-                break;
             default:
 
         }
@@ -1055,6 +959,37 @@ public class AirCenterMoreActivity extends ElectricBase implements View.OnClickL
         Intent intent = new Intent(AirCenterMoreActivity.this,UpdateAirCenterName.class);
         startActivity(intent);}else{
             Toast.makeText(AirCenterMoreActivity.this,"请先添加空调",Toast.LENGTH_LONG).show();
+        }
+    }
+    public void airTempSure (View view){
+        if (checkedStr.size()==0){
+            Toast.makeText(AirCenterMoreActivity.this,"请先确认您的空调选择",Toast.LENGTH_LONG).show();
+        }else{
+        aircenterinfoback = "";
+        String HexTemp = Integer.toHexString(airCenterTemp).toUpperCase();
+            stOrder="0132"+HexTemp;
+            int a = airCenterTemp - 18;
+            int c = 69 + a;
+            stCount = Integer.toHexString(c).toUpperCase();
+            keepcheck();
+        new Thread(){
+            Message msg = new Message();
+            public void run(){
+                try{
+                    onDeal(stOrder,stCount);
+                    sleep(2500);
+                }catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if(aircenterinfoback!=""){
+                    for(int i=0;i<check_list.size();i++){
+                        list3.set(Integer.parseInt(check_list.get(i)),"温度:"+airCenterTemp+"℃");
+                    }
+                    msg.what=0x0001;
+                    handler.sendMessage(msg);
+                    }
+                }
+            }.start();
         }
     }
 }

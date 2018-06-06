@@ -270,9 +270,9 @@ public class AreaElectricFragment extends Fragment {
 						}
 					}else if(electricType==11) {
 						if (electricState.equals("ZV") || electricState.equals("ZU")) {
-							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_arm_close1);
-						}else {
 							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_armon);
+						}else {
+							viewHolder.electricImg.setBackgroundResource(R.drawable.electric_type_arm_close1);
 						}
 
 					}

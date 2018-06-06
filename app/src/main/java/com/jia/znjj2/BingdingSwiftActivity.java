@@ -229,7 +229,7 @@ public class BingdingSwiftActivity extends Activity {
                 viewHolder.electricName.setVisibility(View.GONE);
             }
             viewHolder.electricrl.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, i / 3));
-            viewHolder.electricImg.setLayoutParams(new LinearLayout.LayoutParams(i / 6, i / 6));
+            viewHolder.electricImg.setLayoutParams(new LinearLayout.LayoutParams(i / 6, i / 11));
             RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(i/15,i/15);
             lp2.addRule(RelativeLayout.ALIGN_PARENT_TOP);
             lp2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
