@@ -135,14 +135,17 @@ public class DoorActivity extends ElectricBase {
     private void updateBindSence(){
         JSONObject json= null;
         try {
-            json = new JSONObject(electric.getExtras());
-            if(json==null){
+            if(electric.getExtras()== null|| electric.getExtras().equals("anyType{}")){
+                json = null;
+            }else {
+                json = new JSONObject(electric.getExtras());}
+            if(json == null){
                 tvOpenScene.setText(" ");
                 ivOpenScene.setImageResource(0);
                 tvCloseScene.setText(" ");
                 ivCloseScene.setImageResource(0);
             }else {
-                if(json.get("SH")==null){
+                if(json.get("SH")== null){
                     tvOpenScene.setText(" ");
                     ivOpenScene.setImageResource(0);
                 }else {
@@ -159,7 +162,7 @@ public class DoorActivity extends ElectricBase {
 
                 }
 
-                if(json.get("SG")==null){
+                if(json.get("SG")== null){
                     tvCloseScene.setText(" ");
                     ivCloseScene.setImageResource(0);
                 }else {
@@ -285,9 +288,11 @@ public class DoorActivity extends ElectricBase {
 
                     electric.setElectricName(electricName);
                     electric.setSceneIndex(mDC.mSceneList.get(spSelectScene.getSelectedItemPosition()).getSceneIndex());
-                    Map<String,String> value = JSON.parseObject(electric.getExtras(),Map.class);
-                    value.put(electricOrder, String.valueOf(mDC.mSceneList.get(spSelectScene.getSelectedItemPosition()).getSceneIndex()));//改变zzmm的值
-                    electric.setExtras(JSON.toJSONString(value));//重新转成json字符串，｛“name”:"张三","age":"20","xb":“男”,"zzmm":"newValue"｝
+                    if(electric.getExtras()==null||electric.getExtras().equals("anyType{}")){
+                        electric.setExtras("{\"SH\":\"2\"}");}
+                        Map<String, String> value = JSON.parseObject(electric.getExtras(), Map.class);
+                        value.put(electricOrder, String.valueOf(mDC.mSceneList.get(spSelectScene.getSelectedItemPosition()).getSceneIndex()));//改变zzmm的值
+                        electric.setExtras(JSON.toJSONString(value));//重新转成json字符串，｛“name”:"张三","age":"20","xb":“男”,"zzmm":"newValue"｝
 
 //                    Map<String,String> extras = JSON.parseObject(electric.getExtras(), Map.class);
 //                    if("SH".equals(electricOrder)){
