@@ -152,13 +152,15 @@ public class SecurityFragment extends Fragment {
             paramView.setTag(this.holder);
             HashMap<String,String> localHashMap = (HashMap)this.mAppList.get(paramInt);
             if (localHashMap != null)
-            {
-                String name = (String)((HashMap)localHashMap).get(this.keyString[1]);
+            {   String name = (String)((HashMap)localHashMap).get(this.keyString[1]);
                 String extra = mDC.mSensorList.get(paramInt).getExtras();
                 System.out.println(mDC.mSensorList.get(paramInt));
                 this.holder.sensorName.setText(name);
                 final int resourceId = Integer.parseInt(localHashMap.get(keyString[0]));
                 this.holder.sensorImg.setImageResource(mDC.mElectricTypeImages.getResourceId(resourceId,0));
+                if(extra.startsWith("{")){
+                    extra = extra.substring(extra.length()-3,extra.length()-2);
+                }
                 if(extra.equals("0")){
                     this.holder.sensorExtra.setChecked(false);
                 }else {

@@ -137,7 +137,7 @@ public class BingdingSwiftActivity extends Activity {
                 RelativeLayout relativeLayout = (RelativeLayout) adapter.getView(0, null, gridView);
                 LinearLayout rl = (LinearLayout) relativeLayout.getChildAt(0);
                 rl.measure(0, 0);
-                totalHeight = (int)Math.ceil(adapter.getCount()/3.0) * rl.getMeasuredHeight();
+                totalHeight = (int)Math.ceil(adapter.getCount()/3.0) * (rl.getMeasuredHeight())+300;
             }
             gridView.getLayoutParams().height = totalHeight;
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -229,7 +229,7 @@ public class BingdingSwiftActivity extends Activity {
                 viewHolder.electricName.setVisibility(View.GONE);
             }
             viewHolder.electricrl.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, i / 3));
-            viewHolder.electricImg.setLayoutParams(new LinearLayout.LayoutParams(i / 6, i / 11));
+            viewHolder.electricImg.setLayoutParams(new LinearLayout.LayoutParams(i / 9, i / 9));
             RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(i/15,i/15);
             lp2.addRule(RelativeLayout.ALIGN_PARENT_TOP);
             lp2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -237,11 +237,11 @@ public class BingdingSwiftActivity extends Activity {
             viewHolder.delete.setLayoutParams(lp2);
             if (i <= 800)
             {
-                viewHolder.electricName.setTextSize(18.0F);
+                viewHolder.electricName.setTextSize(14.0F);
             }
             else
             {
-                viewHolder.electricName.setTextSize(22.0F);
+                viewHolder.electricName.setTextSize(12.0F);
             }
 
             return convertView;
