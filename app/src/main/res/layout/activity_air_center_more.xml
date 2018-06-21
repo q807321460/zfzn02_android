@@ -19,11 +19,11 @@
                 android:id="@+id/air_center_more_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/air_center_more_save"
-                android:layout_toRightOf="@+id/air_center_more_save"
                 android:onClick="AirMoreBack"
-                android:src="@drawable/back" />
+                android:src="@drawable/back"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/air_center_more_save"
+                android:layout_toEndOf="@+id/air_center_more_save" />
 
             <TextView
                 android:id="@+id/air_center_more_name"

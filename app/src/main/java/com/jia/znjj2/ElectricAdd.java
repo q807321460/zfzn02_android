@@ -173,6 +173,24 @@ public class ElectricAdd extends Activity {
                                     }
                                 }}).show();
                     break;
+                case 0x2231:
+                    new AlertDialog.Builder(ElectricAdd.this).setTitle("已经检测到返回码，是否确定添加电器" )
+                            .setPositiveButton("确定",
+                                    new DialogInterface.OnClickListener()
+                                    {
+                                        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                                        {
+                                            addElectric(str2);
+                                        }
+                                    }) .setNegativeButton("取消",new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                        {
+                            if(dialog.isShowing()){
+                                dialog.cancel();
+                            }
+                        }}).show();
+                    break;
                 default:
                     super.handleMessage(msg);
                     break;
@@ -325,10 +343,7 @@ public class ElectricAdd extends Activity {
 
                     mIvElectricTypeImg.setImageResource(mDevTyeImages.getResourceId(iElectricType, 0));
                     mTvElectricTypeName.setText(mDevTypeNames[iElectricType]);
-                } else {
-
                 }
-
             }
 
             @Override
@@ -553,7 +568,9 @@ public class ElectricAdd extends Activity {
 
 
                     }else if(res.startsWith("0")){
-                        addElectric(str2);
+                        Message msg = new Message();
+                        msg.what=0x2231;
+                        handler.sendMessage(msg);
 
                     }else if(res.startsWith("-2")){
                         Message msg = new Message();
